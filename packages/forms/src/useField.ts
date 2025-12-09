@@ -4,7 +4,10 @@ import { $ZodIssue } from 'zod/v4/core'
 
 import { Field, Options } from './types.js'
 import defaultFormatErrorMessage from './defaultFormatErrorMessage.js'
-import defaultParseValue from './defaultParseValue.js'
+
+const defaultParseEvent = <T, C>(e: C) =>
+  (e as ChangeEvent<HTMLInputElement>).target.value as T
+const defaultFormatValue = <T>(value: T) => value
 
 export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
   schema: ZodType,
@@ -14,12 +17,13 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
     disabled = false,
     touched = false,
     showValidationOn = 'submit',
-    parseValue = defaultParseValue<T>,
+    parseEvent = defaultParseEvent<T, C>,
+    formatValue = defaultFormatValue<T>,
     formatErrorMessage = defaultFormatErrorMessage,
     _onInit,
     _onUpdate,
     _storedField,
-  }: Options<T> = {}
+  }: Options<T, C> = {}
 ) {
   function _validate(value: T): undefined | string {
     const { success, error } = schema.safeParse(value)
@@ -94,7 +98,7 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
   }
 
   function onChange(e: C) {
-    update({ value: parseValue(e) })
+    update({ value: parseEvent(e) })
   }
 
   // Only show validation error when is touched
@@ -127,8 +131,9 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
     }))
   }
 
+  const inputValue = formatValue(field.value)
   const inputProps = {
-    value: field.value,
+    value: inputValue,
     disabled: field.disabled,
     name,
     'data-valid': valid,
@@ -137,7 +142,7 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
   }
 
   const props = {
-    value: field.value,
+    value: inputValue,
     disabled: field.disabled,
     name,
     valid,

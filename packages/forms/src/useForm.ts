@@ -6,32 +6,22 @@ import { Options } from './types.js'
 import defaultFormatErrorMessage from './defaultFormatErrorMessage.js'
 import useField from './useField.js'
 
-type FieldsMap = Record<string, ReturnType<typeof useField<any, any>>>
+export type FieldsMap = Record<string, ReturnType<typeof useField<any, any>>>
 
-function mapFieldsToData(fields: Record<string, any>): Record<string, any> {
-  const obj: Record<string, any> = {}
-
-  for (const name in fields) {
-    obj[name] = fields[name].value
-  }
-
-  return obj
+type Config = {
+  formatErrorMessage?: (error: $ZodIssue, value: any, name?: string) => string
+  _onUpdate?: (fields: FieldsMap) => void
 }
-
 export default function useForm<S extends ZodRawShape>(
   schema: ZodObject<S>,
-  formatErrorMessage: (
-    error: $ZodIssue,
-    value: any,
-    name?: string
-  ) => string = defaultFormatErrorMessage
+  { formatErrorMessage = defaultFormatErrorMessage, _onUpdate }: Config = {}
 ) {
   const fields = useRef<FieldsMap>({})
 
   function useFormField<T = string, C = ChangeEvent<HTMLInputElement>>(
     _name: keyof S,
     options: Omit<
-      Options<T>,
+      Options<T, C>,
       'formatErrorMessage' | 'name' | '_onUpdateValue'
     > = {}
   ) {
@@ -55,6 +45,10 @@ export default function useForm<S extends ZodRawShape>(
         fields.current[name] = {
           ...fields.current[name],
           ...data,
+        }
+
+        if (_onUpdate) {
+          _onUpdate(fields.current)
         }
       },
     })
@@ -131,4 +125,14 @@ export default function useForm<S extends ZodRawShape>(
     checkDirty,
     reset,
   }
+}
+
+function mapFieldsToData(fields: Record<string, any>): Record<string, any> {
+  const obj: Record<string, any> = {}
+
+  for (const name in fields) {
+    obj[name] = fields[name].value
+  }
+
+  return obj
 }

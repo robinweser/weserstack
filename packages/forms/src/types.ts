@@ -9,13 +9,14 @@ export type Field<T> = {
   errorMessage?: string
 }
 
-export type Options<T> = {
+export type Options<T, C> = {
   name?: string
   value?: T
   disabled?: boolean
   touched?: boolean
   showValidationOn?: 'submit' | 'blur' | 'change'
-  parseValue?: (e: any) => T
+  parseEvent?: (e: C) => T
+  formatValue?: (value: T) => any
   formatErrorMessage?: (error: $ZodIssue, value: T, name?: string) => string
   _onInit?: (field: Field<T>) => void
   _onUpdate?: (field: Partial<Field<T>>) => void
