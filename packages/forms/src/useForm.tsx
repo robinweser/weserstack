@@ -1,21 +1,57 @@
-import { useRef, FormEvent, ChangeEvent } from 'react'
+import {
+  useRef,
+  useState,
+  FormEvent,
+  ChangeEvent,
+  useContext,
+  PropsWithChildren,
+} from 'react'
 import { z, ZodObject, ZodError, ZodRawShape, ZodType } from 'zod'
 import { $ZodIssue } from 'zod/v4/core'
+import { createContext } from '@weser/context'
 
 import { Options } from './types.js'
 import defaultFormatErrorMessage from './defaultFormatErrorMessage.js'
 import useField from './useField.js'
 
-export type FieldsMap = Record<string, ReturnType<typeof useField<any, any>>>
+export function createForm<T extends ZodRawShape>(schema: ZodObject<T>) {
+  function _useForm() {
+    return useForm<T>(schema)
+  }
 
-type Config = {
-  formatErrorMessage?: (error: $ZodIssue, value: any, name?: string) => string
-  _onUpdate?: (fields: FieldsMap) => void
+  const [useFormContext, FormProvider] =
+    createContext<ReturnType<typeof useForm<T>>>(null)
+
+  return {
+    useForm: _useForm,
+    useFormContext,
+    FormProvider,
+  }
 }
+
+export type FieldName<T extends ZodObject<any>> = keyof T['shape']
+
+type FieldsMap = Record<string, ReturnType<typeof useField<any, any>>>
+
+function mapFieldsToData(fields: Record<string, any>): Record<string, any> {
+  const obj: Record<string, any> = {}
+
+  for (const name in fields) {
+    obj[name] = fields[name].value
+  }
+
+  return obj
+}
+
 export default function useForm<S extends ZodRawShape>(
   schema: ZodObject<S>,
-  { formatErrorMessage = defaultFormatErrorMessage, _onUpdate }: Config = {}
+  formatErrorMessage: (
+    error: $ZodIssue,
+    value: any,
+    name?: string
+  ) => string = defaultFormatErrorMessage
 ) {
+  const [isValidating, setIsValidating] = useState(false)
   const fields = useRef<FieldsMap>({})
 
   function useFormField<T = string, C = ChangeEvent<HTMLInputElement>>(
@@ -35,20 +71,16 @@ export default function useForm<S extends ZodRawShape>(
       formatErrorMessage,
       // internals
       _storedField: stored,
-      _onInit: (data) => {
+      _onInit: (data: any) => {
         fields.current[name] = {
           ...field,
           ...data,
         }
       },
-      _onUpdate: (data) => {
+      _onUpdate: (data: any) => {
         fields.current[name] = {
           ...fields.current[name],
           ...data,
-        }
-
-        if (_onUpdate) {
-          _onUpdate(fields.current)
         }
       },
     })
@@ -86,14 +118,18 @@ export default function useForm<S extends ZodRawShape>(
     onSubmit: (data: z.infer<typeof schema>) => void,
     onError?: (error: ZodError) => void
   ) {
-    return (e: FormEvent<HTMLFormElement>) => {
+    return async (e: FormEvent<HTMLFormElement>) => {
       e.stopPropagation()
       e.preventDefault()
 
       touchFields()
 
+      // TODO: abort if fields are invalid already
+      // collect validation for each field
       const data = mapFieldsToData(fields.current)
-      const parsed = schema.safeParse(data)
+      setIsValidating(true)
+      const parsed = await schema.safeParseAsync(data)
+      setIsValidating(false)
 
       if (parsed.success) {
         onSubmit(parsed.data)
@@ -123,16 +159,7 @@ export default function useForm<S extends ZodRawShape>(
     useFormField,
     handleSubmit,
     checkDirty,
+    isValidating,
     reset,
   }
-}
-
-function mapFieldsToData(fields: Record<string, any>): Record<string, any> {
-  const obj: Record<string, any> = {}
-
-  for (const name in fields) {
-    obj[name] = fields[name].value
-  }
-
-  return obj
 }

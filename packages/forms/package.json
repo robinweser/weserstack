@@ -43,6 +43,9 @@
     "forms",
     "zod"
   ],
+  "dependencies": {
+    "@weser/context": "workspace:*"
+  },
   "peerDependencies": {
     "react": ">16.3.0",
     "zod": ">=4"

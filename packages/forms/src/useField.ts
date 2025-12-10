@@ -5,10 +5,6 @@ import { $ZodIssue } from 'zod/v4/core'
 import { Field, Options } from './types.js'
 import defaultFormatErrorMessage from './defaultFormatErrorMessage.js'
 
-const defaultParseEvent = <T, C>(e: C) =>
-  (e as ChangeEvent<HTMLInputElement>).target.value as T
-const defaultFormatValue = <T>(value: T) => value
-
 export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
   schema: ZodType,
   {
@@ -17,8 +13,8 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
     disabled = false,
     touched = false,
     showValidationOn = 'submit',
-    parseEvent = defaultParseEvent<T, C>,
-    formatValue = defaultFormatValue<T>,
+    parseEvent = (e: C) =>
+      (e as ChangeEvent<HTMLInputElement>).target.value as T,
     formatErrorMessage = defaultFormatErrorMessage,
     _onInit,
     _onUpdate,
@@ -125,15 +121,16 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
   function _applyError(issue: $ZodIssue) {
     const errorMessage = formatErrorMessage(issue, field.value, name)
 
+    console.log('APPLYING', errorMessage)
+
     setField((field: Field<T>) => ({
       ...field,
       errorMessage,
     }))
   }
 
-  const inputValue = formatValue(field.value)
   const inputProps = {
-    value: inputValue,
+    value: field.value,
     disabled: field.disabled,
     name,
     'data-valid': valid,
@@ -142,7 +139,7 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
   }
 
   const props = {
-    value: inputValue,
+    value: field.value,
     disabled: field.disabled,
     name,
     valid,
