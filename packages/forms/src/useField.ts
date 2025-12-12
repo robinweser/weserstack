@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import { ZodType } from 'zod'
 import { $ZodIssue } from 'zod/v4/core'
 
-import { Field, Options } from './types.js'
+import { T_Field, Options } from './types.js'
 import defaultFormatErrorMessage from './defaultFormatErrorMessage.js'
 
 export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
@@ -40,7 +40,7 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
     errorMessage: message,
   }
 
-  const [field, setField] = useState<Field<T>>(_storedField ?? initialField)
+  const [field, setField] = useState<T_Field<T>>(_storedField ?? initialField)
 
   useEffect(() => {
     if (_onInit && !_storedField) {
@@ -48,7 +48,7 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
     }
   }, [_onInit, _storedField])
 
-  function update(data: Partial<Field<T>>) {
+  function update(data: Partial<T_Field<T>>) {
     if (data.value !== undefined) {
       const dirty = data.value !== initialField.value
       const errorMessage = _validate(data.value)
@@ -65,7 +65,7 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
         _onUpdate(_data)
       }
 
-      setField((field: Field<T>) => ({
+      setField((field: T_Field<T>) => ({
         ...field,
         ..._data,
       }))
@@ -74,7 +74,7 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
         _onUpdate(data)
       }
 
-      setField((field: Field<T>) => ({
+      setField((field: T_Field<T>) => ({
         ...field,
         ...data,
       }))
@@ -121,9 +121,7 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
   function _applyError(issue: $ZodIssue) {
     const errorMessage = formatErrorMessage(issue, field.value, name)
 
-    console.log('APPLYING', errorMessage)
-
-    setField((field: Field<T>) => ({
+    setField((field: T_Field<T>) => ({
       ...field,
       errorMessage,
     }))
