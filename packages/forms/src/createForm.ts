@@ -1,24 +1,26 @@
 import { ZodObject, ZodRawShape } from 'zod'
-import type { ChangeEvent } from 'react'
+import type { ChangeEvent, ReactNode } from 'react'
 import { createContext } from '@weser/context'
 
-import useForm from './useForm.js'
+import _useForm from './useForm.js'
 import useField from './useField.js'
 import type { T_FieldName } from './types.js'
 
-export function createForm<T extends ZodRawShape>(schema: ZodObject<T>) {
-  function _useForm() {
-    return useForm<T>(schema)
+export default function createForm<T extends ZodRawShape>(
+  schema: ZodObject<T>
+) {
+  function useForm() {
+    return _useForm<T>(schema)
   }
 
   const [useFormContext, FormProvider] =
-    createContext<ReturnType<typeof _useForm>>(null)
+    createContext<ReturnType<typeof useForm>>(null)
 
   type FieldName = T_FieldName<typeof schema>
   // TODO: clean up the types
   type FieldProps<T = string, C = ChangeEvent<HTMLInputElement>> = {
     name: FieldName
-    children: (field: ReturnType<typeof useField<T, C>>) => React.ReactNode
+    children: (field: ReturnType<typeof useField<T, C>>) => ReactNode
   } & Parameters<typeof useField<T, C>>[1]
   function Field<T = string, C = ChangeEvent<HTMLInputElement>>({
     name,
@@ -32,7 +34,7 @@ export function createForm<T extends ZodRawShape>(schema: ZodObject<T>) {
   }
 
   return {
-    useForm: _useForm,
+    useForm,
     useFormContext,
     FormProvider,
     Field,
