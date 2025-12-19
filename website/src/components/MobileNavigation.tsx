@@ -82,7 +82,7 @@ export default function MobileNavigation({
             alignItems="center"
             paddingBottom={2}>
             <Text variant="highlight" weight={600}>
-              Weser Packages
+              WeserStack
             </Text>
             <Bleed size={3}>
               <IconButton

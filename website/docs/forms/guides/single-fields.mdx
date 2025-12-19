@@ -2,3 +2,21 @@
 title: Single Fields
 order: 6
 ---
+
+Usually, we want to use the [useForm](/forms/api/useForm) hook to create form fields, but sometimes we might want to create a single one-off field that's not submitted itself, but still has validation rules.
+We can achieve this by using the [useField](/forms/api/useField) hook. It's the low-level hook that's used under the hood by [useForm](/forms/api/useForm).
+
+```tsx
+import { z } from 'zod'
+import { useField } from '@weser/forms'
+
+const schema = z.string().min(3)
+
+function Search() {
+  const search = useField(schema, {
+    showValidationOn: 'blur',
+  })
+
+  return <input type="search" {...search.inputProps} />
+}
+```

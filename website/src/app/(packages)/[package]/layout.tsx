@@ -48,7 +48,7 @@ export default async function Layout({
             alignItems="center">
             <Click action="/">
               <Text variant="highlight" weight={600}>
-                Weser Packages
+                WeserStack
               </Text>
             </Click>
 

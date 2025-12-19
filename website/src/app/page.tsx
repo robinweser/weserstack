@@ -18,7 +18,7 @@ import capitalize from '@/utils/capitalize'
 import { baseUrl } from '@/data/meta'
 
 export const metadata: Metadata = {
-  title: 'Weser Packages',
+  title: 'WeserStack',
   description:
     'A collection of packages that make it easy to build web applications.',
   alternates: {
@@ -44,7 +44,7 @@ export default async function Page() {
           justifyContent="center"
           gap={4}>
           <Text as="h1" variant="heading1" align="center">
-            Weser Packages
+            WeserStack
           </Text>
           <Text as="p" variant="highlight" size={24} align="center">
             A collection of packages that make it easy to build web
