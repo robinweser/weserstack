@@ -8,23 +8,13 @@ import useField from './useField.js'
 
 type FieldsMap = Record<string, ReturnType<typeof useField<any, any>>>
 
-function mapFieldsToData(fields: Record<string, any>): Record<string, any> {
-  const obj: Record<string, any> = {}
-
-  for (const name in fields) {
-    obj[name] = fields[name].value
-  }
-
-  return obj
+type Config = {
+  formatErrorMessage?: (error: $ZodIssue, value: any, name?: string) => string
+  _onUpdate?: (fields: FieldsMap) => void
 }
-
 export default function useForm<S extends ZodRawShape>(
   schema: ZodObject<S>,
-  formatErrorMessage: (
-    error: $ZodIssue,
-    value: any,
-    name?: string
-  ) => string = defaultFormatErrorMessage
+  { formatErrorMessage = defaultFormatErrorMessage, _onUpdate }: Config = {}
 ) {
   const [isValidating, setIsValidating] = useState(false)
   const fields = useRef<FieldsMap>({})
@@ -56,6 +46,10 @@ export default function useForm<S extends ZodRawShape>(
         fields.current[name] = {
           ...fields.current[name],
           ...data,
+        }
+
+        if (_onUpdate) {
+          _onUpdate(fields.current)
         }
       },
     })
@@ -130,10 +124,20 @@ export default function useForm<S extends ZodRawShape>(
   }
 
   return {
+    isValidating,
     useFormField,
     handleSubmit,
     checkDirty,
     reset,
-    isValidating,
   }
+}
+
+function mapFieldsToData(fields: Record<string, any>): Record<string, any> {
+  const obj: Record<string, any> = {}
+
+  for (const name in fields) {
+    obj[name] = fields[name].value
+  }
+
+  return obj
 }

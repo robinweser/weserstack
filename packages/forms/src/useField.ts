@@ -5,6 +5,10 @@ import { $ZodIssue } from 'zod/v4/core'
 import { T_Field, Options } from './types.js'
 import defaultFormatErrorMessage from './defaultFormatErrorMessage.js'
 
+const defaultParseEvent = <T, C>(e: C) =>
+  (e as ChangeEvent<HTMLInputElement>).target.value as T
+const defaultFormatValue = <T>(value: T) => value
+
 export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
   schema: ZodType,
   {
@@ -13,8 +17,8 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
     disabled = false,
     touched = false,
     showValidationOn = 'submit',
-    parseEvent = (e: C) =>
-      (e as ChangeEvent<HTMLInputElement>).target.value as T,
+    parseEvent = defaultParseEvent<T, C>,
+    formatValue = defaultFormatValue<T>,
     formatErrorMessage = defaultFormatErrorMessage,
     _onInit,
     _onUpdate,
@@ -127,8 +131,9 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
     }))
   }
 
+  const inputValue = formatValue(field.value)
   const inputProps = {
-    value: field.value,
+    value: inputValue,
     disabled: field.disabled,
     name,
     'data-valid': valid,
@@ -137,7 +142,7 @@ export default function useField<T = string, C = ChangeEvent<HTMLInputElement>>(
   }
 
   const props = {
-    value: field.value,
+    value: inputValue,
     disabled: field.disabled,
     name,
     valid,

@@ -34,7 +34,7 @@ export default function SidebarItem({ item, parent = '', offset = 0 }: Props) {
         style={{
           borderRadius: 4,
           fontWeight: depth === 1 ? 600 : 400,
-          fontSize: depth > 2 ? 14 : 15,
+          fontSize: depth === 1 ? 15 : depth === 2 ? 14 : 13,
           ':focus-visible': theme.focusRing,
         }}>
         {item.name || formatPath(item.path, parent)}

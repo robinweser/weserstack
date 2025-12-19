@@ -1,0 +1,25 @@
+---
+title: Conditional Validation
+order: 4
+---
+
+Besides basic form validation, we can also validate fields conditionally.<br />
+This is useful when we want to validate a field based on the value of another field. A common example is when you have to confirm your password by typing it twice.
+
+We can achieve this by using Zod's built-in [refine](https://zod.dev/api/zod#refine) method.
+
+```tsx
+import { z } from 'zod'
+import { useForm } from '@weser/forms'
+
+const schema = z
+  .object({
+    password: z.string(),
+    confirm: z.string(),
+  })
+  .refine((data) => data.password === data.confirm, {
+    message: "Passwords don't match",
+    // the path is important to set the error message to the correct field
+    path: ['confirm'],
+  })
+```

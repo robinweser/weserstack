@@ -101,7 +101,7 @@ export default async function Page({ params }: Props) {
             <Box gap={4} shrink={1} grow={1}>
               <Box gap={[0, , , 6]}>
                 <Box display={['none', , , 'flex']}>
-                  <Text variant="highlight">
+                  <Text>
                     <Text weight={600}>{capitalize(packageName)}</Text>
                     {hierarchy.length > 0 ? ' / ' : ''}
                     {hierarchy.map((item) => item.title).join(' / ')}

@@ -1,6 +1,6 @@
 ---
 title: useForm
-order: 1
+order: 2
 ---
 
 A React hook for managing forms with [Zod](https://zod.dev/) validation.<br />
@@ -53,7 +53,7 @@ function Form() {
       <input id="password" type="password" {...password.inputProps} />
       {password.errorMessage && <p role="alert">{password.errorMessage}</p>}
 
-      <button type="submit">Login</button>
+      <button type="submit">Sign up</button>
     </form>
   )
 }
@@ -61,9 +61,15 @@ function Form() {
 
 ## Parameters
 
+| Parameter | Type              | Default | Description                               |
+| --------- | ----------------- | ------- | ----------------------------------------- |
+| schema    | `ZodObject`       |         | The Zod schema used to validate the data. |
+| config    | [Config](#config) |         | Additional configuration options.         |
+
+### Config
+
 | Parameter          | Type                                                    | Default                    | Description                                                                                                                                                                                                                                     |
 | ------------------ | ------------------------------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| schema             | `ZodObject`                                             |                            | The Zod schema used to validate the data.                                                                                                                                                                                                       |
 | formatErrorMessage | `(error: ZodIssue, value: any, name: string) => string` | `(error) => error.message` | A function to overwrite the default error message from Zod. Receives the Zod issue, the current value and the name of the field.<br/>See [useField – formatErrorMessage](/forms/api/useField#formatErrorMessage) for more details and examples. |
 
 ## Returns
@@ -120,3 +126,7 @@ Useful e.g. when conditionally showing a save button or when you want to inform 
 ### reset
 
 A function to reset the form to its initial state.
+
+### isValidating
+
+(`boolean`) Returns `true` if the form is currently being validated (async validation), `false` otherwise.
