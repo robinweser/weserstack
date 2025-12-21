@@ -46,16 +46,16 @@ export default function NameField() {
 
 ### Options
 
-| Property           | Type                                                     | Default                    | Description                                                                                                                      |
-| ------------------ | -------------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| value              | `T = string`                                             | `''`                       | Initial value                                                                                                                    |
-| disabled           | `boolean`                                                | `false`                    | Initial disabled state                                                                                                           |
-| touched            | `boolean`                                                | `false`                    | Initial touched state that indicates whether validation errors are shown or not                                                  |
-| name               | `string`                                                 |                            | The name of the field                                                                                                            |
-| showValidationOn   | `"change"` \| `"blur"` \| `"submit"`                     | `"submit"`                 | Which event is used to trigger the touched state                                                                                 |
-| parseEvent         | `(e: Event) => T`                                        | `(e) => e.target.value`    | How the value is received from the input element.<br />Use `e.target.checked` when working with `<input type="checkbox" />`      |
-| formatValue        | `(value: T) => any`                                      | `(value) => value`         | How the value is formated before being passed to the input element.                                                              |
-| formatErrorMessage | `(error: ZodIssue, value: any, name?: string) => string` | `(error) => error.message` | A function to overwrite the default error message from Zod. Receives the Zod issue, the current value and the name of the field. |
+| Property                                  | Type                                                     | Default                    | Description                                                                                                                      |
+| ----------------------------------------- | -------------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| value                                     | `T = string`                                             | `''`                       | Initial value                                                                                                                    |
+| disabled                                  | `boolean`                                                | `false`                    | Initial disabled state                                                                                                           |
+| touched                                   | `boolean`                                                | `false`                    | Initial touched state that indicates whether validation errors are shown or not                                                  |
+| name                                      | `string`                                                 |                            | The name of the field                                                                                                            |
+| showValidationOn                          | `"change"` \| `"blur"` \| `"submit"`                     | `"submit"`                 | Which event is used to trigger the touched state                                                                                 |
+| parseEvent                                | `(e: Event) => T`                                        | `(e) => e.target.value`    | How the value is received from the input element.<br />Use `e.target.checked` when working with `<input type="checkbox" />`      |
+| formatValue                               | `(value: T) => any`                                      | `(value) => value`         | How the value is formated before being passed to the input element.                                                              |
+| [formatErrorMessage](#formaterrormessage) | `(error: ZodIssue, value: any, name?: string) => string` | `(error) => error.message` | A function to overwrite the default error message from Zod. Receives the Zod issue, the current value and the name of the field. |
 
 #### formatErrorMessage
 
@@ -190,7 +190,7 @@ import { ChangeEvent } from 'react'
 const acceptsTerms = useField<boolean, ChangeEvent<HTMLInputElement>>(
   z.boolean(),
   {
-    parseValue: (e) => e.target.checked,
+    parseEvent: (e) => e.target.checked,
     value: false,
   }
 )
@@ -198,7 +198,7 @@ const acceptsTerms = useField<boolean, ChangeEvent<HTMLInputElement>>(
 type ArrayChangeEvent = (value: Array<string>) => void
 const tags = useField<Array<string>, ArrayChangeEvent>(z.array(z.string()), {
   // overwrite the default that expects a native HTML event
-  parseValue: (value) => value,
+  parseEvent: (value) => value,
   value: [],
 })
 ```
