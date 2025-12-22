@@ -1,7 +1,7 @@
 {
-  "name": "@weser/optimistic",
+  "name": "@weser/state",
   "version": "0.0.18",
-  "description": "React hooks for working with optimistic updates",
+  "description": "React hooks for simple state management",
   "author": "Robin Weser <robin@weser.io>",
   "license": "MIT",
   "homepage": "https://github.com/robinweser/weser.git",
