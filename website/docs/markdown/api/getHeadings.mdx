@@ -2,4 +2,46 @@
 title: getHeadings
 ---
 
-tbd.
+Extracts a flat list of headings from a markdown string.<br />
+This is useful for creating a table of contents or for other purposes.
+
+## The Gist
+
+```tsx
+import { getHeadings } from '@weser/markdown'
+
+const markdown = `
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+`
+
+const headings = getHeadings(markdown)
+
+console.log(headings)
+// [
+//   { id: 'heading-1', children: 'Heading 1', depth: 1 },
+//   { id: 'heading-2', children: 'Heading 2', depth: 2 },
+//   { id: 'heading-3', children: 'Heading 3', depth: 3 },
+//   { id: 'heading-4', children: 'Heading 4', depth: 4 },
+// ]
+```
+
+## Parameters
+
+| Parameter | Type               | Description                                   |
+| --------- | ------------------ | --------------------------------------------- |
+| markdown  | `string`           | The markdown string to extract headings from. |
+| config    | [Config](#config)? | The configuration for the headings.           |
+
+### Config
+
+| Parameter | Type     | Default | Description                               |
+| --------- | -------- | ------- | ----------------------------------------- |
+| minDepth  | `number` | `1`     | The minimum depth of headings to extract. |
+| maxDepth  | `number` | `4`     | The maximum depth of headings to extract. |
+
+## Returns
+
+(`Array<T_Heading>`) A flat list of headings.

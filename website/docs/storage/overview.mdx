@@ -3,4 +3,30 @@ title: Overview
 order: -1
 ---
 
-tbd.
+Utils and React hooks for working with persisted state in local storage, session storage and IndexedDB.
+
+<PackageBadges package="@weser/storage" />
+
+## Installation
+
+```sh
+# npm
+npm i --save @weser/storage
+
+# yarn
+yarn add @weser/storage
+
+# pnpm
+pnpm add @weser/storage
+```
+
+## Motivation
+
+Working with persisted state is a core part of any modern application.<br />
+Typically, I'd start with some React state and eventually persist it to either a database or a local storage.
+Since I found myself writing the same boilerplate code over and over again, I decided to create this package to help me work with persisted state in a more convenient way.
+
+## Benefits
+
+This package provides a set of utilities and React hooks to help you work with persisted state in a more convenient way.
+It supports [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) and [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). You may also plug your very own storage to it.

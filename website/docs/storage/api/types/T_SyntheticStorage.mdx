@@ -1,0 +1,10 @@
+---
+title: T_SyntheticStorage
+---
+
+```tsx
+type T_SyntheticStorage<T = any> = {
+  getItem: (key: string) => T | Promise<T>
+  setItem: (key: string, value: T) => void | Promise<void>
+}
+```

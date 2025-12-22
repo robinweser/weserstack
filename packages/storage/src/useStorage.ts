@@ -1,7 +1,7 @@
 'use client'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
-type SyntheticStorage<T = any> = {
+export type T_SyntheticStorage<T = any> = {
   getItem: (key: string) => T | Promise<T>
   setItem: (key: string, value: T) => void | Promise<void>
 }
@@ -13,7 +13,7 @@ export type Config<T> = {
 }
 
 export default function useStorage<T = any>(
-  getStorage: () => Storage | SyntheticStorage,
+  getStorage: () => Storage | T_SyntheticStorage,
   key: string,
   initialState: T,
   config: Config<T> = {}

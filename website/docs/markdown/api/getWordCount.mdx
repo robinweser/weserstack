@@ -2,4 +2,26 @@
 title: getWordCount
 ---
 
-tbd.
+Counts the number of words in a markdown string.
+
+## The Gist
+
+```tsx
+import { getWordCount } from '@weser/markdown'
+
+const markdown = `Hello World`
+const wordCount = getWordCount(markdown)
+
+console.log(wordCount)
+// 2
+```
+
+## Parameters
+
+| Parameter | Type     | Description                                |
+| --------- | -------- | ------------------------------------------ |
+| markdown  | `string` | The markdown string to count the words of. |
+
+## Returns
+
+(`number`) The number of words in the markdown string.

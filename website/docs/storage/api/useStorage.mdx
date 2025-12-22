@@ -2,4 +2,86 @@
 title: useStorage
 ---
 
-tbd.
+A React hook to manage a value in a storage.<br />
+Unless you need to use a custom storage, it is recommended to use the specialized hooks ([useLocalStorage](/storage/api/useLocalStorage), [useSessionStorage](/storage/api/useSessionStorage), [useIndexedStorage](/storage/api/useIndexedStorage)) instead.
+
+## The Gist
+
+```tsx
+import { useStorage, T_SyntheticStorage } from '@weser/storage'
+import cache from './cache'
+
+const getStorage = (): T_SyntheticStorage => ({
+  getItem: cache.get,
+  setItem: cache.set,
+})
+
+function Component() {
+  const [counter, setCounter, isLoading] = useStorage(getStorage, 'counter', 0)
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  return (
+    <div>
+      {counter}
+      <button onClick={() => setCounter(counter + 1)}>Increment</button>
+      <button onClick={() => setCounter(counter - 1)}>Decrement</button>
+    </div>
+  )
+}
+```
+
+## Parameters
+
+| Parameter    | Type                       | Description                       |
+| ------------ | -------------------------- | --------------------------------- |
+| getStorage   | `() => T_SyntheticStorage` | The function to get the storage.  |
+| key          | `string`                   | The key to store the value under. |
+| initialState | `T`                        | The initial value to store.       |
+| config       | `Config`                   | The configuration object.         |
+
+### Config
+
+| Parameter  | Type                  | Default                                                                                                           | Description                                                                                                                       |
+| ---------- | --------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| onHydrated | `(value?: T) => void` |                                                                                                                   | A callback function that is called when the value is hydrated. This is invoked at the same time the loading flag is set to false. |
+| encode     | `(value: T) => any`   | [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) | A custom encoder function to encode the value.                                                                                    |
+| decode     | `(value: any) => T`   | [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)         | A custom decoder function to decode the value.                                                                                    |
+
+#### Example
+
+```tsx
+const [counter, setCounter, isLoading] = useStorage(getStorage, 'counter', 0, {
+  onHydrated: (value) => {
+    console.log('Value hydrated:', value)
+  },
+  encode: (value) => value.toString(),
+  decode: (value) => Number(value),
+})
+```
+
+## Returns
+
+(`[T, Dispatch<SetStateAction<T>>, boolean]`) A tuple where the first element is the value, the second element is a function to update the value and the third element is a boolean indicating if the value is still loading.
+
+## Generic Type
+
+By default, all storage hooks infer the type from the initial state.<br />
+However, when working with objects or arrays, you may want to specify the type explicitly.
+
+```tsx
+type Account = {
+  id: string
+  name: string
+  email: string
+  password: string
+}
+
+const [counter, setCounter, isLoading] = useStorage<Account | null>(
+  getStorage,
+  'account',
+  null
+)
+```
