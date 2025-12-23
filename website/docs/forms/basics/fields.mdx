@@ -2,4 +2,35 @@
 title: Fields
 ---
 
-tbd.
+Fields are the building blocks of forms. They are the single source of truth for the form data and carry all the state and logic to render form controls.<br />
+This allows us to build complex forms in a distributed way, where each field is detached from the form and can be managed independently.
+
+Fields can either be standalone via [useField](/forms/api/useField) or part of a form via [useForm](/forms/api/useForm) method.
+
+## States
+
+Each field has a couple of concepts and states that come in handy when building and managing forms with great user experience.
+
+| State        | Description                                                                                                                                                                                                                                                              |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| value        | The actual value of the field. This can be any type, but uses strings by default.                                                                                                                                                                                        |
+| disabled     | Whether the field is disabled.                                                                                                                                                                                                                                           |
+| touched      | Whether the field is touched. This is a custom concept that indicates whether validation errors are shown or not. By default, a field is touched when the form is submitted. This can be configured on a per-field basis and set to either `submit`, `blur` or `change`. |
+| dirty        | Whether the field is dirty. A field is dirty when it's value is different from the initial value.                                                                                                                                                                        |
+| valid        | Whether the field is valid. This is validated against the provided Zod schema.                                                                                                                                                                                           |
+| errorMessage | The error message of the field. This is `undefined` when the field is not touched or valid.                                                                                                                                                                              |
+
+<Callout title="Note">
+  `valid` and `errorMessage` are computed states and cannot be set directly.
+</Callout>
+
+## Validation
+
+As mentioned before, fields are validated against the provided Zod schema.<br />
+This is done synchronously, meaning that every field is validated at any time. The `valid` and `errorMessage` states are updated immediately after the value is changed.
+
+<Callout title="Important Note">
+  This does not include validation added via the
+  [refine](https://zod.dev/api#refine) and
+  [superRefine](https://zod.dev/api#superrefine) methods.
+</Callout>
