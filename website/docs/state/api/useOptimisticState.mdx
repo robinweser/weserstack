@@ -2,4 +2,46 @@
 title: useOptimisticState
 ---
 
-tbd.
+A hook for managing state with optimistic updates.<br />
+It uses [useOptimistic](https://react.dev/reference/react/useOptimistic) under the hood, but provides a [useState](https://react.dev/reference/react/useState)-like API.
+
+## The Gist
+
+```tsx
+import { startTransition } from 'react'
+import { useOptimisticState } from '@weser/state'
+
+type Props = {
+  count: number
+  updateCount: (count: number) => Promise<void>
+}
+function Component({ count, updateCount }: Props) {
+  const [state, setState] = useOptimisticState(count)
+
+  function update(count: number) {
+    setState(count)
+
+    startTransition(async () => {
+      await updateCount(count)
+    })
+  }
+
+  return (
+    <div>
+      <p>{state}</p>
+      <button onClick={() => update(state + 1)}>Increment</button>
+      <button onClick={() => update(state - 1)}>Decrement</button>
+    </div>
+  )
+}
+```
+
+## Parameters
+
+| Parameter    | Type | Description                     |
+| ------------ | ---- | ------------------------------- |
+| initialState | `T`  | The initial value of the state. |
+
+## Returns
+
+(`[T, Dispatch<SetStateAction<T>>]`) A tuple where the first element is the state and the second element is a function to update the state. The same signature as React's [useState](https://react.dev/reference/react/useState).
