@@ -3,4 +3,60 @@ title: createRenderer
 order: 1
 ---
 
-tbd.
+Creates the CSS function and all the static CSS required to make it work.<br />
+This uses css-hooks' [createHooks](https://css-hooks.com/docs/api/react.createhooks/) under the hood.
+
+## The Gist
+
+```ts
+import {
+  createRenderer,
+  prefixer,
+  prefixerFallbacks,
+  fallbackValue,
+} from '@weser/styling'
+
+const positionFallback = fallbackValue('position', ['-webkit-sticky', 'sticky'])
+
+// staticCSS needs to be inserted into the document somewhere
+const [staticCSS, css] = createRenderer({
+  hooks: {
+    ':hover': 'hover',
+    ':focus': 'focus',
+    m: '@media (min-width: 800px)',
+    l: '@media (min-width: 1024px)',
+  },
+  fallbacks: [...prefixerFallbacks, positionFallback],
+  plugins: [prefixer()],
+})
+
+// vendor prefixed and browser-compatible position: sticky
+const style = css({
+  display: 'flex',
+  flexDirection: 'column',
+  color: 'blue',
+  position: 'sticky',
+  appearance: 'none',
+  m: {
+    flexDirection: 'row',
+  },
+  ':hover': {
+    color: 'red',
+  },
+})
+```
+
+## Parameters
+
+| Parameter  | Type                                                                                                   | Description                                  |
+| ---------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------- |
+| hooks      | `Record<string, string>`                                                                               | A map of hook names to CSS variable names.   |
+| fallbacks  | `Array<T_Fallback>`                                                                                    | An array of fallbacks to apply to the style. |
+| plugins    | `Array<Plugin<T>>`                                                                                     | An array of plugins to apply to the style.   |
+| mergeStyle | [assignStyle](https://github.com/robinweser/css-in-js-utils?tab=readme-ov-file#assignstylebase-extend) | A function that merges the style object.     |
+
+### mergeStyle
+
+## Returns
+
+(`[string, CSSFunction]`) A tuple where the first element is the static CSS and the second element is the CSS function.

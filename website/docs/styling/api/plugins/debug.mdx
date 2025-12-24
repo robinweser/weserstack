@@ -2,4 +2,31 @@
 title: debug
 ---
 
-tbd.
+This plugin adds debug styles to elements for simple layout debugging.<br />
+It uses [styles-debugger](https://github.com/kitze/styles-debugger) under the hood.
+
+## The Gist
+
+```ts
+import { debugPlugin } from '@weser/styling'
+
+const plugin = debugPlugin(false, {
+  debugWith: 'background',
+})
+```
+
+## Parameters
+
+| Parameter  | Type                                                                     | Default | Description                                                                      |
+| ---------- | ------------------------------------------------------------------------ | ------- | -------------------------------------------------------------------------------- |
+| autoActive | `boolean`                                                                | `true`  | Whether debug styles are active globally                                         |
+| config     | [Config](https://github.com/kitze/styles-debugger#configuration-options) |         | Custom [styles-debugger](https://github.com/kitze/styles-debugger) configuration |
+
+<Callout title="Note">
+  When `autoActive` is disabled, one can opt-in by adding `debug: true` to a
+  style object.
+</Callout>
+
+## Returns
+
+([Plugin](/styling/api/plugins)) A plugin function that can be passed to the [createRenderer](/styling/api/createRenderer) function.

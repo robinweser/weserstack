@@ -45,6 +45,7 @@ const pseudoClasses = {
   '[data-id="note"] &': '[data-id="note"] &',
   '[data-id="note"] + &': '[data-id="note"] + &',
   '[data-id="code"] + &': '[data-id="code"] + &',
+  '[data-id="table"] + &': '[data-id="table"] + &',
   '[data-id="anchor"] + &': '[data-id="anchor"] + &',
   '[data-id="field"] &': '[data-id="field"] &',
 } as const

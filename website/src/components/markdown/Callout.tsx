@@ -47,6 +47,9 @@ export default function Callout({
         '[data-id="code"] + &': {
           marginTop: 12,
         },
+        '[data-id="table"] + &': {
+          marginTop: 12,
+        },
       }}>
       {title && (
         <Text weight={600} color={theme.colors.foreground[variant]}>
