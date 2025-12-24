@@ -2,4 +2,29 @@
 title: sortProperty
 ---
 
-tbd.
+This plugin sorts properties according to a property priority map.
+
+## The Gist
+
+```ts
+import { sortPropertyPlugin } from '@weser/styling'
+
+// this ensures longhand margin properties always take precedence
+// over the shorthand 'margin' property
+const plugin = sortPropertyPlugin({
+  marginLeft: 2,
+  marginRight: 2,
+  marginTop: 2,
+  marginBottom: 2,
+})
+```
+
+## Parameters
+
+| Parameter        | Type                     | Default | Description                                                                |
+| ---------------- | ------------------------ | ------- | -------------------------------------------------------------------------- |
+| propertyPriority | `Record<string, number>` | `{}`    | The property priority map. The higher the number, the higher the priority. |
+
+## Returns
+
+([Plugin](/styling/api/plugins)) A plugin function that can be passed to the [createRenderer](/styling/api/createRenderer) function.
