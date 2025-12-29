@@ -37,9 +37,11 @@ type Node =
       color: string
     }
 
-const initialTree = createNode<Node>({
+const initialTree = {
+  id: 'root',
+  children: [],
   type: 'root',
-})
+}
 
 function Component() {
   const [tree, { create, add }] = useTree<Node>(initialTree)
