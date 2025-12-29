@@ -1,0 +1,31 @@
+---
+title: addNode
+order: 7
+---
+
+Adds a new node as a child of a parent node.<br />
+Always inserts it at the end of the children list. Use [insertNode](/tree/api/insertNode) if you want to insert it at a specific index.
+
+## The Gist
+
+```tsx
+import { createNode, addNode } from '@weser/tree'
+
+const newNode = createNode({
+  children: [],
+})
+
+const newTree = addNode(tree, 'parent-node-id', newNode)
+```
+
+## Parameters
+
+| Parameter | Type     | Description                                                    |
+| --------- | -------- | -------------------------------------------------------------- |
+| rootNode  | `T`      | The root node of the tree.                                     |
+| id        | `string` | The id of the parent node to which the new node will be added. |
+| newNode   | `T`      | The node to add.                                               |
+
+## Returns
+
+(`T`) The updated root node with the new node added to the parent node.

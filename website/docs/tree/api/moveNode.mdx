@@ -1,0 +1,28 @@
+---
+title: moveNode
+order: 11
+---
+
+Moves a node to a new parent node at a specific index.<br />
+If no index is provided, the node is moved to the end of the children list.
+
+## The Gist
+
+```tsx
+import { moveNode } from '@weser/tree'
+
+const newTree = moveNode(tree, 'node-id', 'parent-node-id', 0)
+```
+
+## Parameters
+
+| Parameter | Type      | Default           |  Description                                                   |
+| --------- | --------- | ----------------- | -------------------------------------------------------------- |
+| rootNode  | `T`       |                   | The root node of the tree.                                     |
+| id        | `string`  |                   | The id of the node to move.                                    |
+| parentId  | `string`  |                   | The id of the new parent node to which the node will be moved. |
+| index     | `number`? | `children.length` | The index at which the node will be moved.                     |
+
+## Returns
+
+(`T`) The updated root node with the node moved to the new parent node at the specified index.
