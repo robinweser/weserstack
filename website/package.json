@@ -1,7 +1,6 @@
 {
-  "name": "stack.weser.io",
-  "version": "1.0.0",
   "private": true,
+  "name": "stack.weser.io",
   "scripts": {
     "analyze": "ANALYZE=true yarn build",
     "dev": "next dev",
