@@ -5,8 +5,8 @@
   "scripts": {
     "postinstall": "pnpm turbo run setup",
     "build": "pnpm turbo run build",
-    "release": "pnpm prepare-release && lerna publish --force-publish",
-    "pre-release": "pnpm prepare-release && lerna publish --force-publish --dist-tag next --preid rc",
+    "release": "pnpm prepare-release && lerna publish",
+    "pre-release": "pnpm prepare-release && lerna publish --dist-tag next --preid rc",
     "prepare-release": " pnpm run test && pnpm build",
     "test": "pnpm turbo run test",
     "coverage": "pnpm turbo run coverage"
