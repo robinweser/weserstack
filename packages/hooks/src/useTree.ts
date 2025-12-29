@@ -12,25 +12,24 @@ export default function useTree<T extends BaseNode<T>>(initialTree: T) {
     setTree,
     // helpers
     traverse: (callback: (node: T) => void) => utils.traverse(tree, callback),
-    createNode: utils.createNode<T>,
-    getNode: (id: string, rootNode: T = tree) => utils.getNode(rootNode, id),
-    cloneNode: (id: string) => utils.cloneNode(tree, id),
-    getParentNode: (id: string) => utils.getParentNode(tree, id),
-    findNode: (condition: (node: T) => boolean) =>
-      utils.findNode(tree, condition),
-    findAllNode: (condition: (node: T) => boolean) =>
+    create: utils.createNode<T>,
+    get: (id: string, rootNode: T = tree) => utils.getNode(rootNode, id),
+    clone: (id: string) => utils.cloneNode(tree, id),
+    getParent: (id: string) => utils.getParentNode(tree, id),
+    find: (condition: (node: T) => boolean) => utils.findNode(tree, condition),
+    findAll: (condition: (node: T) => boolean) =>
       utils.findAllNode(tree, condition),
     // actions
-    updateNode: (id: string, newNode: Partial<NodeInput>) =>
+    update: (id: string, newNode: Partial<NodeInput>) =>
       setTree((tree) => utils.updateNode(tree, id, newNode)),
-    replaceNode: (id: string, newNode: T) =>
+    replace: (id: string, newNode: T) =>
       setTree((tree) => utils.replaceNode(tree, id, newNode)),
-    removeNode: (id: string) => setTree((tree) => utils.removeNode(tree, id)),
-    addNode: (id: string, newNode: T) =>
+    remove: (id: string) => setTree((tree) => utils.removeNode(tree, id)),
+    add: (id: string, newNode: T) =>
       setTree((tree) => utils.addNode(tree, id, newNode)),
-    insertNode: (id: string, index: number, newNode: T) =>
+    insert: (id: string, index: number, newNode: T) =>
       setTree((tree) => utils.insertNode(tree, id, index, newNode)),
-    moveNode: (id: string, parentId: string, index?: number) =>
+    move: (id: string, parentId: string, index?: number) =>
       setTree((tree) => utils.moveNode(tree, id, parentId, index)),
   }
 }

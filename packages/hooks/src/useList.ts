@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-export default function useList<T>(defaultList: Array<T> = []) {
-  const [list, setList] = useState<Array<T>>(defaultList)
+export default function useList<T>(initialList: Array<T> = []) {
+  const [list, setList] = useState<Array<T>>(initialList)
 
   function set(list: Array<T>) {
     setList(list)

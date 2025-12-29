@@ -11,16 +11,16 @@ A hook that provides a list of items and actions to manipulate it.
 import { useList } from '@weser/hooks'
 
 function Component() {
-  const [list, actions] = useList()
+  const [list, { add, clear, removeAt }] = useList()
 
   return (
     <div>
-      <button onClick={() => actions.add(Math.random())}>Add Item</button>
-      <button onClick={() => actions.clear()}>Clear List</button>
+      <button onClick={() => add(Math.random())}>Add Item</button>
+      <button onClick={clear}>Clear List</button>
       {list.map((item, index) => (
         <div key={item}>
           {item}
-          <button onClick={() => actions.removeAt(index)}>Remove</button>
+          <button onClick={() => removeAt(index)}>Remove</button>
         </div>
       ))}
     </div>
@@ -30,9 +30,9 @@ function Component() {
 
 ## Parameters
 
-| Parameter   | Type        | Default | Description                |
-| ----------- | ----------- | ------- | -------------------------- |
-| defaultList | `Array<T>`? | `[]`    | The default list of items. |
+| Parameter   | Type       | Default | Description                |
+| ----------- | ---------- | ------- | -------------------------- |
+| initialList | `Array<T>` | `[]`    | The initial list of items. |
 
 ## Returns
 
