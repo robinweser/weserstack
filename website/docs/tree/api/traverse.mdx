@@ -1,0 +1,23 @@
+---
+title: traverse
+---
+
+Traverses a tree and calls a callback function for each node.
+
+## The Gist
+
+```tsx
+import { traverse } from '@weser/tree'
+
+traverse(tree, (node) => {
+  console.log(node.id)
+})
+```
+
+## Parameters
+
+| Parameter | Type                      | Default    | Description                                  |
+| --------- | ------------------------- | ---------- | -------------------------------------------- |
+| rootNode  | `T`                       |            | The root node of the tree.                   |
+| callback  | `(node: T) => void`       |            | The callback function to call for each node. |
+| type      | `top-down` \| `bottom-up` | `top-down` | The type of traversal to perform.            |

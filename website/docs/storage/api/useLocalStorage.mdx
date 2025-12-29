@@ -2,4 +2,39 @@
 title: useLocalStorage
 ---
 
-tbd.
+A React hook to manage a value in [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage).<br />
+It uses [useStorage](/storage/api/useStorage) under the hood.
+
+## The Gist
+
+```tsx
+import { useLocalStorage } from '@weser/storage'
+
+function Component() {
+  const [counter, setCounter, isLoading] = useLocalStorage('counter', 0)
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  return (
+    <div>
+      {counter}
+      <button onClick={() => setCounter(counter + 1)}>Increment</button>
+      <button onClick={() => setCounter(counter - 1)}>Decrement</button>
+    </div>
+  )
+}
+```
+
+## Parameters
+
+| Parameter    | Type                                     | Description                    |
+| ------------ | ---------------------------------------- | ------------------------------ |
+| key          | `string`                                 | The key of the item to set.    |
+| initialState | `T`                                      | The initial value of the item. |
+| config       | [Config](/storage/api/useStorage#config) | The configuration object.      |
+
+## Returns
+
+(`[T, Dispatch<SetStateAction<T>>, boolean]`) A tuple where the first element is the value, the second element is a function to update the value and the third element is a boolean indicating if the value is still loading.

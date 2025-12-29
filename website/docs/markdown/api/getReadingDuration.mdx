@@ -2,4 +2,24 @@
 title: getReadingDuration
 ---
 
-tbd.
+Return the average reading duration of a markdown string in minutes.<br />
+It uses [getWordCount](/markdown/api/getWordCount) under the hood.
+
+## The Gist
+
+```tsx
+import { getReadingDuration } from '@weser/markdown'
+
+const markdown = `some markdown text...`
+const duration = getReadingDuration(markdown)
+```
+
+## Parameters
+
+| Parameter | Type     | Description                                          |
+| --------- | -------- | ---------------------------------------------------- |
+| markdown  | `string` | The markdown string to get the reading duration for. |
+
+## Returns
+
+(`number`) The reading duration in minutes.

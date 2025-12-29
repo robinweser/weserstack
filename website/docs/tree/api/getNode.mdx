@@ -1,0 +1,25 @@
+---
+title: getNode
+order: 1
+---
+
+Gets a node by its id.
+
+## The Gist
+
+```tsx
+import { getNode } from '@weser/tree'
+
+const node = getNode(tree, 'node-id')
+```
+
+## Parameters
+
+| Parameter | Type     | Description                |
+| --------- | -------- | -------------------------- |
+| rootNode  | `T`      | The root node of the tree. |
+| id        | `string` | The id of the node to get. |
+
+## Returns
+
+(`T` \| `null`) The node with the given id or `null` if no node with the given id was found.

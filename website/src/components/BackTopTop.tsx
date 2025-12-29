@@ -8,6 +8,7 @@ export default function BackToTop() {
     <ActionButton
       icon={ArrowUp}
       variant="control"
+      size="small"
       intent="neutral"
       action={() => {
         // reset first to make sure the page actually scrolls to the correct position

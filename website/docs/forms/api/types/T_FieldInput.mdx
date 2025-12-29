@@ -2,4 +2,11 @@
 title: T_FieldInput
 ---
 
-tbd.
+```ts
+type T_FieldInput<T = string> = {
+  value: T
+  disabled: boolean
+  touched: boolean
+  dirty: boolean
+}
+```

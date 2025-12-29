@@ -1,6 +1,6 @@
 ---
 title: useField
-order: 2
+order: 1
 ---
 
 A React hook for managing a single form field.<br />
@@ -46,15 +46,16 @@ export default function NameField() {
 
 ### Options
 
-| Property           | Type                                                     | Default                    | Description                                                                                                                      |
-| ------------------ | -------------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| value              | `T = string`                                             | `''`                       | Initial value                                                                                                                    |
-| disabled           | `boolean`                                                | `false`                    | Initial disabled state                                                                                                           |
-| touched            | `boolean`                                                | `false`                    | Initial touched state that indicates whether validation errors are shown or not                                                  |
-| name               | `string`                                                 |                            | The name of the field                                                                                                            |
-| showValidationOn   | `"change"` \| `"blur"` \| `"submit"`                     | `"submit"`                 | Which event is used to trigger the touched state                                                                                 |
-| parseValue         | `(e: Event) => any`                                      | `(e) => e.target.value`    | How the value is received from the input element.<br />Use `e.target.checked` when working with `<input type="checkbox" />`      |
-| formatErrorMessage | `(error: ZodIssue, value: any, name?: string) => string` | `(error) => error.message` | A function to overwrite the default error message from Zod. Receives the Zod issue, the current value and the name of the field. |
+| Property                                  | Type                                                     | Default                    | Description                                                                                                                      |
+| ----------------------------------------- | -------------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| value                                     | `T = string`                                             | `''`                       | Initial value                                                                                                                    |
+| disabled                                  | `boolean`                                                | `false`                    | Initial disabled state                                                                                                           |
+| touched                                   | `boolean`                                                | `false`                    | Initial touched state that indicates whether validation errors are shown or not                                                  |
+| name                                      | `string`                                                 |                            | The name of the field                                                                                                            |
+| showValidationOn                          | `"change"` \| `"blur"` \| `"submit"`                     | `"submit"`                 | Which event is used to trigger the touched state                                                                                 |
+| parseEvent                                | `(e: Event) => T`                                        | `(e) => e.target.value`    | How the value is received from the input element.<br />Use `e.target.checked` when working with `<input type="checkbox" />`      |
+| formatValue                               | `(value: T) => any`                                      | `(value) => value`         | How the value is formated before being passed to the input element.                                                              |
+| [formatErrorMessage](#formaterrormessage) | `(error: ZodIssue, value: any, name?: string) => string` | `(error) => error.message` | A function to overwrite the default error message from Zod. Receives the Zod issue, the current value and the name of the field. |
 
 #### formatErrorMessage
 
@@ -82,27 +83,27 @@ function formatErrorMessage(error: ZodIssue, value: any, name: string) {
 
 ### value
 
-The current value of the field.
+(`T`) The current value of the field.
 
 ### disabled
 
-Whether the field is disabled.
+(`boolean`) Whether the field is disabled.
 
 ### touched
 
-Whether the field is touched.
+(`boolean`) Whether the field is touched.
 
 ### dirty
 
-Whether the field is dirty.
+(`boolean`) Whether the field is dirty.
 
 ### valid
 
-Whether the field is valid.
+(`boolean`) Whether the field is valid.
 
 ### errorMessage
 
-A string containing the validation message.<br/>
+(`string`) A string containing the validation message.<br/>
 Only returned if the field is invalid **and** touched.
 
 ### update
@@ -175,7 +176,7 @@ An alternative to [inputProps](#inputProps), that can be used to create custom c
 
 ## Generic Type
 
-By default, `useField` expects string values and defaults to an empty string if no initial value is provided.<br />
+By default, `useField` expects string values and defaults to an empty string if no initial value is provided.
 In order to also support e.g. `boolean` values or arrays, we can customise the generic types and pass new values.
 
 <Callout variant="warning" title="Important Note">
@@ -189,7 +190,7 @@ import { ChangeEvent } from 'react'
 const acceptsTerms = useField<boolean, ChangeEvent<HTMLInputElement>>(
   z.boolean(),
   {
-    parseValue: (e) => e.target.checked,
+    parseEvent: (e) => e.target.checked,
     value: false,
   }
 )
@@ -197,7 +198,7 @@ const acceptsTerms = useField<boolean, ChangeEvent<HTMLInputElement>>(
 type ArrayChangeEvent = (value: Array<string>) => void
 const tags = useField<Array<string>, ArrayChangeEvent>(z.array(z.string()), {
   // overwrite the default that expects a native HTML event
-  parseValue: (value) => value,
+  parseEvent: (value) => value,
   value: [],
 })
 ```

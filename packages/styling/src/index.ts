@@ -1,5 +1,6 @@
 export { default as createRenderer } from './core/createRenderer.js'
 export { default as fallbackValue } from './core/fallbackValue.js'
+export { default as extend } from './core/extend.js'
 
 export {
   default as responsiveValuePlugin,

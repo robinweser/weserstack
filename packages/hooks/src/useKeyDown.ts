@@ -1,6 +1,12 @@
 import { RefObject, useEffect } from 'react'
 
 type Options = {
+  modifiers?: {
+    ctrl?: boolean
+    meta?: boolean
+    alt?: boolean
+    shift?: boolean
+  }
   target?: RefObject<HTMLElement>
   active?: boolean
 }
@@ -9,7 +15,9 @@ export default function useKeyDown(
   callback: (e: KeyboardEvent) => void,
   options: Options = {}
 ) {
-  const { active = true, target } = options
+  const { active = true, target, modifiers = {} } = options
+  const { ctrl = false, meta = false, alt = false, shift = false } = modifiers
+
   const keyCodes = ([] as Array<string>).concat(keyCode)
 
   useEffect(() => {
@@ -18,27 +26,25 @@ export default function useKeyDown(
     }
 
     const hasRef = target && target.current
-    const element = hasRef ? target.current : document
+    const element: Document | HTMLElement = target?.current ?? document
 
     if (element) {
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (
-          keyCodes.includes(e.code) &&
-          (!hasRef || (hasRef && document.activeElement === element))
-        ) {
-          callback(e)
-        }
+      const handleKeyDown: EventListener = (event) => {
+        const e = event as KeyboardEvent
+
+        if (!keyCodes.includes(e.code)) return
+        if (hasRef && document.activeElement !== element) return
+
+        if (ctrl && !e.ctrlKey) return
+        if (meta && !e.metaKey) return
+        if (alt && !e.altKey) return
+        if (shift && !e.shiftKey) return
+
+        callback(e)
       }
 
-      element.addEventListener(
-        'keydown',
-        handleKeyDown as unknown as EventListener
-      )
-      return () =>
-        element.removeEventListener(
-          'keydown',
-          handleKeyDown as unknown as EventListener
-        )
+      element.addEventListener('keydown', handleKeyDown)
+      return () => element.removeEventListener('keydown', handleKeyDown)
     }
-  }, [target, callback, active, keyCode])
+  }, [options, callback, active])
 }

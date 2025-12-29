@@ -32,8 +32,10 @@ export default function Link({
     href.indexOf('http') === 0 || href.startsWith('mailto') || isIcon
 
   const linkStyle: T_Style = {
-    display: 'inline',
+    display: 'inline-flex',
+    flexDirection: 'row',
     textDecoration: 'none',
+    width: 'max-content',
     color: theme.colors.foreground.link,
     whiteSpace: nowrap ? 'nowrap' : undefined,
     ':hover': {
@@ -68,8 +70,10 @@ export default function Link({
         // onClick={track}
         href={href}
         style={[linkStyle, style]}>
-        {children}
-        <span title="Opens a new tab">
+        <span>{children}</span>
+        <span
+          title="Opens a new tab"
+          style={{ width: showExternIcon ? 12 : 0 }}>
           <Box
             as="svg"
             display={!showExternIcon ? 'none' : 'inline-block'}
@@ -77,9 +81,10 @@ export default function Link({
             focusable="false"
             viewBox="0 0 32 32"
             style={{
+              position: 'absolute',
+              flexShrink: 0,
               marginLeft: -3,
-              marginRight: -2,
-              transform: 'translateY(3px)',
+              transform: 'translateY(5px)',
               color: 'inherit',
               width: 16,
               height: 16,

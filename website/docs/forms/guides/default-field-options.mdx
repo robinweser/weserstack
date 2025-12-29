@@ -1,0 +1,78 @@
+---
+title: Default Field Options
+order: 5
+---
+
+In this guide, we'll learn how to initialize a field with default options.<br />
+Each field, takes a couple of [options](/forms/api/useField#options) that can be used to configure the field.<br />
+They're applied by passing an options object as a second argument.
+
+> **Note:** Make sure to check the [Fields](/forms/basics/fields) guide to understand the different states and properties of a field.
+
+## Passing Default Options
+
+```tsx
+import { z } from 'zod'
+import { useForm } from '@weser/forms'
+
+const schema = z.object({
+  name: z.string().min(1),
+})
+
+function Form() {
+  const { useFormField } = useForm(schema)
+
+  const name = useFormField('name', {
+    value: 'Robin',
+    disabled: false,
+    touched: true,
+  })
+}
+```
+
+## Prefilling a Form
+
+A common use case is to prefill a form with initial data. For example, when editing a data set.<br />
+To achieve that, we can create a small wrapper function that passes the initial data as the `value` option for each field.
+
+```tsx
+import { z } from 'zod'
+import { useForm } from '@weser/forms'
+
+const Z_RegisterInput = z.object({
+  firstname: z.string().min(1),
+  lastname: z.string().min(1),
+})
+
+type T_RegisterInput = z.infer<typeof Z_RegisterInput>
+
+type Props = {
+  defaultData: Partial<T_RegisterInput>
+  onSubmit: (data: T_RegisterInput) => void
+}
+
+function ProfileForm({ defaultData, onSubmit }: Props) {
+  const { useFormField, handleSubmit } = useForm(schema)
+
+  type UseFormFieldParams = Parameters<typeof useFormField>
+  function useField(
+    name: UseFormFieldParams[0],
+    options: UseFormFieldParams[1]
+  ) {
+    return useFormField(name, {
+      ...options,
+      value: defaultData[name] ?? '',
+    })
+  }
+
+  const firstname = useField('firstname')
+  const lastname = useField('lastname')
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...firstname.inputProps} />
+      <input {...lastname.inputProps} />
+    </form>
+  )
+}
+```

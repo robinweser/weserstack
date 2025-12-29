@@ -1,4 +1,4 @@
-import { useRef, FormEvent, ChangeEvent } from 'react'
+import { useRef, useState, FormEvent, ChangeEvent } from 'react'
 import { z, ZodObject, ZodError, ZodRawShape, ZodType } from 'zod'
 import { $ZodIssue } from 'zod/v4/core'
 
@@ -6,7 +6,7 @@ import { Options } from './types.js'
 import defaultFormatErrorMessage from './defaultFormatErrorMessage.js'
 import useField from './useField.js'
 
-export type FieldsMap = Record<string, ReturnType<typeof useField<any, any>>>
+type FieldsMap = Record<string, ReturnType<typeof useField<any, any>>>
 
 type Config = {
   formatErrorMessage?: (error: $ZodIssue, value: any, name?: string) => string
@@ -16,13 +16,14 @@ export default function useForm<S extends ZodRawShape>(
   schema: ZodObject<S>,
   { formatErrorMessage = defaultFormatErrorMessage, _onUpdate }: Config = {}
 ) {
+  const [isValidating, setIsValidating] = useState(false)
   const fields = useRef<FieldsMap>({})
 
   function useFormField<T = string, C = ChangeEvent<HTMLInputElement>>(
     _name: keyof S,
     options: Omit<
       Options<T, C>,
-      'formatErrorMessage' | 'name' | '_onUpdateValue'
+      'formatErrorMessage' | 'name' | '_onInit' | '_onUpdate' | '_storedField'
     > = {}
   ) {
     const name = String(_name)
@@ -84,16 +85,19 @@ export default function useForm<S extends ZodRawShape>(
 
   function handleSubmit(
     onSubmit: (data: z.infer<typeof schema>) => void,
-    onError?: (error: ZodError) => void
+    onError?: (issues: Array<$ZodIssue>) => void
   ) {
-    return (e: FormEvent<HTMLFormElement>) => {
+    return async (e: FormEvent<HTMLFormElement>) => {
       e.stopPropagation()
       e.preventDefault()
 
       touchFields()
 
       const data = mapFieldsToData(fields.current)
-      const parsed = schema.safeParse(data)
+
+      setIsValidating(true)
+      const parsed = await schema.safeParseAsync(data)
+      setIsValidating(false)
 
       if (parsed.success) {
         onSubmit(parsed.data)
@@ -103,7 +107,7 @@ export default function useForm<S extends ZodRawShape>(
         }
 
         if (onError) {
-          onError(parsed.error)
+          onError(parsed.error.issues)
         }
       }
     }
@@ -120,6 +124,7 @@ export default function useForm<S extends ZodRawShape>(
   }
 
   return {
+    isValidating,
     useFormField,
     handleSubmit,
     checkDirty,

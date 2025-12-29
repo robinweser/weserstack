@@ -1,4 +1,4 @@
-export { default as useStorage } from './useStorage.js'
+export { default as useStorage, type T_SyntheticStorage } from './useStorage.js'
 export { default as useLocalStorage } from './useLocalStorage.js'
 export { default as useSessionStorage } from './useSessionStorage.js'
 export { default as useIndexedStorage } from './useIndexedStorage.js'

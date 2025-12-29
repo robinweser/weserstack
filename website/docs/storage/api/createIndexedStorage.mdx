@@ -2,4 +2,76 @@
 title: createIndexedStorage
 ---
 
-tbd.
+A convenience helper to create an [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) storage instance.
+
+## The Gist
+
+```tsx
+import { createIndexedStorage } from '@weser/storage'
+
+const storage = createIndexedStorage('my-database', 'my-table')
+
+await storage.setItem('dark-mode', true)
+const mode = await storage.getItem('dark-mode')
+await storage.removeItem('dark-mode')
+await storage.clear()
+```
+
+## Parameters
+
+| Parameter | Type     | Description                      |
+| --------- | -------- | -------------------------------- |
+| database  | `string` | The name of the database to use. |
+| table     | `string` | The name of the table to use.    |
+
+## Returns
+
+(`Object`) An object with the following properties:
+
+### setItem
+
+An async function to set an item in the storage.
+
+#### Parameters // setItem-parameters
+
+| Parameter | Type     | Description                   |
+| --------- | -------- | ----------------------------- |
+| key       | `string` | The key of the item to set.   |
+| value     | `any`    | The value of the item to set. |
+
+### getItem
+
+An async function to get an item from the storage.
+
+#### Parameters // getItem-parameters
+
+| Parameter | Type     | Description                   |
+| --------- | -------- | ----------------------------- |
+| key       | `string` | The key of the item to get.   |
+| value     | `any`    | The value of the item to get. |
+
+#### Returns // getItem-returns
+
+(`Promise<any>`) A promise that resolves with the item.
+
+### removeItem
+
+Ann async function to remove an item from the storage.
+
+#### Parameters // removeItem-parameters
+
+| Parameter | Type     | Description                      |
+| --------- | -------- | -------------------------------- |
+| key       | `string` | The key of the item to remove.   |
+| value     | `any`    | The value of the item to remove. |
+
+### clear
+
+An async function to clear the storage.
+
+#### Parameters // clear-parameters
+
+| Parameter | Type     | Description                     |
+| --------- | -------- | ------------------------------- |
+| key       | `string` | The key of the item to clear.   |
+| value     | `any`    | The value of the item to clear. |

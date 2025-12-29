@@ -1,0 +1,36 @@
+---
+title: Overview
+order: -1
+---
+
+A package for working with [React state](https://react.dev/reference/react/useState) in a more ergonomic way.
+
+<PackageBadges package="@weser/state" />
+
+## Installation
+
+<Callout title="Required dependencies">
+  This package relies on [React hooks](https://react.dev/reference/react/hooks)
+  and thus requires version 16.3 or higher.
+</Callout>
+
+```sh
+# npm
+npm i --save @weser/state
+
+# yarn
+yarn add @weser/state
+
+# pnpm
+pnpm add @weser/state
+```
+
+## Motivation
+
+There are many ways to handle state in React, including the built-in [useState](https://react.dev/reference/react/useState), [useReducer](https://react.dev/reference/react/useReducer) or the fairly new [useOptimistic](https://react.dev/reference/react/useOptimistic).<br />
+The first two are great, but lack first-class support for side effects (unless you use [useEffect](https://react.dev/reference/react/useEffect), which has its very own set of problems) while the latter doesn't really have the most ergonomic API.<br />
+That's why I decided to create this package to provide a more ergonomic, low-level API for state management.
+
+## Benefits
+
+This package provides a more ergonomic, low-level API for state management including reducers with side effects and a [useState](/hooks/api/useState)-like hook with optimistic updates.

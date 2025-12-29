@@ -1,9 +1,9 @@
-import getWordsCount from './getWordCount.js'
+import getWordCount from './getWordCount.js'
 
 export default function getReadingDuration(
   markdown: string,
   wordsPerMinute: number = 200
 ) {
-  const words = getWordsCount(markdown)
+  const words = getWordCount(markdown)
   return Math.ceil(words / wordsPerMinute)
 }

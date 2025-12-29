@@ -48,7 +48,7 @@ export default async function Layout({
             alignItems="center">
             <Click action="/">
               <Text variant="highlight" weight={600}>
-                Weser Packages
+                WeserStack
               </Text>
             </Click>
 
@@ -77,9 +77,7 @@ export default async function Layout({
         id="main"
         role="main"
         aria-label="Main content">
-        <Box grow={1} minHeight="100vh">
-          {children}
-        </Box>
+        <Box grow={1}>{children}</Box>
         <Box
           paddingLeft={[5, , 12, 16, 20, 25]}
           paddingRight={[5, , 12, , , 25]}

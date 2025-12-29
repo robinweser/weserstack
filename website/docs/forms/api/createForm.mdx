@@ -1,0 +1,116 @@
+---
+title: createForm
+order: 3
+---
+
+A convience helper to create a form utils from a Zod schema including a scoped [useForm](/forms/api/useForm) hook, a form context provider and a controlled field component.<br />
+It comes in handy when building complex forms or running into performance issues.<br />
+
+## The Gist
+
+```tsx
+'use client'
+import { z, ZodError } from 'zod'
+import { createForm } from '@weser/forms'
+
+const Z_RegisterInput = z.object({
+  name: z.string().optional(),
+  email: z.string().email(),
+  password: z
+    .string()
+    // custom error messages to be shown to the user
+    .min(8, { message: 'Your password next to have at least 8 characters.' }),
+})
+
+type T_RegisterInput = z.infer<typeof Z_RegisterInput>
+type FieldName = T_FieldName<typeof Z_RegisterInput>
+
+const { useForm, FormProvider, Field } = createForm(Z_RegisterInput)
+
+function RegisterForm() {
+  const form = useForm()
+
+  function onSuccess(data: T_RegisterInput) {
+    // do something with the data
+    console.log(data)
+    reset()
+  }
+
+  function onFailure(error: ZodError) {
+    console.error(error)
+  }
+
+  return (
+    <FormProvider value={form}>
+      <form onSubmit={form.handleSubmit(onSuccess, onFailure)}>
+        <TextInput name="name" label="Full Name" />
+        <TextInput name="email" label="E-Mail" type="email" />
+        <TextInput name="password" label="Password" type="password" />
+        <button type="submit">Sign up</button>
+      </form>
+    </FormProvider>
+  )
+}
+
+type TextInputProps = {
+  name: FieldName
+  label: string
+} & Omit<ComponentProps<'input'>, 'name' | 'id'>
+function TextInput({ name, label, ...props }: TextInputProps) {
+  return (
+    <label htmlFor={name}>
+      {label}
+      <span>{label}</span>
+      <Field name={name}>
+        {(field) => <input {...props} id={name} {...field.inputProps} />}
+      </Field>
+    </label>
+  )
+}
+```
+
+## Parameters
+
+| Parameter | Type        | Default | Description                               |
+| --------- | ----------- | ------- | ----------------------------------------- |
+| schema    | `ZodObject` |         | The Zod schema used to validate the data. |
+
+## Returns
+
+(`Object`) An object with the following methods:
+
+### useForm
+
+A pre-configured [useForm](/forms/api/useForm) hook.
+
+#### Parameters
+
+It only accepts a a single [config](#config) parameter mirroring the [useForm](/forms/api/useForm#parameters)'s config parameters.
+
+#### Returns
+
+(`Object`) See [useForm](/forms/api/useForm#returns) for the return type.
+
+### Field
+
+A controlled React component that renders a form field.
+
+#### Props // Field-props
+
+Takes all [options](/forms/api/useField#options) as props.<br />
+It accepts a single child function that receives the [field](/forms/api/useField#returns) object.
+
+### FormProvider
+
+A form context provider.
+
+#### Props // FormProvider-props
+
+| Parameter | Type                          | Description                                          |
+| --------- | ----------------------------- | ---------------------------------------------------- |
+| value     | `ReturnValue<typeof useForm>` | The form received from the [useForm](#useForm) hook. |
+
+### useFormContext
+
+A context hook to access the form context.<br />
+It exposes the same API as the [useForm](/forms/api/useForm) hook.

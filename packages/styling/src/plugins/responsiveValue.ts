@@ -9,16 +9,16 @@ export type T_ResponsiveStyle<T = T_Style> = {
   [P in keyof T]: T_ResponsiveValue<T[P]>
 }
 
+export function responsiveValue<T>(value: T_ResponsiveValue<T>): T {
+  return value as T
+}
+
 export default function responsiveValuePlugin<T = T_Style>(
   mediaQueries: Array<string>
 ) {
   return function responsiveValue(style: T) {
     return resolveResponsiveValues<T>(style, mediaQueries)
   }
-}
-
-export function responsiveValue<T>(value: T_ResponsiveValue<T>): T {
-  return value as T
 }
 
 function resolveResponsiveValues<T = T_Style>(

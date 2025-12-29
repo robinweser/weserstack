@@ -1,0 +1,85 @@
+---
+title: Async Validation
+order: 4
+---
+
+Besides basic and conditional validation, we can also validate fields asynchronously.
+This is useful e.g. when we want to validate some value against a remote API.
+
+We can achieve this by using Zod's built-in [refine](https://zod.dev/api#refine) method that accepts an async callback as well.
+
+<Callout title="Important Note">
+  As of today, we only support async validation on a form basis.
+  <br />
+  Since field level refines run on every change, we would potentially trigger a
+  lot of API requests.
+  <br />
+  That's why using async refines on a field will throw an error
+</Callout>
+
+```tsx
+import { z } from 'zod'
+
+const schema = z
+  .object({
+    email: z.string().email(),
+  })
+  .refine(
+    async (data) => {
+      const exists = await checkUserExists(data.email)
+      return !exists
+    },
+    {
+      message: 'Email address already in use',
+      path: ['email'],
+      // additional check to prevent unnecessary API calls
+      // when the form already has other validation errors
+      // for `superRefine`, inline the check with `ctx.issues` instead
+      when(payload) {
+        return payload.issues.length === 0
+      },
+    }
+  )
+
+const API_URL = process.env.API_URL as string
+
+// example implementation of a remote API call
+async function checkUserExists(email: string) {
+  const response = await fetch(`${API_URL}/api/users/exists`, {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+
+  if (!response.ok) {
+    throw new Error('Failed to check user exists')
+  }
+
+  const data = await response.json()
+  return data.exists
+}
+```
+
+## Showing a Validation Indicator
+
+We expose a `isValidating` property on the form object that is true when the form is currently being validated asynchronously.<br />
+We can use it to show a loading indicator to the user.
+
+```tsx
+import { useForm } from '@weser/forms'
+
+function Form() {
+  const { useFormField, handleSubmit, isValidating } = useForm(schema)
+
+  const email = useFormField('email')
+
+  return (
+    <form onSubmit={handleSubmit(console.log)}>
+      <input type="email" {...email.inputProps} />
+      {isValidating && <p>Validating...</p>}
+    </form>
+  )
+}
+```

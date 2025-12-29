@@ -42,6 +42,9 @@
     "hooks",
     "utils"
   ],
+  "dependencies": {
+    "@weser/tree": "workspace:*"
+  },
   "peerDependencies": {
     "react": ">16.3.0"
   },

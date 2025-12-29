@@ -3,4 +3,37 @@ title: Plugins
 order: 3
 ---
 
-tbd.
+Finally, this package adds plugin support for custom logic.<br />
+A plugin is just a pure function that takes a style object and returns a new style object.
+
+## Included Plugins
+
+<Callout title="Fela Plugins">
+  This package is heavily inspired by the [Fela](https://fela.js.org) ecosystem.
+  Therefore, many of the plugins are direct ports of [Fela
+  plugins](https://fela.js.org/docs/latest/advanced/plugins). If you need
+  additional Fela plugins, feel free to reach out or try to port them yourself.
+</Callout>
+
+By default, this package includes the following plugins:
+
+- [debug](/styling/api/plugins/debug)
+- [enforceLonghand](/styling/api/plugins/enforceLonghand)
+- [prefixer](/styling/api/plugins/prefixer)
+- [responsiveValue](/styling/api/plugins/responsiveValue)
+- [sortProperty](/styling/api/plugins/sortProperty)
+- [unit](/styling/api/plugins/unit)
+
+## Creating a Plugin
+
+Since a plugin is just a pure function that takes a style object and returns a new style object, we can create one by simply defining a function.<br />
+For example, if we want to implement a simple logging plugin, we can do the following:
+
+```ts
+import { T_Style } from '@weser/styling'
+
+function loggerPlugin(style: T_Style) {
+  console.log(style)
+  return style
+}
+```
