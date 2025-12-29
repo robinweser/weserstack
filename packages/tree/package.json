@@ -1,6 +1,6 @@
 {
   "name": "@weser/tree",
-  "version": "0.0.18",
+  "version": "1.0.0",
   "description": "Tiny helpers for working with tree data structure",
   "author": "Robin Weser <robin@weser.io>",
   "license": "MIT",
@@ -41,7 +41,7 @@
     "utils"
   ],
   "dependencies": {
-    "@weser/loops": "^0.0.18"
+    "@weser/loops": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^6.1.3",
