@@ -1,9 +1,10 @@
-import { Dispatch, SetStateAction, useOptimistic } from 'react'
+import { Dispatch, SetStateAction, useOptimistic, startTransition } from 'react'
 
 type FunctionalSetState<T> = (previousState: T) => T
 
 export default function useOptimisticState<T>(
-  initialState: T
+  initialState: T,
+  updater: (newState: T) => Promise<void>
 ): [T, Dispatch<SetStateAction<T>>] {
   const [state, setState] = useOptimistic(
     initialState,
@@ -11,12 +12,18 @@ export default function useOptimisticState<T>(
   )
 
   function setFunctionalState(newState: T | FunctionalSetState<T>) {
-    if (newState instanceof Function) {
-      return setState(newState(state))
-    }
-
-    return setState(newState)
+    const resolvedState = getResolvedState(newState, state)
+    startTransition(() => updater(resolvedState))
+    setState(resolvedState)
   }
 
   return [state, setFunctionalState]
+}
+
+function getResolvedState<T>(newState: T | FunctionalSetState<T>, state: T) {
+  if (newState instanceof Function) {
+    return newState(state)
+  }
+
+  return newState
 }

@@ -40,10 +40,10 @@ async function App() {
 
 ## Parameters
 
-| Parameter    | Type                          | Description                       |
-| ------------ | ----------------------------- | --------------------------------- |
-| initialState | `T`                           | The initial value of the state.   |
-| updateState  | `(state: T) => Promise<void>` | The function to update the state. |
+| Parameter    | Type                          | Description                                                                  |
+| ------------ | ----------------------------- | ---------------------------------------------------------------------------- |
+| initialState | `T`                           | The initial value of the state.                                              |
+| updater      | `(state: T) => Promise<void>` | The actual update procedure, usually a server action mutating your database. |
 
 ## Returns
 
