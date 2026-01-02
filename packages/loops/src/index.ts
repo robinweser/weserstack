@@ -1,3 +1,9 @@
+if (typeof console !== 'undefined' && console.warn) {
+  console.warn(
+    '@weser/loops is deprecated. Please use @weser/array and @weser/object instead.'
+  )
+}
+
 export { default as arrayEach } from './arrayEach.js'
 export { default as arrayFilter } from './arrayFilter.js'
 export { default as arrayGroupBy } from './arrayGroupBy.js'

@@ -1,0 +1,42 @@
+---
+title: Overview
+order: -1
+---
+
+A collection of small, type-safe, performant & immutable iteration utilities for arrays.
+
+<PackageBadges package="@weser/array" />
+
+## Installation
+
+```sh
+# npm
+npm i --save @weser/array
+
+# yarn
+yarn add @weser/array
+
+# pnpm
+pnpm add @weser/array
+```
+
+## Recommended Usage
+
+For the best developer experience, we recommend importing all methods under a namespace:
+
+```ts
+import * as array from '@weser/array'
+
+const doubled = array.map([1, 2, 3], (value) => value * 2)
+const filtered = array.filter([1, 2, 3], (value) => value > 1)
+```
+
+This allows you to use the methods with a clear namespace prefix, making it easy to distinguish them from native array methods.
+
+## Motivation
+
+Because JavaScript's native "functional" APIs such as `forEach`, `reduce`, `map` and `filter` are slow and limited to arrays only.<br />
+There're many different utility packages out there already, e.g. [lodash](https://lodash.com).
+But lodash's `reduce` method itself is 4.5kb gzipped which is way too much for a simple array/object reduce utility.
+
+Additionally, it provides better type inference compared to the built-in methods.

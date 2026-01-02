@@ -1,0 +1,28 @@
+---
+title: map
+---
+
+Maps the object based on the provided mapper function.<br />
+Similar to `Array.prototype.map`, but for objects.
+
+## The Gist
+
+```ts
+import { map } from '@weser/object'
+
+const mappedObject = map({ a: 1, b: 2, c: 3 }, (value) => value * 2)
+
+// => { a: 2, b: 4, c: 6 }
+console.log(mappedObject)
+```
+
+## Parameters
+
+| Parameter | Type                                                                 | Description          |
+| --------- | -------------------------------------------------------------------- | -------------------- |
+| obj       | `Record<PropertyKey, any>`                                           | The object to map.   |
+| mapper    | `(value: any, key: PropertyKey, obj: Record<PropertyKey, any>) => R` | The mapper function. |
+
+## Returns
+
+(`Record<PropertyKey, R>`) The mapped object.

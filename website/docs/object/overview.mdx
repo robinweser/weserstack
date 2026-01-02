@@ -1,0 +1,42 @@
+---
+title: Overview
+order: -1
+---
+
+A collection of small, type-safe, performant & immutable iteration utilities for objects.
+
+<PackageBadges package="@weser/object" />
+
+## Installation
+
+```sh
+# npm
+npm i --save @weser/object
+
+# yarn
+yarn add @weser/object
+
+# pnpm
+pnpm add @weser/object
+```
+
+## Recommended Usage
+
+For the best developer experience, we recommend importing all methods under a namespace:
+
+```ts
+import * as object from '@weser/object'
+
+const doubled = object.map({ a: 1, b: 2 }, (value) => value * 2)
+const filtered = object.filter({ a: 1, b: 2 }, (value) => value > 1)
+```
+
+This allows you to use the methods with a clear namespace prefix, making it easy to distinguish them from native object methods.
+
+## Motivation
+
+Because JavaScript's native "functional" APIs such as `forEach`, `reduce`, `map` and `filter` are slow and limited to arrays only.<br />
+There're many different utility packages out there already, e.g. [lodash](https://lodash.com).
+But lodash's `reduce` method itself is 4.5kb gzipped which is way too much for a simple array/object reduce utility.
+
+Additionally, it provides better type inference compared to the built-in methods.
