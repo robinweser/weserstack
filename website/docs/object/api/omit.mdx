@@ -1,0 +1,28 @@
+---
+title: omit
+---
+
+Creates an object composed of the object properties that are not omitted.
+
+## The Gist
+
+```ts
+import { omit } from '@weser/object'
+
+const obj = { a: 1, b: 2, c: 3 }
+const omitted = omit(obj, ['b'])
+
+// => { a: 1, c: 3 }
+console.log(omitted)
+```
+
+## Parameters
+
+| Parameter | Type             | Description                 |
+| --------- | ---------------- | --------------------------- |
+| obj       | `T`              | The source object.          |
+| keys      | `Array<keyof T>` | The property names to omit. |
+
+## Returns
+
+(`Omit<T, K>`) Returns the new object without the omitted properties.
