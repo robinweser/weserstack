@@ -41,7 +41,7 @@
     "utils"
   ],
   "dependencies": {
-    "@weser/loops": "^1.0.0"
+    "@weser/array": "workspace:*"
   },
   "devDependencies": {
     "ava": "^6.1.3",

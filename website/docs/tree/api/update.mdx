@@ -1,25 +1,25 @@
 ---
-title: updateNode
+title: update
 order: 9
 ---
 
 Updates a node by its id.
 
 <Callout title="Important note">
-  The id can't be overwritten. Use [replaceNode](/tree/api/replaceNode) instead
-  if you want to replace the node with a new node.
+  The id can't be overwritten. Use [replace](/tree/api/replace) instead if you
+  want to replace the node with a new node.
 </Callout>
 
 ## The Gist
 
 ```tsx
-import { createNode, updateNode } from '@weser/tree'
+import { create, update } from '@weser/tree'
 
-const newNode = createNode({
+const newNode = create({
   children: [],
 })
 
-const newTree = updateNode(tree, 'node-id', {
+const newTree = update(tree, 'node-id', {
   children: [newNode],
 })
 ```

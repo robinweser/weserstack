@@ -1,20 +1,22 @@
 import { type BaseNode } from './types.js'
 
-export default function findAllNode<T extends BaseNode<T>>(
+export default function find<T extends BaseNode<T>>(
   rootNode: T,
   condition: (node: T) => boolean
-): Array<T> {
-  const nodes: Array<T> = []
-
+): T | null {
   if (condition(rootNode)) {
-    nodes.push(rootNode)
+    return rootNode
   }
 
   if (rootNode.children) {
     for (const node of rootNode.children) {
-      nodes.push(...findAllNode(node, condition))
+      const result = find(node, condition)
+
+      if (result) {
+        return result
+      }
     }
   }
 
-  return nodes
+  return null
 }

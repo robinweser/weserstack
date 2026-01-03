@@ -1,5 +1,5 @@
 ---
-title: replaceNode
+title: replace
 order: 10
 ---
 
@@ -8,13 +8,13 @@ Replaces a node by a new node.
 ## The Gist
 
 ```tsx
-import { createNode, replaceNode } from '@weser/tree'
+import { create, replace } from '@weser/tree'
 
-const newNode = createNode({
+const newNode = create({
   children: [],
 })
 
-const newTree = replaceNode(tree, 'node-id', newNode)
+const newTree = replace(tree, 'node-id', newNode)
 ```
 
 ## Parameters

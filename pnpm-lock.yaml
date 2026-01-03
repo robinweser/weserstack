@@ -10,7 +10,7 @@ importers:
     devDependencies:
       lerna:
         specifier: ^9.0.3
-        version: 9.0.3
+        version: 9.0.3(@types/node@20.19.9)
       prettier:
         specifier: ^3.3.1
         version: 3.3.3
@@ -28,7 +28,7 @@ importers:
         version: 18.3.3
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       react:
         specifier: canary
         version: 19.0.0-rc-4beb1fd8-20241118
@@ -39,6 +39,18 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
 
+  packages/array:
+    devDependencies:
+      ava:
+        specifier: ^6.1.3
+        version: 6.1.3(encoding@0.1.13)
+      rimraf:
+        specifier: ^3.0.2
+        version: 3.0.2
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
   packages/context:
     devDependencies:
       '@types/react':
@@ -46,7 +58,7 @@ importers:
         version: 18.3.3
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       react:
         specifier: canary
         version: 19.1.0-canary-e06c72fc-20241215
@@ -61,7 +73,7 @@ importers:
     devDependencies:
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       rimraf:
         specifier: ^3.0.2
         version: 3.0.2
@@ -76,7 +88,7 @@ importers:
         version: 18.3.3
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       react:
         specifier: canary
         version: 19.0.0-rc-ed966dac-20241007
@@ -91,7 +103,7 @@ importers:
     devDependencies:
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       rimraf:
         specifier: ^3.0.2
         version: 3.0.2
@@ -110,7 +122,7 @@ importers:
         version: 18.3.3
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       react:
         specifier: canary
         version: 19.0.0-rc-4beb1fd8-20241118
@@ -135,7 +147,7 @@ importers:
         version: 18.3.3
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       react:
         specifier: canary
         version: 19.0.0-rc-ed966dac-20241007
@@ -157,7 +169,7 @@ importers:
         version: 18.3.3
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       react:
         specifier: canary
         version: 19.2.0-canary-7513996f-20250722
@@ -175,7 +187,7 @@ importers:
         version: 18.3.3
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       react:
         specifier: canary
         version: 19.0.0-rc-ed966dac-20241007
@@ -190,7 +202,7 @@ importers:
     devDependencies:
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       rimraf:
         specifier: ^3.0.2
         version: 3.0.2
@@ -212,7 +224,19 @@ importers:
     devDependencies:
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
+      rimraf:
+        specifier: ^3.0.2
+        version: 3.0.2
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  packages/object:
+    devDependencies:
+      ava:
+        specifier: ^6.1.3
+        version: 6.1.3(encoding@0.1.13)
       rimraf:
         specifier: ^3.0.2
         version: 3.0.2
@@ -224,7 +248,7 @@ importers:
     devDependencies:
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       rimraf:
         specifier: ^3.0.2
         version: 3.0.2
@@ -242,7 +266,7 @@ importers:
         version: 19.0.1
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       react:
         specifier: ^19.0.0
         version: 19.1.1
@@ -264,7 +288,7 @@ importers:
         version: 19.0.1
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -299,7 +323,7 @@ importers:
         version: 18.2.55
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       react:
         specifier: ^19.1.0
         version: 19.1.1
@@ -318,7 +342,7 @@ importers:
     devDependencies:
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       rimraf:
         specifier: ^3.0.2
         version: 3.0.2
@@ -328,13 +352,13 @@ importers:
 
   packages/tree:
     dependencies:
-      '@weser/loops':
-        specifier: ^1.0.0
-        version: link:../loops
+      '@weser/array':
+        specifier: workspace:*
+        version: link:../array
     devDependencies:
       ava:
         specifier: ^6.1.3
-        version: 6.1.3
+        version: 6.1.3(encoding@0.1.13)
       rimraf:
         specifier: ^3.0.2
         version: 3.0.2
@@ -370,7 +394,7 @@ importers:
         version: link:../packages/theming
       brandeur:
         specifier: ^2.0.2
-        version: 2.0.2(@css-hooks/core@1.8.2)(@css-hooks/react@1.8.2)
+        version: 2.0.2(@css-hooks/core@1.8.2)(@css-hooks/react@1.8.2(@types/react@18.2.55))
       brandeur-plugin-debug:
         specifier: ^2.0.2
         version: 2.0.2
@@ -412,7 +436,7 @@ importers:
         version: 2.0.2
       next:
         specifier: 15.2.8
-        version: 15.2.8(react-dom@19.1.1)(react@19.1.1)
+        version: 15.2.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       next-mdx-remote:
         specifier: ^5.0.0
         version: 5.0.0(@types/react@18.2.55)(acorn@8.12.1)(react@19.1.1)
@@ -5109,6 +5133,7 @@ snapshots:
   '@css-hooks/react@1.8.2(@types/react@18.2.55)':
     dependencies:
       '@css-hooks/core': 1.8.2
+    optionalDependencies:
       '@types/react': 18.2.55
 
   '@discoveryjs/json-ext@0.5.7': {}
@@ -5240,100 +5265,128 @@ snapshots:
 
   '@inquirer/ansi@1.0.2': {}
 
-  '@inquirer/checkbox@4.3.2':
+  '@inquirer/checkbox@4.3.2(@types/node@20.19.9)':
     dependencies:
       '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2
+      '@inquirer/core': 10.3.2(@types/node@20.19.9)
       '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10
+      '@inquirer/type': 3.0.10(@types/node@20.19.9)
       yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 20.19.9
 
-  '@inquirer/confirm@5.1.21':
+  '@inquirer/confirm@5.1.21(@types/node@20.19.9)':
     dependencies:
-      '@inquirer/core': 10.3.2
-      '@inquirer/type': 3.0.10
+      '@inquirer/core': 10.3.2(@types/node@20.19.9)
+      '@inquirer/type': 3.0.10(@types/node@20.19.9)
+    optionalDependencies:
+      '@types/node': 20.19.9
 
-  '@inquirer/core@10.3.2':
+  '@inquirer/core@10.3.2(@types/node@20.19.9)':
     dependencies:
       '@inquirer/ansi': 1.0.2
       '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10
+      '@inquirer/type': 3.0.10(@types/node@20.19.9)
       cli-width: 4.1.0
       mute-stream: 2.0.0
       signal-exit: 4.1.0
       wrap-ansi: 6.2.0
       yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 20.19.9
 
-  '@inquirer/editor@4.2.23':
+  '@inquirer/editor@4.2.23(@types/node@20.19.9)':
     dependencies:
-      '@inquirer/core': 10.3.2
-      '@inquirer/external-editor': 1.0.3
-      '@inquirer/type': 3.0.10
+      '@inquirer/core': 10.3.2(@types/node@20.19.9)
+      '@inquirer/external-editor': 1.0.3(@types/node@20.19.9)
+      '@inquirer/type': 3.0.10(@types/node@20.19.9)
+    optionalDependencies:
+      '@types/node': 20.19.9
 
-  '@inquirer/expand@4.0.23':
+  '@inquirer/expand@4.0.23(@types/node@20.19.9)':
     dependencies:
-      '@inquirer/core': 10.3.2
-      '@inquirer/type': 3.0.10
+      '@inquirer/core': 10.3.2(@types/node@20.19.9)
+      '@inquirer/type': 3.0.10(@types/node@20.19.9)
       yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 20.19.9
 
-  '@inquirer/external-editor@1.0.3':
+  '@inquirer/external-editor@1.0.3(@types/node@20.19.9)':
     dependencies:
       chardet: 2.1.1
       iconv-lite: 0.7.1
+    optionalDependencies:
+      '@types/node': 20.19.9
 
   '@inquirer/figures@1.0.15': {}
 
-  '@inquirer/input@4.3.1':
+  '@inquirer/input@4.3.1(@types/node@20.19.9)':
     dependencies:
-      '@inquirer/core': 10.3.2
-      '@inquirer/type': 3.0.10
+      '@inquirer/core': 10.3.2(@types/node@20.19.9)
+      '@inquirer/type': 3.0.10(@types/node@20.19.9)
+    optionalDependencies:
+      '@types/node': 20.19.9
 
-  '@inquirer/number@3.0.23':
+  '@inquirer/number@3.0.23(@types/node@20.19.9)':
     dependencies:
-      '@inquirer/core': 10.3.2
-      '@inquirer/type': 3.0.10
+      '@inquirer/core': 10.3.2(@types/node@20.19.9)
+      '@inquirer/type': 3.0.10(@types/node@20.19.9)
+    optionalDependencies:
+      '@types/node': 20.19.9
 
-  '@inquirer/password@4.0.23':
-    dependencies:
-      '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2
-      '@inquirer/type': 3.0.10
-
-  '@inquirer/prompts@7.10.1':
-    dependencies:
-      '@inquirer/checkbox': 4.3.2
-      '@inquirer/confirm': 5.1.21
-      '@inquirer/editor': 4.2.23
-      '@inquirer/expand': 4.0.23
-      '@inquirer/input': 4.3.1
-      '@inquirer/number': 3.0.23
-      '@inquirer/password': 4.0.23
-      '@inquirer/rawlist': 4.1.11
-      '@inquirer/search': 3.2.2
-      '@inquirer/select': 4.4.2
-
-  '@inquirer/rawlist@4.1.11':
-    dependencies:
-      '@inquirer/core': 10.3.2
-      '@inquirer/type': 3.0.10
-      yoctocolors-cjs: 2.1.3
-
-  '@inquirer/search@3.2.2':
-    dependencies:
-      '@inquirer/core': 10.3.2
-      '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10
-      yoctocolors-cjs: 2.1.3
-
-  '@inquirer/select@4.4.2':
+  '@inquirer/password@4.0.23(@types/node@20.19.9)':
     dependencies:
       '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2
-      '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10
-      yoctocolors-cjs: 2.1.3
+      '@inquirer/core': 10.3.2(@types/node@20.19.9)
+      '@inquirer/type': 3.0.10(@types/node@20.19.9)
+    optionalDependencies:
+      '@types/node': 20.19.9
 
-  '@inquirer/type@3.0.10': {}
+  '@inquirer/prompts@7.10.1(@types/node@20.19.9)':
+    dependencies:
+      '@inquirer/checkbox': 4.3.2(@types/node@20.19.9)
+      '@inquirer/confirm': 5.1.21(@types/node@20.19.9)
+      '@inquirer/editor': 4.2.23(@types/node@20.19.9)
+      '@inquirer/expand': 4.0.23(@types/node@20.19.9)
+      '@inquirer/input': 4.3.1(@types/node@20.19.9)
+      '@inquirer/number': 3.0.23(@types/node@20.19.9)
+      '@inquirer/password': 4.0.23(@types/node@20.19.9)
+      '@inquirer/rawlist': 4.1.11(@types/node@20.19.9)
+      '@inquirer/search': 3.2.2(@types/node@20.19.9)
+      '@inquirer/select': 4.4.2(@types/node@20.19.9)
+    optionalDependencies:
+      '@types/node': 20.19.9
+
+  '@inquirer/rawlist@4.1.11(@types/node@20.19.9)':
+    dependencies:
+      '@inquirer/core': 10.3.2(@types/node@20.19.9)
+      '@inquirer/type': 3.0.10(@types/node@20.19.9)
+      yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 20.19.9
+
+  '@inquirer/search@3.2.2(@types/node@20.19.9)':
+    dependencies:
+      '@inquirer/core': 10.3.2(@types/node@20.19.9)
+      '@inquirer/figures': 1.0.15
+      '@inquirer/type': 3.0.10(@types/node@20.19.9)
+      yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 20.19.9
+
+  '@inquirer/select@4.4.2(@types/node@20.19.9)':
+    dependencies:
+      '@inquirer/ansi': 1.0.2
+      '@inquirer/core': 10.3.2(@types/node@20.19.9)
+      '@inquirer/figures': 1.0.15
+      '@inquirer/type': 3.0.10(@types/node@20.19.9)
+      yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 20.19.9
+
+  '@inquirer/type@3.0.10(@types/node@20.19.9)':
+    optionalDependencies:
+      '@types/node': 20.19.9
 
   '@isaacs/balanced-match@4.0.1': {}
 
@@ -5364,7 +5417,7 @@ snapshots:
     dependencies:
       '@sinclair/typebox': 0.34.45
 
-  '@lerna/create@9.0.3(typescript@5.9.2)':
+  '@lerna/create@9.0.3(@types/node@20.19.9)(typescript@5.9.2)':
     dependencies:
       '@npmcli/arborist': 9.1.6
       '@npmcli/package-json': 7.0.2
@@ -5391,7 +5444,7 @@ snapshots:
       has-unicode: 2.0.1
       ini: 1.3.8
       init-package-json: 8.2.2
-      inquirer: 12.9.6
+      inquirer: 12.9.6(@types/node@20.19.9)
       is-ci: 3.0.1
       is-stream: 2.0.0
       js-yaml: 4.1.1
@@ -5442,12 +5495,12 @@ snapshots:
       - supports-color
       - typescript
 
-  '@mapbox/node-pre-gyp@1.0.11':
+  '@mapbox/node-pre-gyp@1.0.11(encoding@0.1.13)':
     dependencies:
       detect-libc: 2.0.3
       https-proxy-agent: 5.0.1
       make-dir: 3.1.0
-      node-fetch: 2.7.0
+      node-fetch: 2.7.0(encoding@0.1.13)
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
@@ -5995,6 +6048,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 6.21.0
       debug: 4.3.4
       eslint: 8.57.1
+    optionalDependencies:
       typescript: 5.9.2
     transitivePeerDependencies:
       - supports-color
@@ -6016,6 +6070,7 @@ snapshots:
       minimatch: 9.0.3
       semver: 7.6.3
       ts-api-utils: 1.4.3(typescript@5.9.2)
+    optionalDependencies:
       typescript: 5.9.2
     transitivePeerDependencies:
       - supports-color
@@ -6086,9 +6141,9 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@vercel/nft@0.26.5':
+  '@vercel/nft@0.26.5(encoding@0.1.13)':
     dependencies:
-      '@mapbox/node-pre-gyp': 1.0.11
+      '@mapbox/node-pre-gyp': 1.0.11(encoding@0.1.13)
       '@rollup/pluginutils': 4.2.1
       acorn: 8.12.1
       acorn-import-attributes: 1.9.5(acorn@8.12.1)
@@ -6290,9 +6345,9 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  ava@6.1.3:
+  ava@6.1.3(encoding@0.1.13):
     dependencies:
-      '@vercel/nft': 0.26.5
+      '@vercel/nft': 0.26.5(encoding@0.1.13)
       acorn: 8.12.1
       acorn-walk: 8.3.3
       ansi-styles: 6.2.1
@@ -6414,7 +6469,7 @@ snapshots:
     dependencies:
       isobject: 4.0.0
 
-  brandeur@2.0.2(@css-hooks/core@1.8.2)(@css-hooks/react@1.8.2):
+  brandeur@2.0.2(@css-hooks/core@1.8.2)(@css-hooks/react@1.8.2(@types/react@18.2.55)):
     dependencies:
       '@css-hooks/core': 1.8.2
       '@css-hooks/react': 1.8.2(@types/react@18.2.55)
@@ -6707,6 +6762,7 @@ snapshots:
       import-fresh: 3.3.0
       js-yaml: 4.1.1
       parse-json: 5.2.0
+    optionalDependencies:
       typescript: 5.9.2
 
   cross-spawn@7.0.3:
@@ -7027,11 +7083,12 @@ snapshots:
       '@typescript-eslint/parser': 6.21.0(eslint@8.57.1)(typescript@5.9.2)
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.1)
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(eslint@8.57.1))(eslint@8.57.1)
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.9.2))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
       eslint-plugin-jsx-a11y: 6.10.2(eslint@8.57.1)
       eslint-plugin-react: 7.37.5(eslint@8.57.1)
       eslint-plugin-react-hooks: 5.0.0-canary-7118f5dd7-20230705(eslint@8.57.1)
+    optionalDependencies:
       typescript: 5.9.2
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
@@ -7046,34 +7103,35 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.1):
+  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.4.1
       eslint: 8.57.1
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)
       get-tsconfig: 4.10.1
       is-bun-module: 2.0.0
       stable-hash: 0.0.5
       tinyglobby: 0.2.14
       unrs-resolver: 1.11.1
+    optionalDependencies:
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.9.2))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
-      '@typescript-eslint/parser': 6.21.0(eslint@8.57.1)(typescript@5.9.2)
       debug: 3.2.7
+    optionalDependencies:
+      '@typescript-eslint/parser': 6.21.0(eslint@8.57.1)(typescript@5.9.2)
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.1)
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(eslint@8.57.1))(eslint@8.57.1)
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.32.0(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1):
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.9.2))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       '@rtsao/scc': 1.1.0
-      '@typescript-eslint/parser': 6.21.0(eslint@8.57.1)(typescript@5.9.2)
       array-includes: 3.1.9
       array.prototype.findlastindex: 1.2.6
       array.prototype.flat: 1.3.3
@@ -7082,7 +7140,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3
@@ -7093,6 +7151,8 @@ snapshots:
       semver: 6.3.1
       string.prototype.trimend: 1.0.9
       tsconfig-paths: 3.15.0
+    optionalDependencies:
+      '@typescript-eslint/parser': 6.21.0(eslint@8.57.1)(typescript@5.9.2)
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
@@ -7293,7 +7353,7 @@ snapshots:
       reusify: 1.0.4
 
   fdir@6.4.6(picomatch@4.0.3):
-    dependencies:
+    optionalDependencies:
       picomatch: 4.0.3
 
   fela-plugin-extend@12.2.1(fela@12.2.1):
@@ -7818,15 +7878,17 @@ snapshots:
 
   inline-style-parser@0.2.4: {}
 
-  inquirer@12.9.6:
+  inquirer@12.9.6(@types/node@20.19.9):
     dependencies:
       '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2
-      '@inquirer/prompts': 7.10.1
-      '@inquirer/type': 3.0.10
+      '@inquirer/core': 10.3.2(@types/node@20.19.9)
+      '@inquirer/prompts': 7.10.1(@types/node@20.19.9)
+      '@inquirer/type': 3.0.10(@types/node@20.19.9)
       mute-stream: 2.0.0
       run-async: 4.0.6
       rxjs: 7.8.2
+    optionalDependencies:
+      '@types/node': 20.19.9
 
   internal-slot@1.1.0:
     dependencies:
@@ -8140,9 +8202,9 @@ snapshots:
     dependencies:
       language-subtag-registry: 0.3.23
 
-  lerna@9.0.3:
+  lerna@9.0.3(@types/node@20.19.9):
     dependencies:
-      '@lerna/create': 9.0.3(typescript@5.9.2)
+      '@lerna/create': 9.0.3(@types/node@20.19.9)(typescript@5.9.2)
       '@npmcli/arborist': 9.1.6
       '@npmcli/package-json': 7.0.2
       '@npmcli/run-script': 10.0.2
@@ -8172,7 +8234,7 @@ snapshots:
       import-local: 3.1.0
       ini: 1.3.8
       init-package-json: 8.2.2
-      inquirer: 12.9.6
+      inquirer: 12.9.6(@types/node@20.19.9)
       is-ci: 3.0.1
       is-stream: 2.0.0
       jest-diff: 30.2.0
@@ -8990,7 +9052,7 @@ snapshots:
       - acorn
       - supports-color
 
-  next@15.2.8(react-dom@19.1.1)(react@19.1.1):
+  next@15.2.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       '@next/env': 15.2.8
       '@swc/counter': 0.1.3
@@ -9015,9 +9077,11 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  node-fetch@2.7.0:
+  node-fetch@2.7.0(encoding@0.1.13):
     dependencies:
       whatwg-url: 5.0.0
+    optionalDependencies:
+      encoding: 0.1.13
 
   node-gyp-build@4.8.2: {}
 
@@ -10477,19 +10541,22 @@ snapshots:
 
   use-composed-ref@1.4.0(@types/react@18.2.55)(react@19.1.1):
     dependencies:
-      '@types/react': 18.2.55
       react: 19.1.1
+    optionalDependencies:
+      '@types/react': 18.2.55
 
   use-isomorphic-layout-effect@1.2.1(@types/react@18.2.55)(react@19.1.1):
     dependencies:
-      '@types/react': 18.2.55
       react: 19.1.1
+    optionalDependencies:
+      '@types/react': 18.2.55
 
   use-latest@1.3.0(@types/react@18.2.55)(react@19.1.1):
     dependencies:
-      '@types/react': 18.2.55
       react: 19.1.1
       use-isomorphic-layout-effect: 1.2.1(@types/react@18.2.55)(react@19.1.1)
+    optionalDependencies:
+      '@types/react': 18.2.55
 
   util-deprecate@1.0.2: {}
 

@@ -1,5 +1,5 @@
 ---
-title: moveNode
+title: move
 order: 11
 ---
 
@@ -9,14 +9,14 @@ If no index is provided, the node is moved to the end of the children list.
 ## The Gist
 
 ```tsx
-import { moveNode } from '@weser/tree'
+import { move } from '@weser/tree'
 
-const newTree = moveNode(tree, 'node-id', 'parent-node-id', 0)
+const newTree = move(tree, 'node-id', 'parent-node-id', 0)
 ```
 
 ## Parameters
 
-| Parameter | Type      | Default           |  Description                                                   |
+| Parameter | Type      | Default           | Description                                                    |
 | --------- | --------- | ----------------- | -------------------------------------------------------------- |
 | rootNode  | `T`       |                   | The root node of the tree.                                     |
 | id        | `string`  |                   | The id of the node to move.                                    |

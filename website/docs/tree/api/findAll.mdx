@@ -1,5 +1,5 @@
 ---
-title: findAllNode
+title: findAll
 order: 6
 ---
 
@@ -8,9 +8,9 @@ Finds all nodes that match a condition.
 ## The Gist
 
 ```tsx
-import { findAllNode } from '@weser/tree'
+import { findAll } from '@weser/tree'
 
-const nodesWithChildren = findAllNode(tree, (node) => node.children?.length > 0)
+const nodesWithChildren = findAll(tree, (node) => node.children?.length > 0)
 ```
 
 ## Parameters

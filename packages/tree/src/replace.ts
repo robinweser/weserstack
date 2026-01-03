@@ -1,21 +1,21 @@
-import getNode from './getNode.js'
+import get from './get.js'
 import { type BaseNode } from './types.js'
 
-export default function replaceNode<T extends BaseNode<T>>(
+export default function replace<T extends BaseNode<T>>(
   rootNode: T,
   id: string,
   newNode: T
 ): T {
-  const node = getNode(rootNode, id)
+  const node = get(rootNode, id)
 
   if (!node) {
     return rootNode
   }
 
-  return replaceNodeById(rootNode, id, newNode)
+  return replaceById(rootNode, id, newNode)
 }
 
-function replaceNodeById<T extends BaseNode<T>>(
+function replaceById<T extends BaseNode<T>>(
   rootNode: T,
   id: string,
   newNode: T
@@ -29,7 +29,7 @@ function replaceNodeById<T extends BaseNode<T>>(
   }
 
   const children = rootNode.children.map((node) =>
-    replaceNodeById(node, id, newNode)
+    replaceById(node, id, newNode)
   )
 
   return {

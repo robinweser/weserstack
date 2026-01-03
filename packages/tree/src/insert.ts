@@ -1,14 +1,14 @@
-import getNode from './getNode.js'
-import replaceNode from './replaceNode.js'
+import get from './get.js'
+import replace from './replace.js'
 import { type BaseNode } from './types.js'
 
-export default function insertNode<T extends BaseNode<T>>(
+export default function insert<T extends BaseNode<T>>(
   rootNode: T,
   id: string,
   index: number,
   newNode: T
 ): T {
-  const parentNode = getNode(rootNode, id)
+  const parentNode = get(rootNode, id)
 
   if (!parentNode || !parentNode.children) {
     return rootNode
@@ -20,7 +20,7 @@ export default function insertNode<T extends BaseNode<T>>(
     ...parentNode.children.slice(index),
   ]
 
-  return replaceNode(rootNode, id, {
+  return replace(rootNode, id, {
     ...parentNode,
     children,
   })

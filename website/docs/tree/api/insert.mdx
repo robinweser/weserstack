@@ -1,5 +1,5 @@
 ---
-title: insertNode
+title: insert
 order: 8
 ---
 
@@ -8,13 +8,13 @@ Inserts a node at a specific index in a parent node.
 ## The Gist
 
 ```tsx
-import { createNode, insertNode } from '@weser/tree'
+import { create, insert } from '@weser/tree'
 
-const newNode = createNode({
+const newNode = create({
   children: [],
 })
 
-const newTree = insertNode(tree, 'parent-node-id', 0, newNode)
+const newTree = insert(tree, 'parent-node-id', 0, newNode)
 ```
 
 ## Parameters

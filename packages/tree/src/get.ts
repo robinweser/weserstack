@@ -1,6 +1,6 @@
 import { type BaseNode } from './types.js'
 
-export default function getNode<T extends BaseNode<T>>(
+export default function get<T extends BaseNode<T>>(
   rootNode: T,
   id: string
 ): T | null {
@@ -10,7 +10,7 @@ export default function getNode<T extends BaseNode<T>>(
 
   if (rootNode.children) {
     for (const node of rootNode.children) {
-      const result = getNode(node, id)
+      const result = get(node, id)
 
       if (result) {
         return result
