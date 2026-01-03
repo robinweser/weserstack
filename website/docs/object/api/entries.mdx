@@ -1,0 +1,27 @@
+---
+title: entries
+---
+
+Returns the entries of the object as key-value pairs.<br />
+Similar to `Object.entries`, but with proper type inference.
+
+## The Gist
+
+```ts
+import { entries } from '@weser/object'
+
+const objEntries = entries({ a: 1, b: 2, c: 3 })
+
+// => [['a', 1], ['b', 2], ['c', 3]]
+console.log(objEntries)
+```
+
+## Parameters
+
+| Parameter | Type                       | Description                       |
+| --------- | -------------------------- | --------------------------------- |
+| obj       | `Record<PropertyKey, any>` | The object to get the entries of. |
+
+## Returns
+
+(`Array<[keyof T, T[keyof T]]>`) The entries of the object as an array of key-value pairs.
