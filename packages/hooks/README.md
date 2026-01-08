@@ -1,3 +1,3 @@
 # @weser/hooks
 
-[Documentation](https://packages.weser.io/hooks)
+[Documentation](https://stack.weser.io/hooks)

@@ -1,3 +1,3 @@
 # @weser/context
 
-[Documentation](https://packages.weser.io/context)
+[Documentation](https://stack.weser.io/context)

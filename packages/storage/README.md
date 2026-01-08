@@ -1,3 +1,3 @@
 # @weser/storage
 
-[Documentation](https://packages.weser.io/storage)
+[Documentation](https://stack.weser.io/storage)

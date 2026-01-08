@@ -1,3 +1,3 @@
 # @weser/array
 
-[Documentation](https://packages.weser.io/array)
+[Documentation](https://stack.weser.io/array)

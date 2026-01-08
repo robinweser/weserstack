@@ -1,3 +1,3 @@
 # @weser/keyframes
 
-[Documentation](https://packages.weser.io/keyframes)
+[Documentation](https://stack.weser.io/keyframes)

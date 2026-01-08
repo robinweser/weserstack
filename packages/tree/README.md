@@ -1,3 +1,3 @@
 # @weser/loops
 
-[Documentation](https://packages.weser.io/loops)
+[Documentation](https://stack.weser.io/loops)

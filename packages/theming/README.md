@@ -1,3 +1,3 @@
 # @weser/theming
 
-[Documentation](https://packages.weser.io/theming)
+[Documentation](https://stack.weser.io/theming)

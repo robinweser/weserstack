@@ -1,3 +1,3 @@
 # @weser/dnd
 
-[Documentation](https://packages.weser.io/dnd)
+[Documentation](https://stack.weser.io/dnd)

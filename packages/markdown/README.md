@@ -1,3 +1,3 @@
 # @weser/markdown
 
-[Documentation](https://packages.weser.io/markdown)
+[Documentation](https://stack.weser.io/markdown)

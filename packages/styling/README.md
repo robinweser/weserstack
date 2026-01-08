@@ -1,3 +1,3 @@
 # @weser/styling
 
-[Documentation](https://packages.weser.io/styling)
+[Documentation](https://stack.weser.io/styling)

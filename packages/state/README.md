@@ -1,3 +1,3 @@
 # @weser/state
 
-[Documentation](https://packages.weser.io/state)
+[Documentation](https://stack.weser.io/state)

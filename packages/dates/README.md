@@ -1,3 +1,3 @@
 # @weser/dates
 
-[Documentation](https://packages.weser.io/dates)
+[Documentation](https://stack.weser.io/dates)

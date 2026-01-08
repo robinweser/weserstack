@@ -1,1 +1,1 @@
-export const baseUrl = 'https://packages.weser.io'
+export const baseUrl = 'https://stack.weser.io'

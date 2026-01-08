@@ -1,3 +1,3 @@
 # @weser/layers
 
-[Documentation](https://packages.weser.io/layers)
+[Documentation](https://stack.weser.io/layers)

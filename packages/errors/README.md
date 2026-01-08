@@ -1,3 +1,3 @@
 # @weser/errors
 
-[Documentation](https://packages.weser.io/errors)
+[Documentation](https://stack.weser.io/errors)
