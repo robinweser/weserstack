@@ -16,7 +16,7 @@ export default function EditThisPage({ path }: Props) {
         icon={Edit}
         // @ts-ignore
         target="_blank"
-        action={`https://github.com/robinweser/weser/edit/main/website/docs/${path}.mdx`}>
+        action={`https://github.com/robinweser/weserstack/edit/main/website/docs/${path}.mdx`}>
         Edit this page
       </ActionButton>
     </Bleed>

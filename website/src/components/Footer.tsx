@@ -30,7 +30,7 @@ const links = [
   },
   {
     label: 'GitHub',
-    href: 'https://github.com/robinweser/weser',
+    href: 'https://github.com/robinweser/weserstack',
   },
 
   {
