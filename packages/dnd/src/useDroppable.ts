@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { ElementId } from './types'
+import { type ElementId } from './types'
 import useDndContext from './useDndContext'
 
 type Filter<T> = (value: any, key: string, object: T) => boolean

@@ -1,9 +1,11 @@
 {
-  "include": ["src/**/*"],
   "compilerOptions": {
-    "rootDir": "./src",
     "esModuleInterop": true,
     "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "incremental": true,
+    "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,

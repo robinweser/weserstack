@@ -1,1 +1,1 @@
-export { default as useOptimisticState } from './useOptimisticState.js'
+export { default as useOptimisticState } from './useOptimisticState'

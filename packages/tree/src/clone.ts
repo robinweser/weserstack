@@ -1,5 +1,5 @@
-import get from './get.js'
-import { type BaseNode } from './types.js'
+import get from './get'
+import { type BaseNode } from './types'
 
 export default function clone<T extends BaseNode<T>>(
   rootNode: T,

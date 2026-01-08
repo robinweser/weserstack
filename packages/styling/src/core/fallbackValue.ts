@@ -1,4 +1,4 @@
-import type { T_Fallback } from '../types.js'
+import type { T_Fallback } from '../types'
 
 export default function fallbackValue(
   property: T_Fallback['property'],

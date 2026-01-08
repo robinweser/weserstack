@@ -1,9 +1,9 @@
 'use client'
 import { PropsWithChildren, useState } from 'react'
 
-import { Coords, Data, ElementId, Nullable } from './types'
+import { type Coords, type Data, type ElementId, type Nullable } from './types'
 
-import DndContext, { DndListeners } from './DndContext.js'
+import DndContext, { type DndListeners } from './DndContext'
 
 type Props = DndListeners
 export default function DndProvider({

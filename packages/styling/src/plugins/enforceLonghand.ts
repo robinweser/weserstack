@@ -1,6 +1,6 @@
-import sortProperty, { PropertyPriority } from './sortProperty.js'
+import sortProperty, { type PropertyPriority } from './sortProperty'
 
-import { T_Style } from '../types.js'
+import { type T_Style } from '../types'
 
 function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1)

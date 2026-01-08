@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { T_ActionResponse } from './types.js'
+import { type T_ActionResponse } from './types'
 
 type State<T> = {
   loading: boolean

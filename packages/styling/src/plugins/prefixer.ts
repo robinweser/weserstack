@@ -1,6 +1,6 @@
 import isObject from 'isobject'
 
-import { T_Fallback, T_Style } from '../types.js'
+import { type T_Fallback, type T_Style } from '../types'
 
 function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1)

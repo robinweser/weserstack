@@ -1,7 +1,7 @@
 import isPlainObject from 'isobject'
 import { assignStyle } from 'css-in-js-utils'
 
-import { T_Style } from '../types.js'
+import { type T_Style } from '../types'
 
 export type T_ResponsiveValue<T> = T | (T | undefined)[]
 

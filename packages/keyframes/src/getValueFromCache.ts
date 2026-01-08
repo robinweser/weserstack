@@ -1,6 +1,6 @@
 import { cssifyObject } from 'css-in-js-utils'
 
-import { T_Keyframe } from './types.js'
+import { type T_Keyframe } from './types'
 
 const cache = new Map()
 

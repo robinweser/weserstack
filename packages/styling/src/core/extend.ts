@@ -1,4 +1,4 @@
-import { T_Style } from '../types.js'
+import { type T_Style } from '../types'
 
 export default function extend<T = T_Style>(
   condition: boolean,

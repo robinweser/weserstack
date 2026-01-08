@@ -1,4 +1,4 @@
-import useStorage, { Config } from './useStorage'
+import useStorage, { type Config } from './useStorage'
 
 export default function useSessionStorage<T = any>(
   key: string,

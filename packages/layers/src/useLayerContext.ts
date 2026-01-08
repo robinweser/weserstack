@@ -1,7 +1,7 @@
 'use client'
 import { useContext } from 'react'
 
-import LayerContext from './LayerContext.js'
+import LayerContext from './LayerContext'
 
 export default function useLayerContext() {
   const context = useContext(LayerContext)

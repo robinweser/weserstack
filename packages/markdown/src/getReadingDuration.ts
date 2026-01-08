@@ -1,4 +1,4 @@
-import getWordCount from './getWordCount.js'
+import getWordCount from './getWordCount'
 
 export default function getReadingDuration(
   markdown: string,

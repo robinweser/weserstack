@@ -1,7 +1,7 @@
 'use client'
 import { RefObject, useEffect, useId, useRef } from 'react'
 
-import useLayerContext from './useLayerContext.js'
+import useLayerContext from './useLayerContext'
 
 export default function useLayer<T extends HTMLElement>(
   visible: boolean,

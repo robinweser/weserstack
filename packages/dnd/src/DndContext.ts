@@ -1,7 +1,7 @@
 'use client'
 import { createContext, Dispatch, SetStateAction } from 'react'
 
-import { Coords, ElementId, Data, Nullable } from './types.js'
+import { type Coords, type ElementId, type Data, type Nullable } from './types'
 
 export type DndListeners = {
   onDrop?: (active: ElementId, over: Nullable<ElementId>) => void

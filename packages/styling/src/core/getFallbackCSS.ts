@@ -1,8 +1,8 @@
 import { hyphenateProperty } from 'css-in-js-utils'
 
-import getFallbackVariable from './getFallbackVariable.js'
+import getFallbackVariable from './getFallbackVariable'
 
-import { T_Fallback } from '../types.js'
+import { type T_Fallback } from '../types'
 
 export default function getFallbackCSS(fallbacks: Array<T_Fallback>) {
   const rootCSS = fallbacks.reduce((css, { property, values = [], match }) => {

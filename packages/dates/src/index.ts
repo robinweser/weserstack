@@ -1,1 +1,1 @@
-export { default as format } from './format.js'
+export { default as format } from './format'

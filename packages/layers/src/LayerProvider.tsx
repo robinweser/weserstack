@@ -1,7 +1,7 @@
 'use client'
 import { PropsWithChildren, useState } from 'react'
 
-import LayerContext, { T_Layer } from './LayerContext.js'
+import LayerContext, { type T_Layer } from './LayerContext'
 
 type Props = {
   onLayerAdded?: (layers: Array<T_Layer>) => void

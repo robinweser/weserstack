@@ -2,7 +2,7 @@ import {
   CreateStylesDebugger as createStylesDebugger,
   Config,
 } from 'styles-debugger'
-import { T_Style } from '../types.js'
+import { type T_Style } from '../types'
 
 export default function debugPlugin<T = T_Style>(
   autoActive = true,

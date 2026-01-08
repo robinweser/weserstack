@@ -2,9 +2,9 @@ import { useRef, useState, FormEvent, ChangeEvent } from 'react'
 import { z, ZodObject, ZodError, ZodRawShape, ZodType } from 'zod'
 import { $ZodIssue } from 'zod/v4/core'
 
-import { Options } from './types.js'
-import defaultFormatErrorMessage from './defaultFormatErrorMessage.js'
-import useField from './useField.js'
+import { type Options } from './types'
+import defaultFormatErrorMessage from './defaultFormatErrorMessage'
+import useField from './useField'
 
 type FieldsMap = Record<string, ReturnType<typeof useField<any, any>>>
 

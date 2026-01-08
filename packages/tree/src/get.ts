@@ -1,4 +1,4 @@
-import { type BaseNode } from './types.js'
+import { type BaseNode } from './types'
 
 export default function get<T extends BaseNode<T>>(
   rootNode: T,

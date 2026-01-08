@@ -1,8 +1,8 @@
 import createTheme, {
   defaultShouldTransformValue,
-  SingleConfig,
-} from './createTheme.js'
-import { Tokens } from './types.js'
+  type SingleConfig,
+} from './createTheme'
+import { type Tokens } from './types'
 
 type ThemeMap<T> = {
   [name: string]: T

@@ -1,9 +1,9 @@
 // @ts-nocheck
 import isPlainObject from 'isobject'
 
-import getFallbackVariable from './getFallbackVariable.js'
+import getFallbackVariable from './getFallbackVariable'
 
-import { T_Fallback } from '../types.js'
+import { type T_Fallback } from '../types'
 
 export default function fallbackValuePlugin(fallbacks: Array<T_Fallback> = []) {
   const fallbackMap = fallbacks.reduce((map, { property, values, match }) => {

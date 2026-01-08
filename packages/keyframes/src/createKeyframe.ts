@@ -1,8 +1,8 @@
-import getValueFromCache from './getValueFromCache.js'
-import createStyleNode from './createStyleNode.js'
-import getAnimationName from './getAnimationName.js'
+import getValueFromCache from './getValueFromCache'
+import createStyleNode from './createStyleNode'
+import getAnimationName from './getAnimationName'
 
-import { T_Keyframe } from './types.js'
+import { type T_Keyframe } from './types'
 
 type Node = ReturnType<typeof createStyleNode>
 

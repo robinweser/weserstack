@@ -1,6 +1,6 @@
 import { each } from '@weser/array'
 
-import { type BaseNode } from './types.js'
+import { type BaseNode } from './types'
 
 export default function traverse<T extends BaseNode<T>>(
   rootNode: T,

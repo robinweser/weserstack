@@ -1,6 +1,6 @@
 import { map, filter } from '@weser/array'
 
-import { type BaseNode } from './types.js'
+import { type BaseNode } from './types'
 
 export default function remove<T extends BaseNode<T>>(
   rootNode: T,

@@ -6,16 +6,16 @@ import {
   isObjectSchema,
   isArraySchema,
   isStringSchema,
-} from './guards.js'
+} from './guards'
 import {
-  T_JSONSchema,
-  T_JSONSchemaBoolean,
-  T_JSONSchemaEnum,
-  T_JSONSchemaNumber,
-  T_JSONSchemaObject,
-  T_JSONSchemaArray,
-  T_JSONSchemaString,
-} from './types.js'
+  type T_JSONSchema,
+  type T_JSONSchemaBoolean,
+  type T_JSONSchemaEnum,
+  type T_JSONSchemaNumber,
+  type T_JSONSchemaObject,
+  type T_JSONSchemaArray,
+  type T_JSONSchemaString,
+} from './types'
 
 export default function toZod(schema: T_JSONSchema) {
   if (isEnumSchema(schema)) {

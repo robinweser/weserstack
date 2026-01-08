@@ -1,7 +1,7 @@
 import { isUnitlessProperty as defaultIsUnitlessProperty } from 'css-in-js-utils'
 import isPlainObject from 'isobject'
 
-import { T_RawStyle, T_Style } from '../types.js'
+import { type T_RawStyle, type T_Style } from '../types'
 
 type PropertyMap<T = T_RawStyle> = Partial<Record<keyof T, string>>
 

@@ -1,6 +1,6 @@
-import get from './get.js'
-import replace from './replace.js'
-import { type BaseNode } from './types.js'
+import get from './get'
+import replace from './replace'
+import { type BaseNode } from './types'
 
 export default function insert<T extends BaseNode<T>>(
   rootNode: T,

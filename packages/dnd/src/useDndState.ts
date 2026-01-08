@@ -1,5 +1,5 @@
 'use client'
-import useDndContext from './useDndContext.js'
+import useDndContext from './useDndContext'
 
 // TODO: use memo to prevent unnecessary rerenders
 export default function useDndState() {

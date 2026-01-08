@@ -1,5 +1,5 @@
-import find from './find.js'
-import { type BaseNode } from './types.js'
+import find from './find'
+import { type BaseNode } from './types'
 
 export default function getParent<T extends BaseNode<T>>(
   rootNode: T,

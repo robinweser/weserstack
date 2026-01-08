@@ -1,1 +1,1 @@
-export { default as createContext } from './createContext.js'
+export { default as createContext } from './createContext'

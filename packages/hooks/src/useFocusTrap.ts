@@ -1,6 +1,6 @@
 import { RefObject, useEffect } from 'react'
 
-import useKeyDown from './useKeyDown.js'
+import useKeyDown from './useKeyDown'
 
 const focusableSelector = `:is(
   a[href], 

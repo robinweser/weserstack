@@ -2,10 +2,10 @@ import { createHooks as baseCreateHooks } from '@css-hooks/react'
 import { WithHooks as BaseWithHooks } from '@css-hooks/core'
 import { assignStyle } from 'css-in-js-utils'
 
-import fallbackValuePlugin from './fallbackValuePlugin.js'
-import getFallbackCSS from './getFallbackCSS.js'
+import fallbackValuePlugin from './fallbackValuePlugin'
+import getFallbackCSS from './getFallbackCSS'
 
-import { T_Fallback, T_RawStyle, T_Style } from '../types.js'
+import { type T_Fallback, type T_RawStyle, type T_Style } from '../types'
 
 type WithHooks<Hooks, T> = BaseWithHooks<Hooks, T>
 

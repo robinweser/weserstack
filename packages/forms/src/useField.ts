@@ -2,8 +2,8 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import { ZodType } from 'zod'
 import { $ZodIssue } from 'zod/v4/core'
 
-import { T_Field, Options } from './types.js'
-import defaultFormatErrorMessage from './defaultFormatErrorMessage.js'
+import { type T_Field, type Options } from './types'
+import defaultFormatErrorMessage from './defaultFormatErrorMessage'
 
 const defaultParseEvent = <T, C>(e: C) =>
   (e as ChangeEvent<HTMLInputElement>).target.value as T

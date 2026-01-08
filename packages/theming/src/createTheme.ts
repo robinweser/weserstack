@@ -1,7 +1,7 @@
 import isObject from 'isobject'
 
-import createVariable from './createVariable.js'
-import { Tokens } from './types.js'
+import createVariable from './createVariable'
+import { type Tokens } from './types'
 
 export type SingleConfig = {
   selector?: string

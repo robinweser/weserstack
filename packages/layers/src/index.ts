@@ -1,4 +1,4 @@
-export { default as LayerContext, T_Layer } from './LayerContext.js'
-export { default as LayerProvider } from './LayerProvider.jsx'
-export { default as useLayerContext } from './useLayerContext.js'
-export { default as useLayer } from './useLayer.js'
+export { default as LayerContext, type T_Layer } from './LayerContext'
+export { default as LayerProvider } from './LayerProvider'
+export { default as useLayerContext } from './useLayerContext'
+export { default as useLayer } from './useLayer'

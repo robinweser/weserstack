@@ -1,5 +1,5 @@
-import useStorage, { Config } from './useStorage.js'
-import createIndexedStorage from './createIndexedStorage.js'
+import useStorage, { type Config } from './useStorage'
+import createIndexedStorage from './createIndexedStorage'
 
 export default function useIndexedStorage<T>(
   database: string,

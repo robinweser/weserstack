@@ -1,12 +1,12 @@
 import {
-  T_JSONSchemaEnum,
-  T_JSONSchemaString,
-  T_JSONSchemaNumber,
-  T_JSONSchemaBoolean,
-  T_JSONSchemaArray,
-  T_JSONSchemaObject,
-  T_JSONSchema,
-} from './types.js'
+  type T_JSONSchemaEnum,
+  type T_JSONSchemaString,
+  type T_JSONSchemaNumber,
+  type T_JSONSchemaBoolean,
+  type T_JSONSchemaArray,
+  type T_JSONSchemaObject,
+  type T_JSONSchema,
+} from './types'
 
 export function createEnumSchema(
   values: ReadonlyArray<string>,

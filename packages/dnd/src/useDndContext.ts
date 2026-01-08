@@ -1,7 +1,7 @@
 'use client'
 import { useContext } from 'react'
 
-import DndContext from './DndContext.js'
+import DndContext from './DndContext'
 
 export default function useDndContext() {
   const context = useContext(DndContext)

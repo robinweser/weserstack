@@ -1,4 +1,4 @@
-import { type BaseNode } from './types.js'
+import { type BaseNode } from './types'
 
 export default function findAll<T extends BaseNode<T>>(
   rootNode: T,

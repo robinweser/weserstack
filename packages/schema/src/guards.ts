@@ -1,12 +1,12 @@
 import {
-  T_JSONSchema,
-  T_JSONSchemaBoolean,
-  T_JSONSchemaEnum,
-  T_JSONSchemaNumber,
-  T_JSONSchemaObject,
-  T_JSONSchemaArray,
-  T_JSONSchemaString,
-} from './types.js'
+  type T_JSONSchema,
+  type T_JSONSchemaBoolean,
+  type T_JSONSchemaEnum,
+  type T_JSONSchemaNumber,
+  type T_JSONSchemaObject,
+  type T_JSONSchemaArray,
+  type T_JSONSchemaString,
+} from './types'
 
 export function isEnumSchema(schema: T_JSONSchema): schema is T_JSONSchemaEnum {
   return (schema as T_JSONSchemaEnum).enum !== undefined

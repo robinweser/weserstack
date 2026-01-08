@@ -1,1 +1,1 @@
-export { default as invariant } from './invariant.js'
+export { default as invariant } from './invariant'

@@ -1,6 +1,6 @@
-import get from './get.js'
-import insert from './insert.js'
-import { type BaseNode } from './types.js'
+import get from './get'
+import insert from './insert'
+import { type BaseNode } from './types'
 
 export default function add<T extends BaseNode<T>>(
   rootNode: T,

@@ -1,13 +1,13 @@
 import z from 'zod'
 import {
-  T_JSONSchemaEnum,
-  T_JSONSchemaString,
-  T_JSONSchemaNumber,
-  T_JSONSchemaBoolean,
-  T_JSONSchemaObject,
-  T_JSONSchemaArray,
-  T_JSONSchema,
-} from './types.js'
+  type T_JSONSchemaEnum,
+  type T_JSONSchemaString,
+  type T_JSONSchemaNumber,
+  type T_JSONSchemaBoolean,
+  type T_JSONSchemaObject,
+  type T_JSONSchemaArray,
+  type T_JSONSchema,
+} from './types'
 
 const enumValidator = z
   .object({

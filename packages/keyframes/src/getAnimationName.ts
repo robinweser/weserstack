@@ -1,6 +1,6 @@
-import hash from './hash.js'
+import hash from './hash'
 
-import { T_Keyframe } from './types.js'
+import { type T_Keyframe } from './types'
 
 export default function getAnimationName(style: T_Keyframe) {
   return '_' + hash(JSON.stringify(style))

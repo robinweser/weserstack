@@ -1,6 +1,6 @@
 import isPlainObject from 'isobject'
 
-import { T_Style } from '../types.js'
+import { type T_Style } from '../types'
 
 export type PropertyPriority<T = T_Style> = {
   [Property in keyof T]: number

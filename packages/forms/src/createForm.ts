@@ -2,9 +2,9 @@ import { ZodObject, ZodRawShape } from 'zod'
 import type { ChangeEvent, ReactNode } from 'react'
 import { createContext } from '@weser/context'
 
-import _useForm from './useForm.js'
-import useField from './useField.js'
-import type { T_FieldName } from './types.js'
+import _useForm from './useForm'
+import useField from './useField'
+import type { T_FieldName } from './types'
 
 export default function createForm<T extends ZodRawShape>(
   schema: ZodObject<T>

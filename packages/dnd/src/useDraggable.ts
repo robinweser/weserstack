@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
-import useDndContext from './useDndContext.js'
-import { Data, ElementId } from './types.js'
+import useDndContext from './useDndContext'
+import { type Data, type ElementId } from './types'
 
 export default function useDraggable({
   id,

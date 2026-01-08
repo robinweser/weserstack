@@ -1,7 +1,7 @@
-import get from './get.js'
-import insert from './insert.js'
-import remove from './remove.js'
-import { type BaseNode } from './types.js'
+import get from './get'
+import insert from './insert'
+import remove from './remove'
+import { type BaseNode } from './types'
 
 export default function move<T extends BaseNode<T>>(
   rootNode: T,
