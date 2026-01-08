@@ -1,10 +1,11 @@
-import test from 'ava'
+import { describe, test, expect } from 'vitest'
 
-import alpha from '../../dist/alpha.js'
+import alpha from '../alpha'
 
-test('alterating alpha should work', (t) => {
-  t.is(
-    alpha('var(--red)', 0.2),
-    'hsl(from var(--red) h s l / max(0, min(1, 0.2)))'
-  )
+describe('alpha', () => {
+  test('alterating alpha should work', () => {
+    expect(alpha('var(--red)', 0.2)).toBe(
+      'hsl(from var(--red) h s l / max(0, min(1, 0.2)))'
+    )
+  })
 })

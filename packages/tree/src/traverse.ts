@@ -1,4 +1,4 @@
-import { arrayEach } from '@weser/loops'
+import { each } from '@weser/array'
 
 import { type BaseNode } from './types.js'
 
@@ -12,7 +12,7 @@ export default function traverse<T extends BaseNode<T>>(
   }
 
   if (rootNode.children) {
-    arrayEach(rootNode.children, (node) => traverse(node, callback, type))
+    each(rootNode.children, (node) => traverse(node, callback, type))
   }
 
   if (type === 'bottom-up') {

@@ -1,6 +1,6 @@
-import test from 'ava'
+import { describe, test, expect } from 'vitest'
 
-import toZod from '../../dist/toZod.js'
+import toZod from '../toZod'
 
 function run(schema, value) {
   return () => {
@@ -12,193 +12,195 @@ function run(schema, value) {
   }
 }
 
-test('converting JSON schema to zod should convert enums', (t) => {
-  // basic
-  t.notThrows(
-    run(
-      {
-        enum: ['foo', 'bar'],
-      },
-      'foo'
-    )
-  )
-  t.throws(
-    run(
-      {
-        enum: ['foo', 'bar'],
-      },
-      'baz'
-    )
-  )
-
-  // default
-  t.notThrows(run({ enum: ['foo', 'bar'], default: 'foo' }))
-})
-
-test('converting JSON schema to zod should convert strings', (t) => {
-  // basic
-  t.notThrows(
-    run(
-      {
-        type: 'string',
-      },
-      'foo'
-    )
-  )
-
-  // minLength
-  t.throws(
-    run(
-      {
-        type: 'string',
-        minLength: 4,
-      },
-      'foo'
-    )
-  )
-  t.notThrows(
-    run(
-      {
-        type: 'string',
-        minLength: 4,
-      },
-      'fooo'
-    )
-  )
-
-  // default
-  t.notThrows(run({ type: 'string', minLength: 3, default: 'foo' }))
-})
-
-test('converting JSON schema to zod should convert uri strings', (t) => {
-  t.notThrows(
-    run(
-      {
-        type: 'string',
-        format: 'uri',
-      },
-      'https://example.com'
-    )
-  )
-  t.throws(
-    run(
-      {
-        type: 'string',
-        format: 'uri',
-      },
-      'not-a-url'
-    )
-  )
-})
-
-test('converting JSON schema to zod should convert numbers', (t) => {
-  // basic
-  t.notThrows(
-    run(
-      {
-        type: 'number',
-      },
-      3
-    )
-  )
-
-  // minimum
-  t.throws(
-    run(
-      {
-        type: 'number',
-        minimum: 4,
-      },
-      3
-    )
-  )
-  t.notThrows(
-    run(
-      {
-        type: 'number',
-        minimum: 4,
-      },
-      5
-    )
-  )
-
-  // maximum
-  t.throws(
-    run(
-      {
-        type: 'number',
-        maximum: 5,
-      },
-      6
-    )
-  )
-  t.notThrows(
-    run(
-      {
-        type: 'number',
-        maximum: 5,
-      },
-      5
-    )
-  )
-
-  // default
-  t.notThrows(run({ type: 'number', minimum: 3, default: 5 }))
-})
-
-test('converting JSON schema to zod should convert objects', (t) => {
-  // basic
-  t.notThrows(
-    run(
-      {
-        type: 'object',
-        properties: {
-          foo: { type: 'string', minLength: 3 },
-          bar: { enum: ['bar', 'baz'] },
+describe('converting JSON schema to zod', () => {
+  test('should convert enums', () => {
+    // basic
+    expect(
+      run(
+        {
+          enum: ['foo', 'bar'],
         },
-      },
-      {
-        foo: 'foo',
-        bar: 'baz',
-      }
-    )
-  )
-  t.throws(
-    run(
-      {
-        type: 'object',
-        properties: {
-          foo: { type: 'string', minLength: 3 },
-          bar: { enum: ['bar', 'baz'] },
+        'foo'
+      )
+    ).not.toThrow()
+    expect(
+      run(
+        {
+          enum: ['foo', 'bar'],
         },
-      },
-      {
-        foo: 'fo',
-        bar: 'foo',
-      }
-    )
-  )
-})
+        'baz'
+      )
+    ).toThrow()
 
-test('converting JSON schema to zod should convert booleans', (t) => {
-  // basic
-  t.notThrows(
-    run(
-      {
-        type: 'boolean',
-      },
-      true
-    )
-  )
-  t.throws(
-    run(
-      {
-        type: 'boolean',
-      },
-      'true'
-    )
-  )
+    // default
+    expect(run({ enum: ['foo', 'bar'], default: 'foo' })).not.toThrow()
+  })
 
-  // default
-  t.notThrows(run({ type: 'boolean', default: true }))
+  test('should convert strings', () => {
+    // basic
+    expect(
+      run(
+        {
+          type: 'string',
+        },
+        'foo'
+      )
+    ).not.toThrow()
+
+    // minLength
+    expect(
+      run(
+        {
+          type: 'string',
+          minLength: 4,
+        },
+        'foo'
+      )
+    ).toThrow()
+    expect(
+      run(
+        {
+          type: 'string',
+          minLength: 4,
+        },
+        'fooo'
+      )
+    ).not.toThrow()
+
+    // default
+    expect(run({ type: 'string', minLength: 3, default: 'foo' })).not.toThrow()
+  })
+
+  test('should convert uri strings', () => {
+    expect(
+      run(
+        {
+          type: 'string',
+          format: 'uri',
+        },
+        'https://example.com'
+      )
+    ).not.toThrow()
+    expect(
+      run(
+        {
+          type: 'string',
+          format: 'uri',
+        },
+        'not-a-url'
+      )
+    ).toThrow()
+  })
+
+  test('should convert numbers', () => {
+    // basic
+    expect(
+      run(
+        {
+          type: 'number',
+        },
+        3
+      )
+    ).not.toThrow()
+
+    // minimum
+    expect(
+      run(
+        {
+          type: 'number',
+          minimum: 4,
+        },
+        3
+      )
+    ).toThrow()
+    expect(
+      run(
+        {
+          type: 'number',
+          minimum: 4,
+        },
+        5
+      )
+    ).not.toThrow()
+
+    // maximum
+    expect(
+      run(
+        {
+          type: 'number',
+          maximum: 5,
+        },
+        6
+      )
+    ).toThrow()
+    expect(
+      run(
+        {
+          type: 'number',
+          maximum: 5,
+        },
+        5
+      )
+    ).not.toThrow()
+
+    // default
+    expect(run({ type: 'number', minimum: 3, default: 5 })).not.toThrow()
+  })
+
+  test('should convert objects', () => {
+    // basic
+    expect(
+      run(
+        {
+          type: 'object',
+          properties: {
+            foo: { type: 'string', minLength: 3 },
+            bar: { enum: ['bar', 'baz'] },
+          },
+        },
+        {
+          foo: 'foo',
+          bar: 'baz',
+        }
+      )
+    ).not.toThrow()
+    expect(
+      run(
+        {
+          type: 'object',
+          properties: {
+            foo: { type: 'string', minLength: 3 },
+            bar: { enum: ['bar', 'baz'] },
+          },
+        },
+        {
+          foo: 'fo',
+          bar: 'foo',
+        }
+      )
+    ).toThrow()
+  })
+
+  test('should convert booleans', () => {
+    // basic
+    expect(
+      run(
+        {
+          type: 'boolean',
+        },
+        true
+      )
+    ).not.toThrow()
+    expect(
+      run(
+        {
+          type: 'boolean',
+        },
+        'true'
+      )
+    ).toThrow()
+
+    // default
+    expect(run({ type: 'boolean', default: true })).not.toThrow()
+  })
 })

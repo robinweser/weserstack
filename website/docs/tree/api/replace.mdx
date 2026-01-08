@@ -1,0 +1,30 @@
+---
+title: replace
+order: 10
+---
+
+Replaces a node by a new node.
+
+## The Gist
+
+```tsx
+import { create, replace } from '@weser/tree'
+
+const newNode = create({
+  children: [],
+})
+
+const newTree = replace(tree, 'node-id', newNode)
+```
+
+## Parameters
+
+| Parameter | Type     | Description                                |
+| --------- | -------- | ------------------------------------------ |
+| rootNode  | `T`      | The root node of the tree.                 |
+| id        | `string` | The id of the node to replace.             |
+| newNode   | `T`      | The new node to replace the old node with. |
+
+## Returns
+
+(`T`) The updated root node with the node replaced by the new node.

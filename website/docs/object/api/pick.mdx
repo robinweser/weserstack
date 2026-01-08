@@ -1,0 +1,28 @@
+---
+title: pick
+---
+
+Creates an object composed of the picked object properties.
+
+## The Gist
+
+```ts
+import { pick } from '@weser/object'
+
+const obj = { a: 1, b: 2, c: 3 }
+const picked = pick(obj, ['a', 'c'])
+
+// => { a: 1, c: 3 }
+console.log(picked)
+```
+
+## Parameters
+
+| Parameter | Type             | Description                 |
+| --------- | ---------------- | --------------------------- |
+| obj       | `T`              | The source object.          |
+| keys      | `Array<keyof T>` | The property names to pick. |
+
+## Returns
+
+(`Pick<T, K>`) Returns the new object with only the picked properties.
