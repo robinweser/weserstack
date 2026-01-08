@@ -58,7 +58,7 @@ export default async function Layout({
                 variant="function"
                 intent="neutral"
                 icon={Github}
-                action="https://github.com/robinweser/weser"
+                action="https://github.com/robinweser/weserstack"
                 label="GitHub"
               />
             </Bleed>
