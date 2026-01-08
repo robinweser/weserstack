@@ -1,6 +1,6 @@
 {
   "name": "@weser/layers",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "React library for working with multiple layers",
   "author": "Robin Weser <robin@weser.io>",
   "license": "MIT",
