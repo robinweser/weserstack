@@ -1,5 +1,7 @@
 {
+  "include": ["src/**/*"],
   "compilerOptions": {
+    "rootDir": "./src",
     "esModuleInterop": true,
     "declaration": true,
     "declarationMap": true,
