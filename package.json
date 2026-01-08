@@ -3,8 +3,6 @@
   "private": true,
   "packageManager": "pnpm@7.0.0",
   "scripts": {
-    "postinstall": "pnpm turbo run setup",
-    "build": "pnpm turbo run build",
     "release": "pnpm prepare-release && lerna publish",
     "pre-release": "pnpm prepare-release && lerna publish --dist-tag next --preid rc",
     "prepare-release": " pnpm run test && pnpm build",

@@ -1,27 +1,12 @@
-# Weser
+# WeserStack
 
 A collection of packages that I use for building apps.<br />
 This is a private collection and built solely to serve my use cases.<br />
-Documentation might be missing and APIs might be opinionated.<br />
-That said, all packages follow semver and you're free to use all of them.
 
-## Why?
+> *Note*: All packages follow semver starting with version 1.0.0.
 
-tbd.
+## [Documentation](https://stack.weser.io)
 
-## Packages
-
-- [actions](/packages/actions)
-- [context](/packages/context)
-- [dnd](/packages/dnd)
-- [errors](/packages/errors)
-- [forms](/packages/forms)
-- [hooks](/packages/hooks)
-- [layers](/packages/layers)
-- [mdx](/packages/mdx)
-- [optimistic](/packages/optimistic)
-- [storage](/packages/storage)
-- [theming](/packages/theming)
 
 ## License
 
