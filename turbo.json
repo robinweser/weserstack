@@ -8,13 +8,13 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "website#build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**"]
+    },
     "test": {
       "dependsOn": ["^build"],
       "outputs": ["**/__snapshots__/**"]
-    },
-    "coverage": {
-      "dependsOn": ["^build"],
-      "outputs": ["**/__snapshots__/**", "coverage/**"]
     }
   }
 }
