@@ -28,3 +28,4 @@ es
 coverage
 dist
 .turbo
+.tsbuildinfo
