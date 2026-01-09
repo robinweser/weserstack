@@ -1,6 +1,6 @@
 {
   "name": "@weser/forms",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React hooks for forms with zod schemas",
   "author": "Robin Weser <robin@weser.io>",
   "license": "MIT",

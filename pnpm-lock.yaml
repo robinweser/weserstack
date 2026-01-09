@@ -200,18 +200,6 @@ importers:
         specifier: ^5.4.5
         version: 5.9.3
 
-  packages/loops:
-    devDependencies:
-      ava:
-        specifier: ^6.1.3
-        version: 6.4.1
-      rimraf:
-        specifier: ^3.0.2
-        version: 3.0.2
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.3
-
   packages/markdown:
     dependencies:
       fast-loops:
