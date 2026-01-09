@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs'
 import { join } from 'path'
-import { T_ActionResponse } from '@weser/actions'
+import { T_ActionResponse } from '@weser/action'
 
 import compileMarkdown from './compileMarkdown'
 import { T_Page } from '@/types'

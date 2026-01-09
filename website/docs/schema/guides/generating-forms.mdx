@@ -58,15 +58,15 @@ function Input({ name, label, type }: ComponentProps<'input'>) {
 }
 ```
 
-## Using @weser/forms
+## Using @weser/form
 
-Going a step further, we can use [@weser/forms](/forms) to manage the form state and validation.
+Going a step further, we can use [@weser/form](/form) to manage the form state and validation.
 
 ```tsx
 import { ZodError } from 'zod'
 import { ComponentProps } from 'react'
 import { fromZod } from '@weser/schema'
-import { useForm } from '@weser/forms'
+import { useForm } from '@weser/form'
 
 type T_Schema = z.infer<typeof schema>
 

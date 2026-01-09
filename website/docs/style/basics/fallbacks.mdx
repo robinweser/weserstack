@@ -1,0 +1,59 @@
+---
+title: Fallbacks
+order: 2
+---
+
+Fallbacks are a way to provide a fallback value for a property if the property is not supported by the browser.
+Here's how this works in CSS:
+
+```css
+.element {
+  width: -webkit-min-content;
+  width: min-content;
+}
+```
+
+In case the `min-content` value is not supported, the browser will use the prefixed `-webkit-min-content` version.
+
+## Fallbacks in Inline Styles
+
+The problem is that we can't use this type of fallback value with inline styles.<br />
+In the past, one could hack it like this:
+
+```ts
+const style = {
+  width: '-webkit-min-content; width: min-content',
+}
+```
+
+But this was never officially supported and nowadays is not supported by React anymore.
+
+We can however achieve this using CSS variables.<br />
+In order to support this, we can use the following CSS:
+
+```css
+:root {
+  --width-min-content: min-content;
+}
+
+@supports not (width: min-content) {
+  :root {
+    --width-min-content: -webkit-min-content;
+  }
+}
+
+.element {
+  width: var(--width-min-content);
+}
+```
+
+Now, since this is very cumbersome to write, this package provides a convenient helper that can be passed to the [createRenderer](/style/api/createRenderer) function directly:
+
+```ts
+import { fallbackValue } from '@weser/style'
+
+const minWidthFallback = fallbackValue('width', [
+  '-webkit-min-content',
+  'min-content',
+])
+```

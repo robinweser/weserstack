@@ -1,7 +1,7 @@
 'use client'
 import { PropsWithChildren } from 'react'
-import { useScrollBlocking } from '@weser/hooks'
-import { useLayerContext } from '@weser/layers'
+import { useScrollBlocking } from '@weser/hook'
+import { useLayerContext } from '@weser/layer'
 
 export default function ScrollBlockingLayer({ children }: PropsWithChildren) {
   const { layers } = useLayerContext()

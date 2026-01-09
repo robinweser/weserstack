@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react'
 import { Viewport } from 'next'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
-import { LayerProvider } from '@weser/layers'
+import { LayerProvider } from '@weser/layer'
 
 import ScrollBlockingLayer from '@/components/ScrollBlockingLayer'
 import ModeProvider from '@/components/ModeProvider'

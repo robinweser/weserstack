@@ -1,0 +1,115 @@
+---
+title: Basic Usage
+order: 1
+---
+
+In this guide, we'll build a simple registration form step by step.<br />
+You'll learn the following concepts:
+
+- Using the APIs
+- Validation with Zod
+- Handling Form Submission
+
+> **Note:** We'll focus on the form logic and validation, not the UI. The provided code snippets are minimalistic and not best practices when it comes to UX and accessibility.
+
+## Creating a Schema
+
+First, we need to create a Zod schema that defines the form fields and their validation rules.<br />
+This is the single source of truth for the form data. Whatever the schema defines will also be used for validation.
+
+```tsx
+import { z } from 'zod'
+
+const Z_RegisterInput = z.object({
+  name: z.string().min(1),
+  email: z.string().email()
+  password: z.string().min(8)
+})
+```
+
+## Creating Form Fields
+
+Now that we have a schema, we can already create form fields within our components.<br />
+Doing so, we'll use the [useForm](/form/api/useForm) hook with the provided schema to create all the form utils.
+
+```tsx
+'use client'
+import { useForm } from '@weser/form'
+
+function RegisterForm() {
+  const { useFormField } = useForm(Z_RegisterInput)
+
+  const name = useFormField('name')
+  const email = useFormField('email')
+  const password = useFormField('password')
+}
+```
+
+## Rendering Form Fields
+
+Now that we have the form fields, we can use them to render the input fields.<br />
+For this guide, we'll just use the [inputProps](/form/api/useField#inputProps) to pass to the input fields. You can of course create your own components based on any data provided by the field object.
+
+```tsx
+'use client'
+import { useForm } from '@weser/form'
+
+function RegisterForm() {
+  const { useFormField } = useForm(Z_RegisterInput)
+
+  const name = useFormField('name')
+  const email = useFormField('email')
+  const password = useFormField('password')
+
+  return (
+    <form>
+      <input {...name.inputProps} />
+      <input type="email" {...email.inputProps} />
+      <input type="password" {...password.inputProps} />
+      <button type="submit">Sign up</button>
+    </form>
+  )
+}
+```
+
+## Submitting the Form
+
+Finally, we want to submit the form and do something with the data.<br />
+Additionally, we want to handle errors and reset the form.<br />
+This is what the [handleSubmit](/form/api/useForm#handleSubmit) and [reset](/form/api/useForm#reset) functions is for.
+
+```tsx
+'use client'
+import { z, ZodError } from 'zod'
+import { useForm } from '@weser/form'
+
+type T_RegisterInput = z.infer<typeof Z_RegisterInput>
+
+function RegisterForm() {
+  const { useFormField, handleSubmit, reset } = useForm(Z_RegisterInput)
+
+  const name = useFormField('name')
+  const email = useFormField('email')
+  const password = useFormField('password')
+
+  function onSuccess(data: T_RegisterInput) {
+    console.log(data)
+    reset()
+  }
+
+  function onFailure(error: ZodError) {
+    console.error(error)
+  }
+
+  return (
+    <form onSubmit={handleSubmit(onSuccess, onFailure)}>
+      <input {...name.inputProps} />
+      <input type="email" {...email.inputProps} />
+      <input type="password" {...password.inputProps} />
+      <button type="submit">Sign up</button>
+    </form>
+  )
+}
+```
+
+And that's it! With just a couple lines of code, we get a fully working registration form with validation and submission handling.

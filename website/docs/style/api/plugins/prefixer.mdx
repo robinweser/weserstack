@@ -1,0 +1,26 @@
+---
+title: prefixer
+---
+
+This plugin adds vendor prefixes to style properties and values when required.
+
+## The Gist
+
+```ts
+import { prefixerPlugin } from '@weser/style'
+
+const plugin = prefixerPlugin()
+```
+
+## Fallbacks
+
+This plugin also exports a list of fallbacks for values that can't otherwise be prefixed.<br />
+Add those to your [createRenderer](/style/api/createRenderer) function to be safe.
+
+```ts
+import { prefixerFallbacks } from '@weser/style'
+```
+
+## Returns
+
+([Plugin](/style/api/plugins)) A plugin function that can be passed to the [createRenderer](/style/api/createRenderer) function.

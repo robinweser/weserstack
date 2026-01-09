@@ -1,0 +1,11 @@
+---
+title: T_ResponsiveStyle
+---
+
+```ts
+import { T_Style, T_ResponsiveValue } from '@weser/style'
+
+type T_ResponsiveStyle<T = T_Style> = {
+  [P in keyof T]: T_ResponsiveValue<T[P]>
+}
+```

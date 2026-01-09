@@ -1,0 +1,35 @@
+---
+title: Overview
+order: -1
+---
+
+A simple helper to create and render keyframes on on-demand.<br />
+It (optionally) utilizes React's new [style hoisting feature](https://react.dev/reference/react-dom/components/style#rendering-an-inline-css-stylesheet) when available.
+
+<PackageBadges package="@weser/keyframe" />
+
+## Installation
+
+<Callout title="Note">
+  Style hoisting requires a canary version of React. Install via `react@canary`.
+</Callout>
+
+```sh
+# npm
+npm i --save @weser/keyframe
+
+# yarn
+yarn add @weser/keyframe
+
+# pnpm
+pnpm add @weser/keyframe
+```
+
+## Motivation
+
+When working with [inline styles](/style/overview) or CSS-in-JS libraries, there often is no built-in way to do animations properly.
+Therefore, I created this small utility to create keyframes on-demand without having to write and handle CSS files.
+
+## Benefits
+
+It allows you to create both single keyframes as well as keyframe dictionaries on-demand.

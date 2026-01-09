@@ -1,0 +1,125 @@
+---
+title: Basic Validation
+order: 2
+---
+
+In this guide, we'll learn how form validation works under the hood. We'll learn how to render and customize error messages and how to change the default validation behavior.
+
+## Displaying Error Messages
+
+Since we use Zod for validation, we can leverage its powerful error handling capabilities.<br />
+Every field has a `errorMessage` property that reflects the current validation state of the field.<br />
+Fields are validated synchronously, meaning that the `errorMessage` property is updated immediately after the value is changed.<br />
+
+```tsx
+import { z } from 'zod'
+import { useField } from '@weser/form'
+
+const schema = z.object({
+  name: z.string().min(2),
+})
+
+function Form() {
+  const { useFormField, handleSubmit } = useForm(schema)
+
+  const name = useFormField('name')
+
+  return (
+    <form onSubmit={handleSubmit(console.log)}>
+      <input {...firstname.inputProps} />
+      {firstname.errorMessage && <p role="alert">{firstname.errorMessage}</p>}
+    </form>
+  )
+}
+```
+
+## Change, Blur or Submit Validation
+
+Error messages are only shown when a field is "touched". This state is reflected by the `touched` property of the field.<br />
+By default, all fields are touched when submitting the form. This is a common pattern to ensure the user is not bombarded with error messages when they haven't even started typing yet.
+
+However, sometimes we might also want to show the error message immediately (on change) or when leaving the field (on blur).<br />
+We can achieve this by passing the `showValidationOn` option when creating the field.
+
+```tsx
+import { z } from 'zod'
+import { useField } from '@weser/form'
+
+const schema = z.object({
+  name: z.string().min(2),
+})
+
+function Form() {
+  const { useFormField, handleSubmit } = useForm(schema)
+
+  const name = useFormField('name', {
+    showValidationOn: 'change', // or "blur" respectively
+  })
+
+  return (
+    <form onSubmit={handleSubmit(console.log)}>
+      <input {...firstname.inputProps} />
+      {/* This now shows as soon as the user starts typing */}
+      {firstname.errorMessage && <p role="alert">{firstname.errorMessage}</p>}
+    </form>
+  )
+}
+```
+
+## Customizing Error Messages
+
+When it comes to customizing error messages, there are two ways to do it:
+
+### Schema-level Error Messages
+
+The most straightforward way to customize the error messages is to add custom error messages to the schema itself.
+Zod already provides multiple ways to do that, the most common one being a second argument passed to validators like `min`, `max`, `email`, etc.
+
+```tsx
+import { z } from 'zod'
+
+const schema = z.object({
+  name: z.string().min(1, { message: 'This field is required' }),
+  email: z.string().email({ message: 'Invalid email address' }),
+})
+```
+
+### Form-level Error Messages
+
+Another way is to use the [formatErrorMessage](/form/api/useField#formaterrormessage) option when creating the field.
+This is also useful when you want to support multiple languages and have to translate on the fly or when your schemas are shared between multiple applications.
+
+It works with both [useField](/form/api/useField) as well as [useForm](/form/api/useForm).
+
+<Callout title="Tip">
+  We don't have to repeat this over and over again for each form. Instead,
+  simply create a global `formatErrorMessage` that can be used for all fields.
+</Callout>
+
+```tsx
+import { z } from 'zod'
+import { useForm } from '@weser/form'
+
+const Z_RegisterInput = z.object({
+  name: z.string().min(2),
+  email: z.string().email(),
+  password: z.string().min(8),
+})
+
+function RegisterForm() {
+  const { useFormField } = useForm(Z_RegisterInput, (issue, value, name) => {
+    if (issue.code === 'too_small') {
+      return `This field ${name} requires at least ${issue.minimum} characters.`
+    }
+
+    if (name === 'email' && issue.code === 'invalid_type') {
+      return 'Please enter a valid email address.'
+    }
+
+    return issue.message
+  })
+
+  const name = useFormField('name')
+  const email = useFormField('email')
+}
+```

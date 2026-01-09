@@ -4,13 +4,13 @@ import { ReactNode, ComponentProps, PropsWithChildren } from 'react'
 import { Box, Overlay, Text } from './core'
 
 import Portal from './Portal'
-import { useLayer, useLayerContext } from '@weser/layers'
+import { useLayer, useLayerContext } from '@weser/layer'
 import {
   useClickAway,
   useFocusTrap,
   useKeyDown,
   useScrollBlocking,
-} from '@weser/hooks'
+} from '@weser/hook'
 import Dialog from './Dialog'
 import IconButton from './IconButton'
 import { X } from 'lucide-react'

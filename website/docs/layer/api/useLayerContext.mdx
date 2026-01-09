@@ -1,0 +1,19 @@
+---
+title: useLayerContext
+---
+
+## The Gist
+
+```tsx
+import { useLayerContext } from '@weser/layer'
+
+function LayerCount() {
+  const { layers } = useLayerContext()
+
+  return <div>Total Layers: {layers.length}</div>
+}
+```
+
+## Returns
+
+([T_LayerContext](/layer/api/types/T_LayerContext))

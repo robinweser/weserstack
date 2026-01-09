@@ -1,0 +1,65 @@
+---
+title: Complex Forms & Performance
+order: 8
+---
+
+Sometimes, a single top-level [useForm](/form/api/useForm) hook can be cumbersome to manage and/or scale.<br />
+The way hooks in React work is that they rerender the parent component every time the hook state changes. For simple forms with a couple of fields, this usually works fine, but once we build more complex forms with multiple nested components, this can become a performance bottleneck.<br />
+On top of that, extracting parts of the form into separate components can be cumbersome due to how the API is designed.
+
+To mitigate both issues, we can use the [createForm](/form/api/createForm) helper to create a form utils from a Zod schema including a scoped [useForm](/form/api/useForm) hook, a form context provider and a controlled field component.<br />
+It ensures that no unnecessary rerenders are triggered when the form state changes and allows us to extract parts of the form into separate components.
+
+```tsx
+import { z } from 'zod'
+import { createForm } from '@weser/form'
+
+const Z_RegisterInput = z.object({
+  name: z.string().optional(),
+  email: z.string().email(),
+  password: z.string().min(8),
+})
+
+const { useForm, FormProvider, Field, useFormContext } =
+  createForm(Z_RegisterInput)
+
+function RegisterForm() {
+  const form = useForm()
+
+  function onSuccess(data: T_RegisterInput) {
+    console.log(data)
+  }
+
+  function onFailure(error: ZodError) {
+    console.error(error)
+  }
+
+  return (
+    <FormProvider value={form}>
+      <form onSubmit={form.handleSubmit(onSuccess, onFailure)}>
+        <Field name="name">{(field) => <input {...field.inputProps} />}</Field>
+        <Field name="email">
+          {(field) => <input type="email" {...field.inputProps} />}
+        </Field>
+        <Field name="password">
+          {(field) => <input type="password" {...field.inputProps} />}
+        </Field>
+        <button type="submit">Sign up</button>
+      </form>
+    </FormProvider>
+  )
+}
+```
+
+## Using the Form Context
+
+The [FormProvider](/form/api/createForm#formprovider) is a context provider that provides the form utils to its children.<br />
+It allows us to use the [useFormContext](/form/api/createForm#useformcontext) hook to access e.g. `isValidating` or `useFormField` from nested components.
+
+```tsx
+function ValidationIndicator() {
+  const { isValidating } = useFormContext()
+
+  return isValidating ? <p>Validating...</p> : null
+}
+```

@@ -1,0 +1,35 @@
+---
+title: responsiveValue
+---
+
+This plugin resolves responsive values into a single value.<br />
+Responsive values are defined as an array of values, where the first value is the default value and the rest are the values for the media queries.
+
+<Callout title="Important Note">
+  This plugin requires some manual setup to work properly due to TypeScript
+  limitations.
+  <br />
+  Read the [Responsive Values](/style/guides/responsive-values) guide for more
+  information.
+</Callout>
+
+## The Gist
+
+```ts
+import { responsiveValuePlugin } from '@weser/style'
+
+const plugin = responsiveValuePlugin([
+  '@media (min-width: 800px)',
+  '@media (min-width: 1024px)',
+])
+```
+
+## Parameters
+
+| Parameter    | Type       | Default | Description                                          |
+| ------------ | ---------- | ------- | ---------------------------------------------------- |
+| mediaQueries | `string[]` | `[]`    | The media queries used to resolve responsive values. |
+
+## Returns
+
+([Plugin](/style/api/plugins)) A plugin function that can be passed to the [createRenderer](/style/api/createRenderer) function.

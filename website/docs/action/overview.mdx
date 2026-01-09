@@ -1,0 +1,36 @@
+---
+title: Overview
+order: -1
+---
+
+A package for working with server actions in [React](https://react.dev).
+
+<PackageBadges package="@weser/action" />
+
+## Installation
+
+<Callout title="Required dependencies">
+  This package relies on [React hooks](https://react.dev/reference/react/hook)
+  and thus requires version 16.3 or higher.
+</Callout>
+
+```sh
+# npm
+npm i --save @weser/action
+
+# yarn
+yarn add @weser/action
+
+# pnpm
+pnpm add @weser/action
+```
+
+## Motivation
+
+Using [server actions](https://react.dev/reference/rsc/server-functions) in React is a great way to handle server-side logic in a type-safe way.<br />
+But there's no straightforward way to handle things like loading states and errors. This requires quite some boilerplate that I wanted to reduce with this package.
+
+## Benefits
+
+This package provides a simple hook that handles the loading states and errors for you.<br />
+It also provides a standard format for action responses so that every action follows the same pattern.

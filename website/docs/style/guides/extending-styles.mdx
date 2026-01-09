@@ -1,0 +1,56 @@
+---
+title: Extending Styles
+order: 1
+---
+
+In this guide, we'll explore how to conditionally extend styles.<br />
+Oftentimes, we want to apply some styles only under certain conditions. For example, showing a red border color on an input only when it's invalid.
+
+Naturally, we could do this using pure JavaScript object syntax:
+
+```ts
+const style = {
+  borderColor: 'black',
+  ...(isInvalid ? { borderColor: 'red' } : {}),
+}
+```
+
+## Using extend
+
+While this works for simple cases, it quickly becomes hard to read and maintain.<br />
+Instead, we can use the [extend](/style/api/extend) helper to conditionally extend styles.
+
+```ts
+import { extend } from '@weser/style'
+
+const style = {
+  borderColor: 'black',
+  ...extend(isInvalid, { borderColor: 'red' }),
+}
+```
+
+This is much more readable and maintainable, especially for big nested objects.
+
+## CVA-like variants
+
+If you've used [CVA](https://github.com/tailwindlabs/class-variance-authority) before, you'll notice that it's a similar concept.<br />
+We achieve something similar by using the [extend](/style/api/extend) helper. Let's say we have a button component that can be one of three variants: `primary`, `secondary`, and `tertiary`.
+
+```ts
+function style(variant: 'primary' | 'secondary' | 'tertiary') {
+  return {
+    fontSize: 16,
+    ...extend(variant === 'primary', {
+      backgroundColor: 'blue',
+      color: 'white',
+    }),
+    ...extend(variant === 'secondary', {
+      backgroundColor: 'grey',
+      color: 'black',
+    }),
+    ...extend(variant === 'tertiary', {
+      color: 'black',
+    }),
+  }
+}
+```

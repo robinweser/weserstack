@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react'
 import { LucideIcon } from 'lucide-react'
-import { alpha } from '@weser/theming'
+import { alpha } from '@weser/theme'
 
 import Click from './Click'
 import { VisuallyHidden } from './core'

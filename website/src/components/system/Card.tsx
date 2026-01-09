@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { alpha } from '@weser/theming'
+import { alpha } from '@weser/theme'
 
 import { Box } from '@/components/system/core'
 import theme from '@/utils/theme'

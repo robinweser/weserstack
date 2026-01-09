@@ -1,7 +1,7 @@
 'use client'
 import { ComponentProps, PropsWithChildren } from 'react'
 import { LucideIcon } from 'lucide-react'
-import { alpha } from '@weser/theming'
+import { alpha } from '@weser/theme'
 
 import theme, { colors } from '@/utils/theme'
 import Click from './Click'

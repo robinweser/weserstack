@@ -1,13 +1,13 @@
 'use client'
 import { ComponentProps } from 'react'
 import { Github, Menu, X } from 'lucide-react'
-import { useLayer } from '@weser/layers'
+import { useLayer } from '@weser/layer'
 import {
   useFocusTrap,
   useScrollBlocking,
   useKeyDown,
   useTrigger,
-} from '@weser/hooks'
+} from '@weser/hook'
 
 import { Box, Overlay, Text } from '@/components/system/core'
 import IconButton from '@/components/system/IconButton'

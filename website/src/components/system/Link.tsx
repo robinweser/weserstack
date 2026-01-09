@@ -1,7 +1,7 @@
 'use client'
 import { ComponentProps, PropsWithChildren } from 'react'
 import NextLink from 'next/link'
-import { alpha } from '@weser/theming'
+import { alpha } from '@weser/theme'
 
 import { Box, VisuallyHidden } from '@/components/system/core'
 

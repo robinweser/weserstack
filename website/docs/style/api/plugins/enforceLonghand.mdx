@@ -1,0 +1,36 @@
+---
+title: enforceLonghand
+---
+
+This plugin sorts styles in a way that always enforces longhand over shorthand properties.<br />
+It uses [sortProperty](/style/api/plugins/sortProperty) under the hood to sort the properties.
+
+> Read [The Shorthand-Longhand Problem in Atomic CSS](https://weser.io/blog/the-shorthand-longhand-problem-in-atomic-css) for an in-depth explanation of why this is neccessary.
+
+## The Gist
+
+```ts
+import { enforceLonghandPlugin } from '@weser/style'
+
+const plugin = enforceLonghandPlugin({
+  borderMode: 'directional',
+})
+```
+
+## Parameters
+
+| Parameter  | Type                                  | Default | Description                                                                                                                                                                                                                                                       |
+| ---------- | ------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| borderMode | `none` \| `directional` \| `longhand` | `none`  | The border mode to use.<br />`none`: Directional and longhand properties fight each other.<br />`directional`: Directional properties take precedence over longhand properties.<br />`longhand`: Longhand properties take precedence over directional properties. |
+
+### Properties
+
+| Type                 | Properties                                                                                                                                                                                                                               |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Directional          | `borderTop`, `borderRight`, `borderBottom`, `borderLeft`                                                                                                                                                                                 |
+| Longhand             | `borderWidth`, `borderStyle`, `borderColor`                                                                                                                                                                                              |
+| Directional Longhand | `borderTopWidth`, `borderTopStyle`, `borderTopColor`, `borderRightWidth`, `borderRightStyle`, `borderRightColor`, `borderBottomWidth`, `borderBottomStyle`, `borderBottomColor`, `borderLeftWidth`, `borderLeftStyle`, `borderLeftColor` |
+
+## Returns
+
+([Plugin](/style/api/plugins)) A plugin function that can be passed to the [createRenderer](/style/api/createRenderer) function.

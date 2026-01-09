@@ -1,6 +1,6 @@
 import { ComponentProps, ReactNode, Ref, useRef, useState } from 'react'
 import InputField from './InputField'
-import { useKeyDown, useTrigger } from '@weser/hooks'
+import { useKeyDown, useTrigger } from '@weser/hook'
 import InputButton from './InputButton'
 import mergeRefs from '@/utils/mergeRefs'
 import Popover from './Popover'

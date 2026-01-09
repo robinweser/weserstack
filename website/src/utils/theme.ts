@@ -1,4 +1,4 @@
-import { alpha, createTheme, createThemes } from '@weser/theming'
+import { alpha, createTheme, createThemes } from '@weser/theme'
 
 const base = {
   baselineGrid: 4,

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState, CSSProperties } from 'react'
-import { useClickAway, useFocusTrap, useKeyDown } from '@weser/hooks'
-import { useLayer } from '@weser/layers'
+import { useClickAway, useFocusTrap, useKeyDown } from '@weser/hook'
+import { useLayer } from '@weser/layer'
 
 import Portal from '@/components/system/Portal'
 import { Overlay } from '@/components/system/core'

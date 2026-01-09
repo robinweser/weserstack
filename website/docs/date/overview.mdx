@@ -1,0 +1,32 @@
+---
+title: Overview
+order: -1
+---
+
+A tiny date formatting library with built-in i18n support.
+
+<PackageBadges package="@weser/date" />
+
+## Installation
+
+```sh
+# npm
+npm i --save @weser/date
+
+# yarn
+yarn add @weser/date
+
+# pnpm
+pnpm add @weser/date
+```
+
+## Motivation
+
+There are several date formatting libraries out there. It all started with [Moment](https://momentjs.com), while nowadays smaller alternatives such as [date-fns](https://date-fns.org), [DayJS](https://day.js.org) and [Luxon](https://moment.github.io/luxon/#/) among others are raising in popularity.<br />
+While [date-fns](https://date-fns.org) already comes in a really small format, it was still way to big for my most common use case: Format a date with a given pattern.<br />
+So I created this tiny library as an attempt to solve this specific problem with as little bytes as possible.
+
+## How It works
+
+I was using [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) previously and really liked it. So I had the idea to use that under the hood while providing a nice API that accepts a pattern in a widely used format.<br />
+The nice thing about [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) is that it has built-in i18n support.

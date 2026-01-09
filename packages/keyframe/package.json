@@ -1,0 +1,57 @@
+{
+  "name": "@weser/keyframe",
+  "version": "1.0.0",
+  "description": "Tiny helpers for CSS keyframes in React",
+  "author": "Robin Weser <robin@weser.io>",
+  "license": "MIT",
+  "homepage": "https://github.com/robinweser/weserstack.git",
+  "repository": "https://github.com/robinweser/weserstack.git",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/**"
+  ],
+  "browserslist": [
+    "IE >= 11",
+    "Firefox >= 60",
+    "Safari >= 11.1",
+    "Chrome >= 66",
+    "ChromeAndroid >= 66",
+    "iOS >= 11.3",
+    "Edge >= 15"
+  ],
+  "scripts": {
+    "setup": "pnpm build",
+    "clean": "rimraf dist",
+    "build": "tsc -b",
+    "dev": "pnpm build -w",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "error handling",
+    "invariant",
+    "utils"
+  ],
+  "peerDependencies": {
+    "react": ">16.3.0"
+  },
+  "dependencies": {
+    "css-in-js-utils": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "jsdom": "^25.0.1",
+    "react": "canary",
+    "rimraf": "^3.0.2",
+    "typescript": "^5.4.5",
+    "vitest": "^2.1.8"
+  }
+}

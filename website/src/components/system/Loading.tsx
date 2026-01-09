@@ -1,4 +1,4 @@
-import { createKeyframe } from '@weser/keyframes'
+import { createKeyframe } from '@weser/keyframe'
 
 import { Box } from '@/components/system/core'
 

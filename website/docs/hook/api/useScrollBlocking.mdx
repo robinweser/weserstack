@@ -1,0 +1,24 @@
+---
+title: useScrollBlocking
+---
+
+A hook that allows you to toggle body scrolling.
+
+## The Gist
+
+```tsx
+'use client'
+import { useScrollBlocking } from '@weser/hook'
+
+function Component() {
+  useScrollBlocking(true)
+
+  return <div>Scroll me</div>
+}
+```
+
+## Parameters
+
+| Parameter | Type      | Default | Description                   |
+| --------- | --------- | ------- | ----------------------------- |
+| active    | `boolean` | true    | Whether scrolling is blocked. |
