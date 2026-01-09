@@ -47,13 +47,4 @@ In order to support this, we can use the following CSS:
 }
 ```
 
-Now, since this is very cumbersome to write, this package provides a convenient helper that can be passed to the [createRenderer](/style/api/createRenderer) function directly:
-
-```ts
-import { fallbackValue } from '@weser/style'
-
-const minWidthFallback = fallbackValue('width', [
-  '-webkit-min-content',
-  'min-content',
-])
-```
+Now, since this is very cumbersome to write, this package provides a [plugin](/style/api/plugins/fallbackValue) that can be used to automatically add fallbacks to the style object.

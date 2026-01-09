@@ -3,9 +3,10 @@ title: T_Fallback
 ---
 
 ```ts
+type Property = keyof T_Style
+
 type T_Fallback = {
-  property: string | Array<string>
-  values: Array<string>
-  match?: string
+  property: Property | Array<Property>
+  fallback: (value: string) => Array<string> | undefined
 }
 ```

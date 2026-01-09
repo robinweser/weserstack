@@ -1,7 +1,7 @@
 {
   "name": "@weser/style",
   "version": "1.0.0",
-  "description": "Utils for styling with CSS hooks",
+  "description": "Utils for using inline styles in React",
   "author": "Robin Weser <robin@weser.io>",
   "license": "MIT",
   "homepage": "https://github.com/robinweser/weserstack.git",

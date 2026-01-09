@@ -1,0 +1,62 @@
+---
+title: customProperty
+---
+
+This plugin allows you to define custom style properties that resolve to a valid style object.
+
+## The Gist
+
+```ts
+import { customPropertyPlugin } from '@weser/style'
+
+const plugin = customPropertyPlugin({
+  paddingX: (value) => ({
+    paddingLeft: value,
+    paddingRight: value,
+  }),
+  paddingY: (value) => ({
+    paddingTop: value,
+    paddingBottom: value,
+  }),
+})
+```
+
+## Parameters
+
+| Parameter  | Type                                    | Default | Description                                                            |
+| ---------- | --------------------------------------- | ------- | ---------------------------------------------------------------------- |
+| properties | `Record<string, (value: T) => T_Style>` |         | A map of custom property names to functions that return style objects. |
+
+## Returns
+
+([Plugin](/style/api/plugins)) A plugin function that can be passed to the [createRenderer](/style/api/createRenderer) function.
+
+## Style Type
+
+In order to use this package properly, you need to extend the `T_Style` type with your custom properties.
+
+```ts
+import {
+  createRenderer,
+  customPropertyPlugin,
+  type T_Style,
+  type T_CustomStyle,
+} from '@weser/style'
+
+const properties = {
+  paddingX: (value) => ({
+    paddingLeft: value,
+    paddingRight: value,
+  }),
+  paddingY: (value) => ({
+    paddingTop: value,
+    paddingBottom: value,
+  }),
+} as const
+
+type Style = T_Style & T_CustomStyle<typeof properties>
+
+const css = createRenderer<Style>({
+  plugins: [customPropertyPlugin(properties)],
+})
+```

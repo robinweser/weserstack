@@ -2,7 +2,7 @@
 title: unit
 ---
 
-This plugin converts values to the given unit.<br />
+This plugin converts numeric values to the given unit.<br />
 It is aware of unitless properties such as `line-height`, zero-values and also adds units to multiple values inside an array.
 
 ## The Gist
@@ -17,11 +17,11 @@ const plugin = unitPlugin('px', {
 
 ## Parameters
 
-| Parameter          | Value                                                                                                                        | Default                                                                                                       | Description                                                           |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| unit               | `ch` \| `em` \| `ex` \| `rem` \| `vh` \| `vw` \| `vmin` \| `vmax` \| `px` \| `cm` \| `mm` \| `in` \| `pc` \| `pt` \| `mozmm` | `px`                                                                                                          | The global unit that gets applied to all values.                      |
-| unitPerProperty    | `Record<keyof React.CSSProperties, string>`                                                                                  | `{}`                                                                                                          | Property-specific unit overwrites.                                    |
-| isUnitlessProperty | `(property: keyof React.CSSProperties) => boolean`                                                                           | [isUnitlessProperty](https://github.com/robinweser/css-in-js-utils/blob/master/modules/isUnitlessProperty.ts) | A function that determines whether a property should remain unitless. |
+| Parameter          | Type                                     | Default                                                                                                       | Description                                                           |
+| ------------------ | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| defaultUnit        | `string`                                 | `'px'`                                                                                                        | The global unit that gets applied to all numeric values.              |
+| propertyMap        | `Partial<Record<keyof T_Style, string>>` | `{}`                                                                                                          | Property-specific unit overwrites.                                    |
+| isUnitlessProperty | `(property: string) => boolean`          | [isUnitlessProperty](https://github.com/robinweser/css-in-js-utils/blob/master/modules/isUnitlessProperty.ts) | A function that determines whether a property should remain unitless. |
 
 ## Returns
 

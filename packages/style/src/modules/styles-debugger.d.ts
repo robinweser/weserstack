@@ -1,5 +1,5 @@
 declare module 'styles-debugger' {
-  import { type T_Style } from '../types'
+  import { T_Style } from '../types.js'
 
   export type Config = {
     enabled?: boolean

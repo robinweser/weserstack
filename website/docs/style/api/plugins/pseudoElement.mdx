@@ -1,0 +1,31 @@
+---
+title: pseudoElement
+---
+
+This plugin allows you to style pseudo-elements (like `::before` and `::after`) using inline styles.
+
+## The Gist
+
+```ts
+import { pseudoElementPlugin } from '@weser/style'
+
+const plugin = pseudoElementPlugin()
+```
+
+## Returns
+
+([Plugin](/style/api/plugins)) A plugin function that can be passed to the [createRenderer](/style/api/createRenderer) function.
+
+## Usage
+
+```tsx
+const style = {
+  position: 'relative',
+  '::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
+}
+```

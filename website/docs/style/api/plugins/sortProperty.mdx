@@ -21,9 +21,9 @@ const plugin = sortPropertyPlugin({
 
 ## Parameters
 
-| Parameter        | Type                     | Default | Description                                                                |
-| ---------------- | ------------------------ | ------- | -------------------------------------------------------------------------- |
-| propertyPriority | `Record<string, number>` | `{}`    | The property priority map. The higher the number, the higher the priority. |
+| Parameter        | Type                            | Default | Description                                                                |
+| ---------------- | ------------------------------- | ------- | -------------------------------------------------------------------------- |
+| propertyPriority | `Record<keyof T_Style, number>` |         | The property priority map. The higher the number, the higher the priority. |
 
 ## Returns
 

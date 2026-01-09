@@ -5,6 +5,7 @@ import { type T_Style } from '../types'
 export type PropertyPriority<T = T_Style> = {
   [Property in keyof T]: number
 }
+
 export default function sortPropertyPlugin<
   T extends Record<string, any> = T_Style,
 >(propertyPriority: PropertyPriority<T>) {

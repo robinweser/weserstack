@@ -1,0 +1,47 @@
+---
+title: embedded
+---
+
+This plugin allows you to embed keyframes directly in style objects using the `animationName` property.
+
+## The Gist
+
+```ts
+import { embeddedPlugin } from '@weser/style'
+
+const plugin = embeddedPlugin()
+```
+
+## Returns
+
+([Plugin](/style/api/plugins)) A plugin function that can be passed to the [createRenderer](/style/api/createRenderer) function.
+
+## Usage
+
+```tsx
+const style = {
+  animationName: {
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+  },
+  animationDuration: '1s',
+}
+```
+
+## Style Type
+
+In order to use this package properly, you need to replace the default `T_Style` type with `T_EmbeddedStyle`.
+
+```ts
+import {
+  createRenderer,
+  embeddedPlugin,
+  type T_EmbeddedStyle,
+} from '@weser/style'
+
+type Style = T_EmbeddedStyle
+
+const css = createRenderer<Style>({
+  plugins: [embeddedPlugin()],
+})
+```

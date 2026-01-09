@@ -17,12 +17,19 @@ A plugin is just a pure function that takes a style object and returns a new sty
 
 By default, this package includes the following plugins:
 
-- [debug](/style/api/plugins/debug)
-- [enforceLonghand](/style/api/plugins/enforceLonghand)
-- [prefixer](/style/api/plugins/prefixer)
-- [responsiveValue](/style/api/plugins/responsiveValue)
-- [sortProperty](/style/api/plugins/sortProperty)
-- [unit](/style/api/plugins/unit)
+- [customProperty](/style/api/plugins/customProperty) - Allows you to define custom style properties that resolve to a valid style object.
+- [debug](/style/api/plugins/debug) - Adds debug styles to elements for simple layout debugging.
+- [embedded](/style/api/plugins/embedded) - Allows you to embed keyframes directly in style objects using the `animationName` property.
+- [enforceLonghand](/style/api/plugins/enforceLonghand) - Sorts styles in a way that always enforces longhand over shorthand properties.
+- [fallbackValue](/style/api/plugins/fallbackValue) - Adds fallbacks to the style object.
+- [logger](/style/api/plugins/logger) - Logs style objects to the console for debugging purposes.
+- [prefixer](/style/api/plugins/prefixer) - Adds vendor prefixes to properties.
+- [pseudoElement](/style/api/plugins/pseudoElement) - Allows you to style pseudo-elements (like `::before` and `::after`) using inline styles.
+- [responsiveValue](/style/api/plugins/responsiveValue) - Adds responsive values to properties.
+- [rtl](/style/api/plugins/rtl) - Adds RTL support to properties.
+- [sortCondition](/style/api/plugins/sortCondition) - Sorts conditions according to a condition priority map.
+- [sortProperty](/style/api/plugins/sortProperty) - Sorts properties according to a property priority map.
+- [unit](/style/api/plugins/unit) - Converts numeric values to the given unit.
 
 ## Creating a Plugin
 

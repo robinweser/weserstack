@@ -1,9 +1,17 @@
 import sortProperty, { type PropertyPriority } from './sortProperty'
-
 import { type T_Style } from '../types'
 
-function capitalize(str: string) {
-  return str.charAt(0).toUpperCase() + str.slice(1)
+type BorderMode = 'none' | 'longhand' | 'directional'
+export default function enforceLonghandPlugin<T extends T_Style>(
+  borderMode: BorderMode = 'none'
+) {
+  const propertyPriority = getPropertyPriority<T>({
+    borderDirectional: borderMode === 'directional' ? 3 : 2,
+    borderLonghand: borderMode === 'longhand' ? 3 : 2,
+    borderDirectionalLonghand: borderMode === 'none' ? 3 : 4,
+  })
+
+  return sortProperty<T>(propertyPriority)
 }
 
 type BorderPriority = {
@@ -118,15 +126,6 @@ function getPropertyPriority<T>({
   ) as PropertyPriority<T>
 }
 
-type BorderMode = 'none' | 'longhand' | 'directional'
-export default function enforceLonghandPlugin<
-  T extends Record<string, any> = T_Style,
->(borderMode: BorderMode = 'none') {
-  const propertyPriority = getPropertyPriority<T>({
-    borderDirectional: borderMode === 'directional' ? 3 : 2,
-    borderLonghand: borderMode === 'longhand' ? 3 : 2,
-    borderDirectionalLonghand: borderMode === 'none' ? 3 : 4,
-  })
-
-  return sortProperty<T>(propertyPriority)
+function capitalize(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
 }

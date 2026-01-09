@@ -1,0 +1,11 @@
+---
+title: T_CustomStyle
+---
+
+```ts
+type PropertyMap = Record<string, (value: any) => T_Style>
+
+type T_CustomStyle<T extends PropertyMap> = Partial<
+  Record<keyof T, Parameters<T[keyof T]>[0]>
+>
+```

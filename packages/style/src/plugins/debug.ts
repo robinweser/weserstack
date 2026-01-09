@@ -1,8 +1,13 @@
 import {
   CreateStylesDebugger as createStylesDebugger,
-  Config,
+  type Config,
 } from 'styles-debugger'
-import { type T_Style } from '../types'
+
+import { T_Style } from '../types'
+
+export type T_DebugStyle = {
+  debug?: boolean
+}
 
 export default function debugPlugin<T = T_Style>(
   autoActive = true,
@@ -10,9 +15,9 @@ export default function debugPlugin<T = T_Style>(
 ) {
   const debugStyle = createStylesDebugger(config)
 
-  return function debug(style: T & { debug?: boolean }) {
+  return function debug(style: T & T_DebugStyle) {
     if (autoActive || style?.debug) {
-      const { debug, ...rest } = style
+      const { debug: _, ...rest } = style
 
       return {
         ...rest,

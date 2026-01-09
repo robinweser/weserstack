@@ -1,0 +1,32 @@
+---
+title: sortCondition
+---
+
+This plugin sorts CSS conditions (media queries, pseudo-classes, etc.) in a style object according to a custom sort function.
+
+## The Gist
+
+```ts
+import { sortConditionPlugin, sortMobileFirst } from '@weser/style'
+
+const plugin = sortConditionPlugin(sortMobileFirst)
+```
+
+## Parameters
+
+| Parameter | Type                                      | Default | Description                                                                                                                  |
+| --------- | ----------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| sortFn    | `(left: string, right: string) => number` |         | A comparison function that returns a negative number if `left` should come before `right`, positive if after, or 0 if equal. |
+
+## Exports
+
+This plugin also exports a `sortMobileFirst` helper function that sorts conditions in mobile-first order:
+
+- Regular properties first
+- Pseudo-classes (`:hover`, `:focus`, etc.) in LVFHA order
+- Media queries sorted by breakpoint
+- `@supports` queries last
+
+## Returns
+
+([Plugin](/style/api/plugins)) A plugin function that can be passed to the [createRenderer](/style/api/createRenderer) function.

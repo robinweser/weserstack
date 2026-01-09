@@ -1,0 +1,73 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`css function > returns returns a tuple of the processed style object and a style node 1`] = `
+<style
+  dangerouslySetInnerHTML={
+    {
+      "__html": "
+  * {
+  --media-off: initial;
+  --media-on: ;
+  --hover-off: initial;
+  --hover-on: ;
+  --active-off: initial;
+  --active-on: ;
+}
+  @media (min-width: 1024px) {
+  * {
+    --media-off: ;
+    --media-on: initial;
+  }
+}
+
+:hover {
+  --hover-off: ;
+  --hover-on: initial;
+} 
+:active {
+  --active-off: ;
+  --active-on: initial;
+}
+",
+    }
+  }
+  href="x1twwplk"
+  precedence="low"
+/>
+`;
+
+exports[`css function > supports nested selectors 1`] = `
+<style
+  dangerouslySetInnerHTML={
+    {
+      "__html": "
+  * {
+  --media-off: initial;
+  --media-on: ;
+  --hover-off: initial;
+  --hover-on: ;
+  --active-off: initial;
+  --active-on: ;
+}
+  @media (min-width: 1024px) {
+  * {
+    --media-off: ;
+    --media-on: initial;
+  }
+}
+
+:hover {
+  --hover-off: ;
+  --hover-on: initial;
+} 
+:active {
+  --active-off: ;
+  --active-on: initial;
+}
+",
+    }
+  }
+  href="x1twwplk"
+  precedence="low"
+/>
+`;

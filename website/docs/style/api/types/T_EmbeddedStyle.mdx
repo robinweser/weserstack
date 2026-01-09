@@ -1,0 +1,11 @@
+---
+title: T_EmbeddedStyle
+---
+
+```ts
+import { T_Keyframe } from '@weser/keyframe'
+
+type T_EmbeddedStyle = Omit<T_Style, 'animationName'> & {
+  animationName?: T_Style['animationName'] | T_Keyframe
+}
+```

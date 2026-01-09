@@ -1,0 +1,35 @@
+---
+title: logger
+---
+
+This plugin logs style objects to the console for debugging purposes.
+
+## The Gist
+
+```ts
+import { loggerPlugin } from '@weser/style'
+
+const plugin = loggerPlugin({
+  prefix: '[Style]',
+  stringify: false,
+  clone: true,
+})
+```
+
+## Parameters
+
+| Parameter | Type               | Default | Description                           |
+| --------- | ------------------ | ------- | ------------------------------------- |
+| config    | [Config](#config)? | `{}`    | Configuration options for the logger. |
+
+### Config
+
+| Property  | Type       | Default | Description                                                            |
+| --------- | ---------- | ------- | ---------------------------------------------------------------------- |
+| prefix    | `string?`  | `''`    | A prefix string to prepend to each log message.                        |
+| stringify | `boolean?` | `false` | Whether to stringify the style object using JSON.stringify.            |
+| clone     | `boolean?` | `true`  | Whether to clone the style object before logging (to avoid mutations). |
+
+## Returns
+
+([Plugin](/style/api/plugins)) A plugin function that can be passed to the [createRenderer](/style/api/createRenderer) function.

@@ -12,17 +12,9 @@ First of all, we need to create our renderer and make sure to pass the [responsi
 ```tsx
 import { createRenderer, responsiveValuePlugin } from '@weser/style'
 
-const [staticCSS, css] = createRenderer({
-  hooks: {
-    ':hover': 'hover',
-    ':focus': 'focus',
-    m: '@media (min-width: 800px)',
-    l: '@media (min-width: 1024px)',
-  },
+const css = createRenderer({
   plugins: [
     responsiveValuePlugin([
-      // these need to match the hooks we defined above
-      // consider extracting those to a separate variable for better readability
       '@media (min-width: 800px)',
       '@media (min-width: 1024px)',
     ]),
@@ -66,7 +58,7 @@ We can achieve this by utilizing the [T_ResponsiveValue](/style/api/types/T_Resp
 
 ```tsx
 import { PropsWithChildren } from 'react'
-import { T_ResponsiveValue, T_Style } from '@weser/style'
+import { type T_ResponsiveValue, type T_Style } from '@weser/style'
 import { css } from './renderer'
 
 type ResponsiveStyleValue<T extends keyof T_Style> = T_ResponsiveValue<

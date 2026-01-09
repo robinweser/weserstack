@@ -17,10 +17,16 @@ const plugin = debugPlugin(false, {
 
 ## Parameters
 
-| Parameter  | Type                                                                     | Default | Description                                                                      |
-| ---------- | ------------------------------------------------------------------------ | ------- | -------------------------------------------------------------------------------- |
-| autoActive | `boolean`                                                                | `true`  | Whether debug styles are active globally                                         |
-| config     | [Config](https://github.com/kitze/styles-debugger#configuration-options) |         | Custom [styles-debugger](https://github.com/kitze/styles-debugger) configuration |
+| Parameter  | Type               | Default | Description                                                                      |
+| ---------- | ------------------ | ------- | -------------------------------------------------------------------------------- |
+| autoActive | `boolean`          | `true`  | Whether debug styles are active globally                                         |
+| config     | [Config](#config)? | `{}`    | Custom [styles-debugger](https://github.com/kitze/styles-debugger) configuration |
+
+### Config
+
+| Property  | Type     | Default     | Description                                                           |
+| --------- | -------- | ----------- | --------------------------------------------------------------------- |
+| debugWith | `string` | `'outline'` | The CSS property to use for debugging (`'outline'` or `'background'`) |
 
 <Callout title="Note">
   When `autoActive` is disabled, one can opt-in by adding `debug: true` to a
@@ -30,3 +36,22 @@ const plugin = debugPlugin(false, {
 ## Returns
 
 ([Plugin](/style/api/plugins)) A plugin function that can be passed to the [createRenderer](/style/api/createRenderer) function.
+
+## Style Type
+
+In order to use this package properly, you need to extend the `T_Style` type with `T_DebugStyle`.
+
+```ts
+import {
+  createRenderer,
+  debugPlugin,
+  type T_Style,
+  type T_DebugStyle,
+} from '@weser/style'
+
+type Style = T_Style & T_DebugStyle
+
+const css = createRenderer<Style>({
+  plugins: [debugPlugin()],
+})
+```

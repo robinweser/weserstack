@@ -1,0 +1,23 @@
+---
+title: rtl
+---
+
+This plugin transforms styles for right-to-left (RTL) layouts.
+
+## The Gist
+
+```ts
+import { rtlPlugin } from '@weser/style'
+
+const plugin = rtlPlugin('rtl')
+```
+
+## Parameters
+
+| Parameter        | Type     | Default | Description                                                                |
+| ---------------- | -------- | ------- | -------------------------------------------------------------------------- |
+| defaultDirection | `string` | `'rtl'` | The default direction to use. When set to `'rtl'`, styles are transformed. |
+
+## Returns
+
+([Plugin](/style/api/plugins)) A plugin function that can be passed to the [createRenderer](/style/api/createRenderer) function.

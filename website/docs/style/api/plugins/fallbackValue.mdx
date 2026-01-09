@@ -1,0 +1,32 @@
+---
+title: fallbackValue
+---
+
+This plugin adds fallbacks to the style object.
+
+## The Gist
+
+```ts
+import { fallbackValuePlugin } from '@weser/style'
+
+const plugin = fallbackValuePlugin([
+  {
+    property: ['width', 'height'],
+    fallback: (value) => {
+      if (value === 'min-content') {
+        return ['-webkit-min-content', 'min-content']
+      }
+    },
+  },
+])
+```
+
+## Parameters
+
+| Parameter | Type                | Default | Description                                  |
+| --------- | ------------------- | ------- | -------------------------------------------- |
+| fallbacks | `Array<T_Fallback>` | `[]`    | An array of fallbacks to apply to the style. |
+
+## Returns
+
+([Plugin](/style/api/plugins)) A plugin function that can be passed to the [createRenderer](/style/api/createRenderer) function.

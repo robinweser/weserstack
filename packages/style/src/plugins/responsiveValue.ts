@@ -1,5 +1,5 @@
-import isPlainObject from 'isobject'
 import { assignStyle } from 'css-in-js-utils'
+import isPlainObject from 'isobject'
 
 import { type T_Style } from '../types'
 

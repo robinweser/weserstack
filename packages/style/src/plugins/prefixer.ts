@@ -1,6 +1,60 @@
+import { objectEach } from '@weser/loops'
 import isObject from 'isobject'
 
-import { type T_Fallback, type T_Style } from '../types'
+import { type T_Style } from '../types'
+import { type T_Fallback } from './fallbackValue'
+
+export default function prefixerPlugin() {
+  return function addVendorPrefixes(style: T_Style) {
+    const prefixed: T_Style = {}
+
+    objectEach(style, (value, property) => {
+      if (isObject(value)) {
+        prefixed[property] = addVendorPrefixes(value)
+      } else {
+        if (prefixes[property]) {
+          const prefixedProperty = prefixes[property] + capitalize(property)
+          prefixed[prefixedProperty as keyof T_Style] = value
+        }
+        prefixed[property] = value
+      }
+    })
+
+    return prefixed
+  }
+}
+export const fallbacks: Array<T_Fallback> = [
+  {
+    property: [
+      'width',
+      'minWidth',
+      'maxWidth',
+      'height',
+      'minHeight',
+      'maxHeight',
+    ],
+    fallback: (value: string) => {
+      if (value === 'min-content') {
+        return ['-webkit-min-content', 'min-content']
+      }
+    },
+  },
+  {
+    property: [
+      'width',
+      'minWidth',
+      'maxWidth',
+      'height',
+      'minHeight',
+      'maxHeight',
+    ],
+    fallback: (value: string) => {
+      if (value === 'max-content') {
+        return ['-webkit-max-content', 'max-content']
+      }
+    },
+  },
+]
 
 function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1)
@@ -8,8 +62,7 @@ function capitalize(str: string) {
 
 const w = 'Webkit'
 const m = 'Moz'
-
-const prefixes = {
+const prefixes: Partial<Record<keyof T_Style, string>> = {
   textEmphasisPosition: w,
   textEmphasis: w,
   textEmphasisStyle: w,
@@ -46,54 +99,3 @@ const prefixes = {
   textDecorationLine: w,
   textDecorationColor: w,
 }
-
-export default function prefixerPlugin<T = T_Style>() {
-  return function addVendorPrefixes(style: T) {
-    const prefixed = {}
-
-    for (const property in style) {
-      const value = style[property as keyof typeof style]
-
-      if (isObject(value)) {
-        // @ts-ignore
-        prefixed[property] = addVendorPrefixes(value)
-      } else {
-        // @ts-ignore
-        if (prefixes[property]) {
-          // @ts-ignore
-          prefixed[prefixes[property] + capitalize(property)] = value
-        }
-
-        // @ts-ignore
-        prefixed[property] = value
-      }
-    }
-
-    return prefixed
-  }
-}
-
-export const fallbacks: Array<T_Fallback> = [
-  {
-    property: [
-      'width',
-      'minWidth',
-      'maxWidth',
-      'height',
-      'minHeight',
-      'maxHeight',
-    ],
-    values: ['-webkit-min-content', 'min-content'],
-  },
-  {
-    property: [
-      'width',
-      'minWidth',
-      'maxWidth',
-      'height',
-      'minHeight',
-      'maxHeight',
-    ],
-    values: ['-webkit-max-content', 'max-content'],
-  },
-]

@@ -12,16 +12,14 @@ It uses [sortProperty](/style/api/plugins/sortProperty) under the hood to sort t
 ```ts
 import { enforceLonghandPlugin } from '@weser/style'
 
-const plugin = enforceLonghandPlugin({
-  borderMode: 'directional',
-})
+const plugin = enforceLonghandPlugin('directional')
 ```
 
 ## Parameters
 
-| Parameter  | Type                                  | Default | Description                                                                                                                                                                                                                                                       |
-| ---------- | ------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| borderMode | `none` \| `directional` \| `longhand` | `none`  | The border mode to use.<br />`none`: Directional and longhand properties fight each other.<br />`directional`: Directional properties take precedence over longhand properties.<br />`longhand`: Longhand properties take precedence over directional properties. |
+| Parameter  | Type                                  | Default  | Description                                                                                                                                                                                                                                                       |
+| ---------- | ------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| borderMode | `none` \| `directional` \| `longhand` | `'none'` | The border mode to use.<br />`none`: Directional and longhand properties fight each other.<br />`directional`: Directional properties take precedence over longhand properties.<br />`longhand`: Longhand properties take precedence over directional properties. |
 
 ### Properties
 
