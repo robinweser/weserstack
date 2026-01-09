@@ -1,5 +1,5 @@
-import { createKeyframe, type T_Keyframe } from '@weser/keyframes'
-import { objectEach } from '@weser/loops'
+import { createKeyframe, type T_Keyframe } from '@weser/keyframe'
+import { each } from '@weser/object'
 
 import { T_Context, T_Style } from '../types'
 
@@ -19,7 +19,7 @@ function resolveEmbedded<T extends Record<string, any> = T_Style>(
   style: T,
   context: T_Context
 ) {
-  objectEach(style, (value, property) => {
+  each(style, (value, property) => {
     if (typeof value === 'object' && value !== null) {
       if (property === 'animationName') {
         const [keyframe, node] = createKeyframe(value)

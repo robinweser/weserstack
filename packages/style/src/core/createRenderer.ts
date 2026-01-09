@@ -1,4 +1,5 @@
-import { objectEach, arrayReduce } from '@weser/loops'
+import { each } from '@weser/object'
+import { reduce } from '@weser/array'
 import { assignStyle } from 'css-in-js-utils'
 import { CSSProperties, ReactNode } from 'react'
 
@@ -74,7 +75,7 @@ function resolveStyle(
   flags: Record<string, string> = {},
   context: T_Context
 ): CSSProperties {
-  const processed = arrayReduce(
+  const processed = reduce(
     plugins,
     (style, plugin) => plugin(style, context),
     style
@@ -82,7 +83,7 @@ function resolveStyle(
 
   const { devMode } = context
 
-  objectEach(processed, (value, property) => {
+  each(processed, (value, property) => {
     if (typeof value === 'object' && value !== null) {
       const resolved = resolveStyle(value, plugins, flags, context)
       const flag = devMode
@@ -90,7 +91,7 @@ function resolveStyle(
         : hash(property as string)
       flags[property] = flag
 
-      objectEach(resolved, (value, key) => {
+      each(resolved, (value, key) => {
         const fallback = processed[key] ?? 'unset'
         processed[key as keyof T_Style] =
           `var(--${flag}-1, ${value}) var(--${flag}-0, ${fallback})`

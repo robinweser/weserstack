@@ -1,7 +1,8 @@
+import { each } from '@weser/object'
 import { hyphenateProperty } from 'css-in-js-utils'
 import isPlainObject from 'isobject'
+
 import { T_Context, T_Style } from '../types'
-import { objectEach } from '@weser/loops'
 
 export type T_Fallback = {
   property: Array<keyof T_Style>
@@ -19,7 +20,7 @@ function resolveFallbackValue(
   fallbacks: Array<T_Fallback>,
   context: T_Context
 ) {
-  objectEach(style, (value, property) => {
+  each(style, (value, property) => {
     if (isPlainObject(value)) {
       style[property] = resolveFallbackValue(value, fallbacks, context)
     } else {

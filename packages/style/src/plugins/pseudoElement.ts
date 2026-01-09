@@ -1,5 +1,6 @@
-import { objectEach } from '@weser/loops'
+import { each } from '@weser/object'
 import { cssifyObject } from 'css-in-js-utils'
+
 import { T_Context, T_Style } from '../types'
 import isPlainObject from 'isobject'
 import hash from '../helpers/hash'
@@ -10,7 +11,7 @@ export default function pseudoElementPlugin() {
   }
 
   function resolvePseudoElement(style: T_Style, context: T_Context) {
-    objectEach(style, (value, property) => {
+    each(style, (value, property) => {
       if (isPlainObject(value)) {
         if (property.startsWith('::')) {
           const css = cssifyObject(value)

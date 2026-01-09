@@ -1,4 +1,4 @@
-import { arrayEach } from '@weser/loops'
+import { each } from '@weser/array'
 import isPlainObject from 'isobject'
 import sortCSSMediaQueries from 'sort-css-media-queries'
 
@@ -14,13 +14,13 @@ export default function sortConditionPlugin(
     const primitive = entries.filter(([_, value]) => !isPlainObject(value))
     const nested = entries.filter(([_, value]) => isPlainObject(value))
 
-    arrayEach(primitive, ([property, value]) => {
+    each(primitive, ([property, value]) => {
       sorted[property as keyof T_Style] = value
     })
 
     const sortedNested = nested.sort((left, right) => sortFn(left[0], right[0]))
 
-    arrayEach(sortedNested, ([property, value]) => {
+    each(sortedNested, ([property, value]) => {
       sorted[property as keyof T_Style] = sortCondition(value)
     })
 

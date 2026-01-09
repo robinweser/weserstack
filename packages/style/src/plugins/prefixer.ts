@@ -1,4 +1,4 @@
-import { objectEach } from '@weser/loops'
+import { each } from '@weser/object'
 import isObject from 'isobject'
 
 import { type T_Style } from '../types'
@@ -8,7 +8,7 @@ export default function prefixerPlugin() {
   return function addVendorPrefixes(style: T_Style) {
     const prefixed: T_Style = {}
 
-    objectEach(style, (value, property) => {
+    each(style, (value, property) => {
       if (isObject(value)) {
         prefixed[property] = addVendorPrefixes(value)
       } else {

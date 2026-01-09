@@ -1,4 +1,4 @@
-import { objectEach } from '@weser/loops'
+import { each } from '@weser/object'
 import isPlainObject from 'isobject'
 
 import { T_Context, T_Style } from '../types'
@@ -20,7 +20,7 @@ export default function customPropertyPlugin<
 function resolveCustomProperty<
   T extends Record<string, (value: any) => T_Style>,
 >(style: T_Style, properties: T, context: T_Context) {
-  objectEach(style, (value, property) => {
+  each(style, (value, property) => {
     if (properties.hasOwnProperty(property)) {
       const resolved = properties[property as keyof T](value)
       context.mergeStyle(style, resolved)

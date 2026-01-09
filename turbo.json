@@ -8,6 +8,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "@weser/style#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
     "stack.weser.io#build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**"]
