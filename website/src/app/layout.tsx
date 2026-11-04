@@ -33,13 +33,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <style dangerouslySetInnerHTML={{ __html: colorVariables }} />
         <style dangerouslySetInnerHTML={{ __html: tokenVariables }} />
         <style dangerouslySetInnerHTML={{ __html: styleSheet }} />
-        <Script
-          id="simple-analytics"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `window.sa_event=window.sa_event||function(){var a=[].slice.call(arguments);window.sa_event.q?window.sa_event.q.push(a):window.sa_event.q=[a]}`,
-          }}
-        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -77,7 +70,12 @@ export default function RootLayout({ children }: PropsWithChildren) {
             <ModeProvider>{children}</ModeProvider>
           </ScrollBlockingLayer>
         </LayerProvider>
-        <Script src="https://sa.weser.io/latest.js" />
+        <Script
+          defer
+          data-site="stack.weser.io"
+          src="https://weser-analytics.up.railway.app/script.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
