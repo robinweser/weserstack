@@ -1,4 +1,4 @@
-import isPlainObject from 'isobject'
+import isStyleObject from '../helpers/isStyleObject'
 
 import { type T_Style } from '../types'
 
@@ -19,10 +19,10 @@ export default function sortPropertyPlugin<
       .reduce((out, property) => {
         const value = style[property]
 
-        if (isPlainObject(value)) {
+        if (isStyleObject(value)) {
           return {
             ...out,
-            [property]: sortProperty(value),
+            [property]: sortProperty(value as T),
           }
         }
 

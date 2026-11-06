@@ -1,6 +1,6 @@
 import { each } from '@weser/object'
 import { hyphenateProperty } from 'css-in-js-utils'
-import isPlainObject from 'isobject'
+import isStyleObject from '../helpers/isStyleObject'
 
 import { T_Context, T_Style } from '../types'
 
@@ -21,7 +21,7 @@ function resolveFallbackValue(
   context: T_Context
 ) {
   each(style, (value, property) => {
-    if (isPlainObject(value)) {
+    if (isStyleObject(value)) {
       style[property] = resolveFallbackValue(value, fallbacks, context)
     } else {
       const fallback = fallbacks.find(

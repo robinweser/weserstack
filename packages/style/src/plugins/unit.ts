@@ -1,5 +1,5 @@
 import { isUnitlessProperty as defaultIsUnitlessProperty } from 'css-in-js-utils'
-import isPlainObject from 'isobject'
+import isStyleObject from '../helpers/isStyleObject'
 
 import { type T_RawStyle, type T_Style } from '../types'
 
@@ -27,7 +27,7 @@ function addUnit<T = T_Style>(
       const propertyUnit =
         propertyMap[property as keyof T_RawStyle] || defaultUnit
 
-      if (isPlainObject(cssValue)) {
+      if (isStyleObject(cssValue)) {
         // @ts-ignore
         style[property] = addUnit<T>(
           cssValue as T,

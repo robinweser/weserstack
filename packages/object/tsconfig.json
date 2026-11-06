@@ -17,5 +17,5 @@
     "module": "esnext",
     "target": "esnext"
   },
-  "exclude": ["node_modules", "dist", "types"]
+  "exclude": ["node_modules", "dist", "types", "**/__tests__/**"]
 }

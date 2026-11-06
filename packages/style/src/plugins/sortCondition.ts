@@ -1,5 +1,5 @@
 import { each } from '@weser/array'
-import isPlainObject from 'isobject'
+import isStyleObject from '../helpers/isStyleObject'
 import sortCSSMediaQueries from 'sort-css-media-queries'
 
 import { T_Style } from '../types'
@@ -11,8 +11,8 @@ export default function sortConditionPlugin(
     const sorted: T_Style = {}
 
     const entries = Object.entries(style)
-    const primitive = entries.filter(([_, value]) => !isPlainObject(value))
-    const nested = entries.filter(([_, value]) => isPlainObject(value))
+    const primitive = entries.filter(([_, value]) => !isStyleObject(value))
+    const nested = entries.filter(([_, value]) => isStyleObject(value))
 
     each(primitive, ([property, value]) => {
       sorted[property as keyof T_Style] = value

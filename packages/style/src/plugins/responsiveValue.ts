@@ -1,5 +1,5 @@
 import { assignStyle } from 'css-in-js-utils'
-import isPlainObject from 'isobject'
+import isStyleObject from '../helpers/isStyleObject'
 
 import { type T_Style } from '../types'
 
@@ -29,7 +29,7 @@ function resolveResponsiveValues<T = T_Style>(
     const property = key as keyof typeof style
     const value = style[property]
 
-    if (isPlainObject(value)) {
+    if (isStyleObject(value)) {
       // @ts-ignore
       style[property] = resolveResponsiveValues(value, mediaQueries)
     }

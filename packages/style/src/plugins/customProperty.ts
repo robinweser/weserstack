@@ -1,5 +1,5 @@
 import { each } from '@weser/object'
-import isPlainObject from 'isobject'
+import isStyleObject from '../helpers/isStyleObject'
 
 import { T_Context, T_Style } from '../types'
 
@@ -30,7 +30,7 @@ function resolveCustomProperty<
       }
     }
 
-    if (style.hasOwnProperty(property) && isPlainObject(value)) {
+    if (style.hasOwnProperty(property) && isStyleObject(value)) {
       style[property] = resolveCustomProperty(value, properties, context)
     }
   })

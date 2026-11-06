@@ -2,7 +2,7 @@ import { each } from '@weser/object'
 import { cssifyObject } from 'css-in-js-utils'
 
 import { T_Context, T_Style } from '../types'
-import isPlainObject from 'isobject'
+import isStyleObject from '../helpers/isStyleObject'
 import hash from '../helpers/hash'
 
 export default function pseudoElementPlugin() {
@@ -12,7 +12,7 @@ export default function pseudoElementPlugin() {
 
   function resolvePseudoElement(style: T_Style, context: T_Context) {
     each(style, (value, property) => {
-      if (isPlainObject(value)) {
+      if (isStyleObject(value)) {
         if (property.startsWith('::')) {
           const css = cssifyObject(value)
 

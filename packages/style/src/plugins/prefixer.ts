@@ -1,6 +1,6 @@
 import { each } from '@weser/object'
-import isObject from 'isobject'
 
+import isStyleObject from '../helpers/isStyleObject'
 import { type T_Style } from '../types'
 import { type T_Fallback } from './fallbackValue'
 
@@ -9,7 +9,7 @@ export default function prefixerPlugin() {
     const prefixed: T_Style = {}
 
     each(style, (value, property) => {
-      if (isObject(value)) {
+      if (isStyleObject(value)) {
         prefixed[property] = addVendorPrefixes(value)
       } else {
         if (prefixes[property]) {
